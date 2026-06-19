@@ -20,6 +20,7 @@ from typing import Any
 
 
 ARXIV_PDF_URL = "https://arxiv.org/pdf/{arxiv_id}"
+ARXIV_SOURCE_URL = "https://arxiv.org/e-print/{arxiv_id}"
 DEFAULT_USER_AGENT = "NLP-Cursor-equation-extractor/0.1 (student project; respectful single-paper requests)"
 EQUATION_NUMBER_RE = re.compile(
     r"(?<![\w.])\(\s*([A-Za-z]?\s*\d+(?:\.\d+)?\s*[a-z]?)\s*\)\s*$"
@@ -35,6 +36,100 @@ MATH_SIGNAL_RE = re.compile(
     r"(\\[A-Za-z]+|[=+\-*/^_<>]|[∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]|"
     r"\b(?:psi|phi|rho|sigma|lambda|omega|theta|hat|ket|bra)\b)"
 )
+
+# ---------------------------------------------------------------------------
+# Math symbol extraction dictionaries
+# ---------------------------------------------------------------------------
+
+UNICODE_MATH_SYMBOLS: set[str] = {
+    # Operators
+    "∑", "∫", "∏", "∂", "∇", "√",
+    # Relations
+    "≤", "≥", "≡", "≠", "≈", "≪", "≫", "∝", "∼",
+    # Arrows
+    "→", "←", "↔", "⇒", "⇐", "⇔",
+    # Greek lowercase
+    "α", "β", "γ", "δ", "ε", "ζ", "η", "θ",
+    "ι", "κ", "λ", "μ", "ν", "ξ", "π", "ρ",
+    "σ", "τ", "υ", "φ", "χ", "ψ", "ω",
+    # Greek uppercase
+    "Γ", "Δ", "Θ", "Λ", "Ξ", "Π", "Σ", "Φ", "Ψ", "Ω",
+    # Special
+    "∞", "†", "‡", "⟨", "⟩", "ℏ", "ℓ",
+}
+
+LATEX_CMD_TO_SYMBOL: dict[str, str] = {
+    # Operators
+    r"\sum": "∑", r"\int": "∫", r"\prod": "∏",
+    r"\partial": "∂", r"\nabla": "∇", r"\sqrt": "√",
+    r"\oint": "∮",
+    # Relations
+    r"\leq": "≤", r"\le": "≤", r"\geq": "≥", r"\ge": "≥",
+    r"\equiv": "≡", r"\neq": "≠", r"\approx": "≈",
+    r"\ll": "≪", r"\gg": "≫", r"\propto": "∝", r"\sim": "∼",
+    # Arrows
+    r"\to": "→", r"\rightarrow": "→", r"\leftarrow": "←",
+    r"\leftrightarrow": "↔", r"\Rightarrow": "⇒",
+    r"\Leftarrow": "⇐", r"\Leftrightarrow": "⇔",
+    # Greek lowercase
+    r"\alpha": "α", r"\beta": "β", r"\gamma": "γ",
+    r"\delta": "δ", r"\epsilon": "ε", r"\varepsilon": "ε",
+    r"\zeta": "ζ", r"\eta": "η", r"\theta": "θ",
+    r"\vartheta": "θ", r"\iota": "ι", r"\kappa": "κ",
+    r"\lambda": "λ", r"\mu": "μ", r"\nu": "ν",
+    r"\xi": "ξ", r"\pi": "π", r"\rho": "ρ",
+    r"\sigma": "σ", r"\tau": "τ", r"\upsilon": "υ",
+    r"\phi": "φ", r"\varphi": "φ", r"\chi": "χ",
+    r"\psi": "ψ", r"\omega": "ω",
+    # Greek uppercase
+    r"\Gamma": "Γ", r"\Delta": "Δ", r"\Theta": "Θ",
+    r"\Lambda": "Λ", r"\Xi": "Ξ", r"\Pi": "Π",
+    r"\Sigma": "Σ", r"\Phi": "Φ", r"\Psi": "Ψ", r"\Omega": "Ω",
+    # Special
+    r"\infty": "∞", r"\dagger": "†", r"\ddagger": "‡",
+    r"\langle": "⟨", r"\rangle": "⟩", r"\hbar": "ℏ", r"\ell": "ℓ",
+    r"\forall": "∀", r"\exists": "∃", r"\in": "∈",
+    r"\subset": "⊂", r"\supset": "⊃", r"\cup": "∪", r"\cap": "∩",
+    r"\pm": "±", r"\mp": "∓", r"\times": "×", r"\cdot": "·",
+    r"\otimes": "⊗", r"\oplus": "⊕",
+}
+
+# Pre-compiled pattern to find LaTeX commands in a string.
+_LATEX_CMD_RE = re.compile(r"\\[A-Za-z]+")
+
+
+def extract_math_symbols(latex: str) -> list[str]:
+    """Extract unique math symbols from a LaTeX equation string.
+
+    Uses a triple-pass approach:
+      1. Direct Unicode character scan
+      2. LaTeX command → symbol mapping
+      3. pylatexenc fallback for remaining commands
+    """
+    symbols: set[str] = set()
+
+    # Pass 1: Unicode characters already present in the string.
+    for char in latex:
+        if char in UNICODE_MATH_SYMBOLS:
+            symbols.add(char)
+
+    # Pass 2: Map known LaTeX commands to Unicode symbols.
+    for match in _LATEX_CMD_RE.finditer(latex):
+        cmd = match.group()
+        if cmd in LATEX_CMD_TO_SYMBOL:
+            symbols.add(LATEX_CMD_TO_SYMBOL[cmd])
+
+    # Pass 3: pylatexenc conversion for commands not in our dictionary.
+    try:
+        from pylatexenc.latex2text import LatexNodes2Text
+        converted = LatexNodes2Text().latex_to_text(latex)
+        for char in converted:
+            if char in UNICODE_MATH_SYMBOLS:
+                symbols.add(char)
+    except Exception:
+        pass  # pylatexenc unavailable or parse error — passes 1+2 suffice
+
+    return sorted(symbols)
 
 
 @dataclass(frozen=True)
@@ -115,6 +210,189 @@ def download_arxiv_pdf(
         )
     pdf_path.write_bytes(payload)
     return pdf_path
+
+
+def download_arxiv_source(
+    arxiv_id: str,
+    cache_dir: Path,
+    *,
+    sleep_seconds: float,
+) -> Path:
+    """Download the arXiv LaTeX source archive for a paper."""
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    source_path = cache_dir / f"{arxiv_id.replace('/', '_')}_source.tar.gz"
+    if source_path.exists():
+        return source_path
+
+    if sleep_seconds > 0:
+        time.sleep(sleep_seconds)
+
+    request = urllib.request.Request(
+        ARXIV_SOURCE_URL.format(arxiv_id=arxiv_id),
+        headers={"User-Agent": DEFAULT_USER_AGENT},
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=90) as response:
+            payload = response.read()
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"failed to download source for arXiv:{arxiv_id}: {exc}") from exc
+
+    source_path.write_bytes(payload)
+    return source_path
+
+
+def extract_tex_from_source(source_path: Path) -> str:
+    """Extract the main .tex content from an arXiv source archive.
+
+    Handles tar.gz archives, plain gzip, and bare .tex files.
+    """
+    import gzip
+    import io
+    import tarfile
+
+    raw = source_path.read_bytes()
+
+    # Try tar.gz first.
+    try:
+        with tarfile.open(fileobj=io.BytesIO(raw), mode="r:gz") as tar:
+            tex_files = [m for m in tar.getmembers() if m.name.endswith(".tex")]
+            if not tex_files:
+                raise RuntimeError("No .tex files found in archive")
+            main_tex = max(tex_files, key=lambda m: m.size)
+            extracted = tar.extractfile(main_tex)
+            if extracted is None:
+                raise RuntimeError(f"Could not read {main_tex.name} from archive")
+            return extracted.read().decode("utf-8", errors="replace")
+    except tarfile.TarError:
+        pass
+
+    # Try plain gzip (single .tex file).
+    try:
+        return gzip.decompress(raw).decode("utf-8", errors="replace")
+    except gzip.BadGzipFile:
+        pass
+
+    # Maybe it's a bare .tex file.
+    return raw.decode("utf-8", errors="replace")
+
+
+def _strip_tex_comments(tex: str) -> str:
+    """Remove LaTeX line comments while preserving escaped percent signs."""
+    return re.sub(r"(?<!\\)%.*$", "", tex, flags=re.MULTILINE)
+
+
+# Matches numbered equation environments (not starred variants like equation*).
+_NUMBERED_ENV_RE = re.compile(
+    r"\\begin\{(equation|multline|align|gather|eqnarray|flalign|alignat)\}"
+    r"(.*?)"
+    r"\\end\{\1\}",
+    re.DOTALL,
+)
+
+# Environments where each \\ row gets its own equation number.
+_MULTI_ROW_ENVS = {"align", "gather", "eqnarray", "flalign", "alignat"}
+
+# Single-number environments (one number for the whole block).
+_SINGLE_NUM_ENVS = {"equation", "multline"}
+
+
+def _clean_latex(raw: str) -> str:
+    """Remove \\label{...} and normalize whitespace in a LaTeX string."""
+    cleaned = re.sub(r"\\label\{[^}]*\}", "", raw).strip()
+    return re.sub(r"\s+", " ", cleaned).strip()
+
+
+def parse_equations_from_tex(tex_content: str) -> list[EquationCandidate]:
+    """Parse all numbered equation environments from LaTeX source.
+
+    Handles both main-body and appendix numbering (A1, B1, ...).
+    Multi-row environments (align, gather, eqnarray) are split into
+    individual rows — each row becomes a separate numbered equation
+    unless it contains ``\\nonumber`` or ``\\notag``.
+    """
+    tex = _strip_tex_comments(tex_content)
+
+    # Locate structural markers.
+    appendix_match = re.search(r"\\appendix\b", tex)
+    appendix_pos = appendix_match.start() if appendix_match else len(tex) + 1
+
+    # Find section boundaries after \appendix.
+    appendix_sections: list[int] = []
+    if appendix_match:
+        for m in re.finditer(r"\\section\b", tex):
+            if m.start() > appendix_pos:
+                appendix_sections.append(m.start())
+
+    # --- Equation counter state ---
+    main_eq_count = 0
+    current_appendix_section = -1
+    section_eq_count = 0
+    candidates: list[EquationCandidate] = []
+
+    def _next_number(pos: int) -> str:
+        """Advance the equation counter and return the next number string."""
+        nonlocal main_eq_count, current_appendix_section, section_eq_count
+
+        if pos < appendix_pos:
+            main_eq_count += 1
+            return str(main_eq_count)
+
+        new_section = 0
+        for i, sec_pos in enumerate(appendix_sections):
+            if pos > sec_pos:
+                new_section = i
+        if new_section != current_appendix_section:
+            current_appendix_section = new_section
+            section_eq_count = 0
+        section_eq_count += 1
+        section_letter = chr(ord("A") + current_appendix_section)
+        return f"{section_letter}{section_eq_count}"
+
+    for match in _NUMBERED_ENV_RE.finditer(tex):
+        env_name = match.group(1)
+        content = match.group(2)
+        pos = match.start()
+        line_start = tex[:pos].count("\n") + 1
+        line_end = tex[: match.end()].count("\n") + 1
+
+        if env_name in _SINGLE_NUM_ENVS:
+            # One equation number for the entire block.
+            latex = _clean_latex(content)
+            if latex:
+                candidates.append(
+                    EquationCandidate(
+                        number=_next_number(pos),
+                        latex=latex,
+                        source="arxiv_tex_source",
+                        line_start=line_start,
+                        line_end=line_end,
+                        context="",
+                    )
+                )
+        else:
+            # Multi-row: split by \\ and emit one equation per numbered row.
+            rows = re.split(r"\\\\", content)
+            for row in rows:
+                row_stripped = row.strip()
+                if not row_stripped:
+                    continue
+                # Skip rows explicitly marked as unnumbered.
+                if r"\nonumber" in row_stripped or r"\notag" in row_stripped:
+                    continue
+                latex = _clean_latex(row_stripped)
+                if latex:
+                    candidates.append(
+                        EquationCandidate(
+                            number=_next_number(pos),
+                            latex=latex,
+                            source="arxiv_tex_source",
+                            line_start=line_start,
+                            line_end=line_end,
+                            context="",
+                        )
+                    )
+
+    return candidates
 
 
 def make_docling_converter(*, enable_ocr: bool) -> Any:
@@ -414,6 +692,18 @@ def build_dataset_entry(
     return {arxiv_id: paper_entry}
 
 
+def format_simple_json(equations: list[EquationCandidate]) -> list[dict[str, Any]]:
+    """Format equations into the simple ``{equation, number, mathsSymbol}`` schema."""
+    return [
+        {
+            "equation": eq.latex,
+            "number": eq.number,
+            "mathsSymbol": extract_math_symbols(eq.latex),
+        }
+        for eq in equations
+    ]
+
+
 def write_json(path: Path, payload: dict[str, Any], *, merge: bool) -> None:
     """Write or merge a paper-level dataset JSON file."""
 
@@ -432,6 +722,12 @@ def parse_args() -> argparse.Namespace:
         description="Extract enumerated equations from one arXiv PDF using Docling."
     )
     parser.add_argument(
+        "--pdf-path",
+        type=Path,
+        default=None,
+        help="Path to a local PDF file. When provided, skips arXiv download.",
+    )
+    parser.add_argument(
         "--paper-list",
         type=Path,
         default=Path("paper_list_16.txt"),
@@ -440,7 +736,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--paper-number",
         type=int,
-        required=True,
+        default=None,
         help="1-based paper number from the paper list, e.g. 9 for the ninth entry.",
     )
     parser.add_argument(
@@ -488,6 +784,19 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Enable OCR for scanned PDFs. Leave off for normal arXiv text-layer PDFs.",
     )
+    parser.add_argument(
+        "--output-format",
+        choices=["professor", "simple"],
+        default="simple",
+        help="Output JSON format: 'simple' for {equation,number,mathsSymbol} or 'professor' for full schema.",
+    )
+    parser.add_argument(
+        "--source",
+        choices=["tex", "docling"],
+        default="tex",
+        help="Extraction strategy: 'tex' downloads arXiv LaTeX source (fast, perfect); "
+        "'docling' converts PDF with Docling (slow, needs formula enrichment).",
+    )
     return parser.parse_args()
 
 
@@ -495,24 +804,74 @@ def main() -> None:
     """Run the single-paper PDF equation extraction pipeline."""
 
     args = parse_args()
-    paper_ids = read_paper_list(args.paper_list)
-    arxiv_id = select_arxiv_id(paper_ids, args.paper_number)
-    pdf_path = download_arxiv_pdf(
-        arxiv_id,
-        args.cache_dir,
-        sleep_seconds=args.sleep_seconds,
-        force=args.force_download,
-    )
-    markdown, conversion_metadata = convert_pdf_with_docling(pdf_path, enable_ocr=args.enable_ocr)
-    if args.save_docling_markdown is not None:
-        args.save_docling_markdown.parent.mkdir(parents=True, exist_ok=True)
-        args.save_docling_markdown.write_text(markdown, encoding="utf-8")
 
-    equations = extract_equations(markdown, args.max_equations)
-    dataset_entry = build_dataset_entry(arxiv_id, equations, conversion_metadata)
-    write_json(args.output, dataset_entry, merge=args.merge)
+    # Resolve arXiv ID and/or PDF path.
+    arxiv_id: str | None = None
+    if args.pdf_path is not None:
+        pdf_path = args.pdf_path
+        if not pdf_path.exists():
+            raise FileNotFoundError(f"PDF not found: {pdf_path}")
+        # Try to detect arXiv ID from filename (e.g., "2410.07429v2.pdf").
+        stem = pdf_path.stem
+        if re.match(r"\d{4}\.\d{4,5}(v\d+)?$", stem):
+            arxiv_id = re.sub(r"v\d+$", "", stem)
+    elif args.paper_number is not None:
+        paper_ids = read_paper_list(args.paper_list)
+        arxiv_id = select_arxiv_id(paper_ids, args.paper_number)
+    else:
+        raise SystemExit("Either --pdf-path or --paper-number is required.")
+
+    identifier = arxiv_id or (args.pdf_path.stem if args.pdf_path else "unknown")
+
+    # --- Source strategy: tex (arXiv LaTeX source) or docling ---
+    if args.source == "tex":
+        if arxiv_id is None:
+            raise SystemExit(
+                "The 'tex' source strategy requires an arXiv ID. "
+                "Either use --paper-number or pass an arXiv-named PDF with --pdf-path."
+            )
+        source_path = download_arxiv_source(
+            arxiv_id, args.cache_dir, sleep_seconds=args.sleep_seconds
+        )
+        tex_content = extract_tex_from_source(source_path)
+        equations = parse_equations_from_tex(tex_content)
+        if args.max_equations < len(equations):
+            equations = equations[: args.max_equations]
+    else:
+        # Docling path (original behavior).
+        if args.pdf_path is not None:
+            pdf_path = args.pdf_path
+        else:
+            pdf_path = download_arxiv_pdf(
+                arxiv_id,
+                args.cache_dir,
+                sleep_seconds=args.sleep_seconds,
+                force=args.force_download,
+            )
+        markdown, conversion_metadata = convert_pdf_with_docling(
+            pdf_path, enable_ocr=args.enable_ocr
+        )
+        if args.save_docling_markdown is not None:
+            args.save_docling_markdown.parent.mkdir(parents=True, exist_ok=True)
+            args.save_docling_markdown.write_text(markdown, encoding="utf-8")
+        equations = extract_equations(markdown, args.max_equations)
+
+    # --- Output ---
+    if args.output_format == "simple":
+        payload = format_simple_json(equations)
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(
+            json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+            encoding="utf-8",
+        )
+    else:
+        if args.source != "docling":
+            conversion_metadata = {"status": "success", "converter": "arxiv_tex_source"}
+        dataset_entry = build_dataset_entry(identifier, equations, conversion_metadata)
+        write_json(args.output, dataset_entry, merge=args.merge)
+
     print(
-        f"arXiv:{arxiv_id}: extracted {len(equations)} enumerated equation(s) "
+        f"{identifier}: extracted {len(equations)} enumerated equation(s) "
         f"to {args.output}"
     )
 
