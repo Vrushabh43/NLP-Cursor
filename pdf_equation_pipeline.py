@@ -208,6 +208,75 @@ def configure_writable_model_cache(cache_dir: Path = DEFAULT_MODEL_CACHE_DIR) ->
     os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
 
 
+def pdf_page_count(pdf_path: Path) -> int | None:
+    """Return PDF page count when PyMuPDF is available."""
+
+    try:
+        import fitz
+    except ImportError:
+        return None
+
+    try:
+        with fitz.open(pdf_path) as document:
+            return document.page_count
+    except Exception:
+        return None
+
+
+def configure_docling_device(
+    pdf_path: Path,
+    *,
+    policy: str,
+    gpu_max_pages: int,
+    gpu_max_mb: float,
+) -> dict[str, Any]:
+    """Choose CPU/GPU before Docling imports heavy model dependencies."""
+
+    size_mb = pdf_path.stat().st_size / (1024 * 1024)
+    pages = pdf_page_count(pdf_path)
+    reason = "requested_gpu"
+    selected_device = "gpu"
+
+    if policy == "cpu":
+        selected_device = "cpu"
+        reason = "requested_cpu"
+    elif policy == "auto":
+        too_many_pages = pages is not None and pages > gpu_max_pages
+        too_large = size_mb > gpu_max_mb
+        if too_many_pages or too_large:
+            selected_device = "cpu"
+            reason_parts = []
+            if too_many_pages:
+                reason_parts.append(f"pages>{gpu_max_pages}")
+            if too_large:
+                reason_parts.append(f"size_mb>{gpu_max_mb:g}")
+            reason = "auto_cpu_" + "_".join(reason_parts)
+        else:
+            reason = "auto_gpu_small_pdf"
+    elif policy != "gpu":
+        raise ValueError(f"unsupported device policy: {policy}")
+
+    if selected_device == "cpu":
+        os.environ["CUDA_VISIBLE_DEVICES"] = ""
+    elif os.environ.get("CUDA_VISIBLE_DEVICES") == "":
+        reason = f"{reason}_but_cuda_hidden_by_environment"
+
+    print(
+        "Docling device policy: "
+        f"policy={policy}, selected={selected_device}, pages={pages}, "
+        f"size_mb={size_mb:.2f}, reason={reason}"
+    )
+    return {
+        "device_policy": policy,
+        "selected_device": selected_device,
+        "device_reason": reason,
+        "pdf_pages": pages,
+        "pdf_size_mb": round(size_mb, 2),
+        "gpu_max_pages": gpu_max_pages,
+        "gpu_max_mb": gpu_max_mb,
+    }
+
+
 def make_docling_converter(*, enable_ocr: bool) -> Any:
     """Create a Docling PDF converter with formula enrichment when available."""
 
@@ -1224,6 +1293,24 @@ def parse_args() -> argparse.Namespace:
         help="Enable OCR for scanned PDFs. Leave off for normal arXiv text-layer PDFs.",
     )
     parser.add_argument(
+        "--device-policy",
+        choices=("auto", "cpu", "gpu"),
+        default="auto",
+        help="Docling device policy: auto uses GPU for small PDFs and CPU for larger PDFs.",
+    )
+    parser.add_argument(
+        "--gpu-max-pages",
+        type=int,
+        default=10,
+        help="In --device-policy auto, use GPU only when page count is at or below this value.",
+    )
+    parser.add_argument(
+        "--gpu-max-mb",
+        type=float,
+        default=20.0,
+        help="In --device-policy auto, use GPU only when PDF size is at or below this value.",
+    )
+    parser.add_argument(
         "--disable-pdf-fallback",
         action="store_true",
         help="Disable PyMuPDF text-layer fallback extraction.",
@@ -1285,8 +1372,15 @@ def main() -> None:
             print(f"Cached Markdown not found at {args.docling_markdown_input}; running Docling.")
         if pdf_path is None:
             raise RuntimeError("PDF path is required when cached Markdown is unavailable.")
+        device_metadata = configure_docling_device(
+            pdf_path,
+            policy=args.device_policy,
+            gpu_max_pages=args.gpu_max_pages,
+            gpu_max_mb=args.gpu_max_mb,
+        )
         try:
             markdown, conversion_metadata = convert_pdf_with_docling(pdf_path, enable_ocr=args.enable_ocr)
+            conversion_metadata.update(device_metadata)
         except Exception as exc:
             markdown = ""
             conversion_metadata = {
@@ -1295,6 +1389,7 @@ def main() -> None:
                 "ocr_enabled": args.enable_ocr,
                 "markdown_chars": 0,
                 "error": str(exc),
+                **device_metadata,
             }
             print(f"Docling failed for arXiv:{arxiv_id}; continuing with PDF text fallback: {exc}")
     if args.save_docling_markdown is not None:

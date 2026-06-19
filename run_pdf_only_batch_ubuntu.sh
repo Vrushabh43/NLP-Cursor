@@ -6,7 +6,10 @@ OUTPUT_JSON="${OUTPUT_JSON:-output/pdf/equations_pdf_pdf_only_server.json}"
 REPORT_JSON="${REPORT_JSON:-output/pdf/equations_pdf_pdf_only_server_report.json}"
 MARKDOWN_DIR="${MARKDOWN_DIR:-output/pdf/docling_markdown_server}"
 MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-.cache/model_cache}"
-FORCE_CPU="${FORCE_CPU:-1}"
+FORCE_CPU="${FORCE_CPU:-}"
+DEVICE_POLICY="${DEVICE_POLICY:-auto}"
+GPU_MAX_PAGES="${GPU_MAX_PAGES:-10}"
+GPU_MAX_MB="${GPU_MAX_MB:-20}"
 LABEL_SCOPE="${LABEL_SCOPE:-all}"
 REUSE_MARKDOWN="${REUSE_MARKDOWN:-0}"
 MAX_EQUATIONS="${MAX_EQUATIONS:-200}"
@@ -21,10 +24,14 @@ export XDG_CACHE_HOME="${PWD}/${MODEL_CACHE_DIR}/xdg"
 export HF_HUB_DISABLE_SYMLINKS_WARNING=1
 export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
 if [[ "${FORCE_CPU}" == "1" ]]; then
-  export CUDA_VISIBLE_DEVICES=""
-  echo "FORCE_CPU=1: hiding CUDA devices to avoid Docling GPU OOM."
+  DEVICE_POLICY="cpu"
+  echo "FORCE_CPU=1: using CPU device policy."
+elif [[ "${FORCE_CPU}" == "0" ]]; then
+  DEVICE_POLICY="gpu"
+  echo "FORCE_CPU=0: using GPU device policy."
 fi
 mkdir -p "${HF_HOME}" "${HF_HUB_CACHE}" "${TRANSFORMERS_CACHE}" "${XDG_CACHE_HOME}"
+echo "Docling device policy: ${DEVICE_POLICY} (GPU thresholds: pages<=${GPU_MAX_PAGES}, size<=${GPU_MAX_MB}MB)"
 
 # PDF-only papers identified in the first 70 entries of paper_list_16.txt.
 if [[ -n "${PDF_ONLY_PAPERS_OVERRIDE:-}" ]]; then
@@ -53,6 +60,9 @@ for PAPER_NUMBER in "${PDF_ONLY_PAPERS[@]}"; do
   "${PYTHON_EXE}" pdf_equation_pipeline.py \
     --paper-number "${PAPER_NUMBER}" \
     --max-equations "${MAX_EQUATIONS}" \
+    --device-policy "${DEVICE_POLICY}" \
+    --gpu-max-pages "${GPU_MAX_PAGES}" \
+    --gpu-max-mb "${GPU_MAX_MB}" \
     --sleep-seconds 3 \
     --output "${OUTPUT_JSON}" \
     --report-output "${REPORT_JSON}" \
