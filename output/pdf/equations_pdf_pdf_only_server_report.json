@@ -13,7 +13,7 @@
     "clean_labels": [
       "1"
     ],
-    "docling_status": "ConversionStatus.SUCCESS",
+    "docling_status": "cached_docling_markdown",
     "confidence_counts": {
       "high": 2
     },
@@ -72,17 +72,16 @@
       "3",
       "4"
     ],
-    "docling_status": "ConversionStatus.SUCCESS",
+    "docling_status": "cached_docling_markdown",
     "confidence_counts": {
-      "high": 4,
-      "low": 1,
+      "high": 3,
+      "low": 2,
       "medium": 1
     },
     "source_counts": {
       "docling_markdown_math_block": 3,
       "docling_markdown_neighbor_reference": 1,
-      "docling_page_retry_math_block": 1,
-      "pymupdf_text_fallback": 1
+      "pymupdf_text_fallback": 2
     },
     "sources": {
       "1": "pymupdf_text_fallback",
@@ -90,7 +89,7 @@
       "3": "docling_markdown_math_block",
       "4": "docling_markdown_math_block",
       "5": "docling_markdown_neighbor_reference",
-      "6": "docling_page_retry_math_block"
+      "6": "pymupdf_text_fallback"
     },
     "confidence": {
       "1": "low",
@@ -98,7 +97,7 @@
       "3": "high",
       "4": "high",
       "5": "medium",
-      "6": "high"
+      "6": "low"
     },
     "quality_warnings": {
       "1": [
@@ -121,13 +120,17 @@
         "normalized_from_raw"
       ],
       "6": [
-        "page_retry_replaced_fallback",
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "possible_prose_contamination",
+        "possible_pdf_text_degradation",
         "normalized_from_raw"
       ]
     },
     "suspicious_labels": [],
     "fallback_only_labels": [
-      "1"
+      "1",
+      "6"
     ],
     "needs_review": [
       "1",
@@ -135,7 +138,7 @@
       "6"
     ],
     "review_summary": {
-      "fallback_only_count": 1,
+      "fallback_only_count": 2,
       "suspicious_label_count": 0,
       "artifact_cleanup_count": 0
     }
@@ -157,7 +160,7 @@
       "1",
       "3"
     ],
-    "docling_status": "ConversionStatus.SUCCESS",
+    "docling_status": "cached_docling_markdown",
     "confidence_counts": {
       "high": 2,
       "medium": 1
@@ -193,6 +196,987 @@
     "needs_review": [
       "2"
     ],
+    "review_summary": {
+      "fallback_only_count": 0,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2505.02834": {
+    "equation_count": 7,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "main_equation_count": 7,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "clean_labels": [
+      "6"
+    ],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "high": 1,
+      "low": 6
+    },
+    "source_counts": {
+      "docling_markdown_math_block": 1,
+      "pymupdf_text_fallback": 6
+    },
+    "sources": {
+      "1": "pymupdf_text_fallback",
+      "2": "pymupdf_text_fallback",
+      "3": "pymupdf_text_fallback",
+      "6": "docling_markdown_math_block",
+      "7": "pymupdf_text_fallback",
+      "8": "pymupdf_text_fallback",
+      "9": "pymupdf_text_fallback"
+    },
+    "confidence": {
+      "1": "low",
+      "2": "low",
+      "3": "low",
+      "6": "high",
+      "7": "low",
+      "8": "low",
+      "9": "low"
+    },
+    "quality_warnings": {
+      "1": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "3": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "6": [
+        "normalized_from_raw"
+      ],
+      "7": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "8": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "9": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "1",
+      "2",
+      "3",
+      "7",
+      "8",
+      "9"
+    ],
+    "needs_review": [
+      "1",
+      "2",
+      "3",
+      "7",
+      "8",
+      "9"
+    ],
+    "review_summary": {
+      "fallback_only_count": 6,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2409.10153": {
+    "equation_count": 2,
+    "equation_labels": [
+      "1",
+      "2"
+    ],
+    "main_equation_count": 2,
+    "main_equation_labels": [
+      "1",
+      "2"
+    ],
+    "clean_labels": [],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "high": 1,
+      "low": 1
+    },
+    "source_counts": {
+      "docling_markdown_math_block": 1,
+      "pymupdf_text_fallback": 1
+    },
+    "sources": {
+      "1": "docling_markdown_math_block",
+      "2": "pymupdf_text_fallback"
+    },
+    "confidence": {
+      "1": "high",
+      "2": "low"
+    },
+    "quality_warnings": {
+      "1": [
+        "needs_artifact_cleanup",
+        "normalized_from_raw"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "2"
+    ],
+    "needs_review": [
+      "1",
+      "2"
+    ],
+    "review_summary": {
+      "fallback_only_count": 1,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 1
+    }
+  },
+  "2408.17089": {
+    "equation_count": 7,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "6",
+      "8",
+      "9"
+    ],
+    "main_equation_count": 7,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "6",
+      "8",
+      "9"
+    ],
+    "clean_labels": [],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "medium": 7
+    },
+    "source_counts": {
+      "docling_markdown_neighbor_reference": 7
+    },
+    "sources": {
+      "1": "docling_markdown_neighbor_reference",
+      "2": "docling_markdown_neighbor_reference",
+      "3": "docling_markdown_neighbor_reference",
+      "5": "docling_markdown_neighbor_reference",
+      "6": "docling_markdown_neighbor_reference",
+      "8": "docling_markdown_neighbor_reference",
+      "9": "docling_markdown_neighbor_reference"
+    },
+    "confidence": {
+      "1": "medium",
+      "2": "medium",
+      "3": "medium",
+      "5": "medium",
+      "6": "medium",
+      "8": "medium",
+      "9": "medium"
+    },
+    "quality_warnings": {
+      "1": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "2": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "3": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "5": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "6": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "8": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "9": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [],
+    "needs_review": [
+      "1",
+      "2",
+      "3",
+      "5",
+      "6",
+      "8",
+      "9"
+    ],
+    "review_summary": {
+      "fallback_only_count": 0,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2409.09033": {
+    "equation_count": 7,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "main_equation_count": 7,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "clean_labels": [],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "low": 7
+    },
+    "source_counts": {
+      "pymupdf_text_fallback": 7
+    },
+    "sources": {
+      "1": "pymupdf_text_fallback",
+      "2": "pymupdf_text_fallback",
+      "3": "pymupdf_text_fallback",
+      "4": "pymupdf_text_fallback",
+      "5": "pymupdf_text_fallback",
+      "6": "pymupdf_text_fallback",
+      "7": "pymupdf_text_fallback"
+    },
+    "confidence": {
+      "1": "low",
+      "2": "low",
+      "3": "low",
+      "4": "low",
+      "5": "low",
+      "6": "low",
+      "7": "low"
+    },
+    "quality_warnings": {
+      "1": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "3": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "4": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "5": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "possible_pdf_text_degradation",
+        "normalized_from_raw"
+      ],
+      "6": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "7": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "needs_review": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "review_summary": {
+      "fallback_only_count": 7,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2406.05767": {
+    "equation_count": 0,
+    "equation_labels": [],
+    "main_equation_count": 0,
+    "main_equation_labels": [],
+    "clean_labels": [],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {},
+    "source_counts": {},
+    "sources": {},
+    "confidence": {},
+    "quality_warnings": {},
+    "suspicious_labels": [],
+    "fallback_only_labels": [],
+    "needs_review": [],
+    "review_summary": {
+      "fallback_only_count": 0,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2505.05563": {
+    "equation_count": 7,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "main_equation_count": 7,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "clean_labels": [
+      "2",
+      "3",
+      "5"
+    ],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "high": 3,
+      "low": 1,
+      "medium": 3
+    },
+    "source_counts": {
+      "docling_markdown_math_block": 3,
+      "docling_markdown_neighbor_reference": 3,
+      "pymupdf_text_fallback": 1
+    },
+    "sources": {
+      "1": "pymupdf_text_fallback",
+      "2": "docling_markdown_math_block",
+      "3": "docling_markdown_math_block",
+      "4": "docling_markdown_neighbor_reference",
+      "5": "docling_markdown_math_block",
+      "6": "docling_markdown_neighbor_reference",
+      "7": "docling_markdown_neighbor_reference"
+    },
+    "confidence": {
+      "1": "low",
+      "2": "high",
+      "3": "high",
+      "4": "medium",
+      "5": "high",
+      "6": "medium",
+      "7": "medium"
+    },
+    "quality_warnings": {
+      "1": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "2": [
+        "normalized_from_raw"
+      ],
+      "3": [
+        "normalized_from_raw"
+      ],
+      "4": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "5": [
+        "normalized_from_raw"
+      ],
+      "6": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "7": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "1"
+    ],
+    "needs_review": [
+      "1",
+      "4",
+      "6",
+      "7"
+    ],
+    "review_summary": {
+      "fallback_only_count": 1,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2503.13644": {
+    "equation_count": 6,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7"
+    ],
+    "main_equation_count": 6,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "7"
+    ],
+    "clean_labels": [
+      "7"
+    ],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "high": 1,
+      "low": 4,
+      "medium": 1
+    },
+    "source_counts": {
+      "docling_markdown_math_block": 1,
+      "docling_markdown_neighbor_reference": 1,
+      "pymupdf_text_fallback": 4
+    },
+    "sources": {
+      "1": "pymupdf_text_fallback",
+      "2": "pymupdf_text_fallback",
+      "3": "pymupdf_text_fallback",
+      "4": "pymupdf_text_fallback",
+      "5": "docling_markdown_neighbor_reference",
+      "7": "docling_markdown_math_block"
+    },
+    "confidence": {
+      "1": "low",
+      "2": "low",
+      "3": "low",
+      "4": "low",
+      "5": "medium",
+      "7": "high"
+    },
+    "quality_warnings": {
+      "1": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "3": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "4": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "possible_pdf_text_degradation"
+      ],
+      "5": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "7": [
+        "normalized_from_raw"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "needs_review": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "review_summary": {
+      "fallback_only_count": 4,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2507.01292": {
+    "equation_count": 6,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "main_equation_count": 6,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "clean_labels": [
+      "1",
+      "3"
+    ],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "high": 2,
+      "low": 4
+    },
+    "source_counts": {
+      "docling_markdown_math_block": 2,
+      "pymupdf_text_fallback": 4
+    },
+    "sources": {
+      "1": "docling_markdown_math_block",
+      "2": "pymupdf_text_fallback",
+      "3": "docling_markdown_math_block",
+      "4": "pymupdf_text_fallback",
+      "5": "pymupdf_text_fallback",
+      "6": "pymupdf_text_fallback"
+    },
+    "confidence": {
+      "1": "high",
+      "2": "low",
+      "3": "high",
+      "4": "low",
+      "5": "low",
+      "6": "low"
+    },
+    "quality_warnings": {
+      "1": [
+        "normalized_from_raw"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "3": [
+        "normalized_from_raw"
+      ],
+      "4": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "5": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "6": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "2",
+      "4",
+      "5",
+      "6"
+    ],
+    "needs_review": [
+      "2",
+      "4",
+      "5",
+      "6"
+    ],
+    "review_summary": {
+      "fallback_only_count": 4,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2505.10513": {
+    "equation_count": 7,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "main_equation_count": 7,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "clean_labels": [
+      "3"
+    ],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "high": 1,
+      "low": 5,
+      "medium": 1
+    },
+    "source_counts": {
+      "docling_markdown_math_block": 1,
+      "docling_markdown_neighbor_reference": 1,
+      "pymupdf_text_fallback": 5
+    },
+    "sources": {
+      "1": "docling_markdown_neighbor_reference",
+      "2": "pymupdf_text_fallback",
+      "3": "docling_markdown_math_block",
+      "4": "pymupdf_text_fallback",
+      "5": "pymupdf_text_fallback",
+      "6": "pymupdf_text_fallback",
+      "7": "pymupdf_text_fallback"
+    },
+    "confidence": {
+      "1": "medium",
+      "2": "low",
+      "3": "high",
+      "4": "low",
+      "5": "low",
+      "6": "low",
+      "7": "low"
+    },
+    "quality_warnings": {
+      "1": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "3": [
+        "normalized_from_raw"
+      ],
+      "4": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "possible_pdf_text_degradation"
+      ],
+      "5": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "6": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "7": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "2",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "needs_review": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "review_summary": {
+      "fallback_only_count": 5,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2401.07913": {
+    "equation_count": 7,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "main_equation_count": 7,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "clean_labels": [],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "low": 5,
+      "medium": 2
+    },
+    "source_counts": {
+      "docling_markdown_neighbor_reference": 2,
+      "pymupdf_text_fallback": 5
+    },
+    "sources": {
+      "1": "pymupdf_text_fallback",
+      "2": "pymupdf_text_fallback",
+      "3": "docling_markdown_neighbor_reference",
+      "4": "pymupdf_text_fallback",
+      "5": "docling_markdown_neighbor_reference",
+      "6": "pymupdf_text_fallback",
+      "7": "pymupdf_text_fallback"
+    },
+    "confidence": {
+      "1": "low",
+      "2": "low",
+      "3": "medium",
+      "4": "low",
+      "5": "medium",
+      "6": "low",
+      "7": "low"
+    },
+    "quality_warnings": {
+      "1": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "3": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "4": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "5": [
+        "label_inferred_from_nearby_prose",
+        "normalized_from_raw"
+      ],
+      "6": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "7": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "1",
+      "2",
+      "4",
+      "6",
+      "7"
+    ],
+    "needs_review": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "review_summary": {
+      "fallback_only_count": 5,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 0
+    }
+  },
+  "2410.14472": {
+    "equation_count": 5,
+    "equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "main_equation_count": 5,
+    "main_equation_labels": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "clean_labels": [
+      "3"
+    ],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {
+      "high": 2,
+      "low": 3
+    },
+    "source_counts": {
+      "docling_markdown_math_block": 2,
+      "pymupdf_text_fallback": 3
+    },
+    "sources": {
+      "1": "pymupdf_text_fallback",
+      "2": "pymupdf_text_fallback",
+      "3": "docling_markdown_math_block",
+      "4": "pymupdf_text_fallback",
+      "5": "docling_markdown_math_block"
+    },
+    "confidence": {
+      "1": "low",
+      "2": "low",
+      "3": "high",
+      "4": "low",
+      "5": "high"
+    },
+    "quality_warnings": {
+      "1": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "normalized_from_raw"
+      ],
+      "2": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "3": [
+        "normalized_from_raw"
+      ],
+      "4": [
+        "fallback_only_needs_review",
+        "pymupdf_text_is_recall_signal_not_trusted_latex"
+      ],
+      "5": [
+        "needs_artifact_cleanup",
+        "normalized_from_raw"
+      ]
+    },
+    "suspicious_labels": [],
+    "fallback_only_labels": [
+      "1",
+      "2",
+      "4"
+    ],
+    "needs_review": [
+      "1",
+      "2",
+      "4",
+      "5"
+    ],
+    "review_summary": {
+      "fallback_only_count": 3,
+      "suspicious_label_count": 0,
+      "artifact_cleanup_count": 1
+    }
+  },
+  "2408.01538": {
+    "equation_count": 0,
+    "equation_labels": [],
+    "main_equation_count": 0,
+    "main_equation_labels": [],
+    "clean_labels": [],
+    "docling_status": "cached_docling_markdown",
+    "confidence_counts": {},
+    "source_counts": {},
+    "sources": {},
+    "confidence": {},
+    "quality_warnings": {},
+    "suspicious_labels": [],
+    "fallback_only_labels": [],
+    "needs_review": [],
     "review_summary": {
       "fallback_only_count": 0,
       "suspicious_label_count": 0,
