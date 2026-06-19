@@ -41,6 +41,16 @@ MATH_SIGNAL_RE = re.compile(
     r"(\\[A-Za-z]+|[=+\-*/^_<>]|[∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]|"
     r"\b(?:psi|phi|rho|sigma|lambda|omega|theta|hat|ket|bra)\b)"
 )
+STRONG_EQUATION_SIGNAL_RE = re.compile(
+    r"(=|:=|\\(?:frac|sum|int|prod|lim|begin\{(?:array|matrix|pmatrix|bmatrix)|"
+    r"le|ge|neq|approx|in|to|rightarrow|leftarrow)\b|[≤≥≠≈∑∫∏→←]|"
+    r"\b(?:lim|arg\s*min|arg\s*max)\b)"
+)
+PROSE_STOP_RE = re.compile(
+    r"\b(?:according|ancilla|figure|implementation|resulting|controlled|respectively|"
+    r"where|describes|represents|shown|given|using|between|register)\b",
+    re.IGNORECASE,
+)
 PDF_LABEL_LINE_RE = re.compile(r"^\s*\(\s*([1-9]\d*(?:\.\d+)?[a-z]?)\s*\)\s*$")
 PDF_TRAILING_LABEL_RE = re.compile(r"\(\s*([1-9]\d*(?:\.\d+)?[a-z]?)\s*\)\s*$")
 LATEX_COMMAND_SPACING_RE = re.compile(r"\\([A-Za-z]+)\s+(?=\{)")
@@ -727,6 +737,43 @@ def is_short_pdf_equation_continuation(line: str) -> bool:
     return prose_words <= 1 and bool(re.search(r"[\w\d|()[\]{}+\-*/^_=<>⟨⟩α-ωΑ-Ω]", stripped))
 
 
+def pdf_fallback_candidate_warnings(text: str) -> list[str]:
+    """Return generic fallback-quality warnings for a collected PDF text candidate."""
+
+    stripped = text.strip()
+    warnings: list[str] = []
+    prose_words = len(re.findall(r"\b[a-zA-Z]{4,}\b", stripped))
+    strong_signal = bool(STRONG_EQUATION_SIGNAL_RE.search(stripped))
+    if prose_words > 8:
+        warnings.append("fallback_candidate_has_many_prose_words")
+    if not strong_signal:
+        warnings.append("fallback_candidate_has_weak_equation_structure")
+    if PROSE_STOP_RE.search(stripped) and prose_words > 4:
+        warnings.append("fallback_candidate_contains_prose_cue")
+    return warnings
+
+
+def is_usable_pdf_fallback_candidate(text: str, *, strict: bool) -> bool:
+    """Decide whether a PDF text-layer candidate is usable as a fallback equation."""
+
+    stripped = text.strip()
+    if not stripped or not MATH_SIGNAL_RE.search(stripped):
+        return False
+
+    warnings = pdf_fallback_candidate_warnings(stripped)
+    if strict and warnings:
+        return False
+
+    prose_words = len(re.findall(r"\b[a-zA-Z]{4,}\b", stripped))
+    strong_signal = bool(STRONG_EQUATION_SIGNAL_RE.search(stripped))
+    math_marks = len(re.findall(r"[=+\-*/^_<>|⟨⟩∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]", stripped))
+    if prose_words > 12 and not strong_signal:
+        return False
+    if PROSE_STOP_RE.search(stripped) and prose_words > 8 and math_marks < 4:
+        return False
+    return True
+
+
 def collect_pdf_equation_window(lines: list[PdfTextLine], label_index: int, isolated_label: bool) -> tuple[str, int, int]:
     """Collect a high-recall equation window around a PDF text-layer label."""
 
@@ -755,7 +802,7 @@ def collect_pdf_equation_window(lines: list[PdfTextLine], label_index: int, isol
     return " ".join(fragment for fragment in fragments if fragment), start, end
 
 
-def extract_from_pdf_text(pdf_path: Path, max_equations: int) -> list[EquationCandidate]:
+def extract_from_pdf_text(pdf_path: Path, max_equations: int, *, strict: bool = False) -> list[EquationCandidate]:
     """Extract missing numbered equations from the PDF text layer.
 
     This fallback favors recall over perfect LaTeX. It is used to avoid missing
@@ -770,7 +817,7 @@ def extract_from_pdf_text(pdf_path: Path, max_equations: int) -> list[EquationCa
             continue
 
         raw_text, start, end = collect_pdf_equation_window(lines, index, isolated_label)
-        if not MATH_SIGNAL_RE.search(raw_text):
+        if not is_usable_pdf_fallback_candidate(raw_text, strict=strict):
             continue
 
         raw_text = re.sub(r"\(\s*" + re.escape(number) + r"\s*\)\s*$", "", raw_text).strip()
@@ -790,7 +837,7 @@ def extract_from_pdf_text(pdf_path: Path, max_equations: int) -> list[EquationCa
                 raw_latex=raw_latex,
                 source=source,
                 confidence=confidence_for_source(source),
-                warnings=quality_warnings(source, latex, raw_latex),
+                warnings=quality_warnings(source, latex, raw_latex) + pdf_fallback_candidate_warnings(raw_text),
                 line_start=lines[start].global_line,
                 line_end=lines[end].global_line,
                 context=context,
@@ -942,6 +989,7 @@ def extract_equations(
     *,
     pdf_path: Path | None = None,
     use_pdf_fallback: bool = True,
+    strict_pdf_fallback: bool = False,
 ) -> list[EquationCandidate]:
     """Run the deterministic equation candidate extractors."""
 
@@ -949,7 +997,7 @@ def extract_equations(
     candidates.extend(extract_from_numbered_lines(markdown))
     candidates.extend(extract_unnumbered_math_blocks_with_neighbor_references(markdown))
     if use_pdf_fallback and pdf_path is not None:
-        candidates.extend(extract_from_pdf_text(pdf_path, max_equations))
+        candidates.extend(extract_from_pdf_text(pdf_path, max_equations, strict=strict_pdf_fallback))
     return deduplicate_candidates(candidates, max_equations)
 
 
@@ -1181,6 +1229,11 @@ def parse_args() -> argparse.Namespace:
         help="Disable PyMuPDF text-layer fallback extraction.",
     )
     parser.add_argument(
+        "--strict-pdf-fallback",
+        action="store_true",
+        help="Reject PDF text fallback candidates that look prose-heavy or structurally weak.",
+    )
+    parser.add_argument(
         "--disable-page-retry",
         action="store_true",
         help="Disable page-level Docling retry for PyMuPDF fallback equations.",
@@ -1253,6 +1306,7 @@ def main() -> None:
         args.max_equations,
         pdf_path=pdf_path,
         use_pdf_fallback=not args.disable_pdf_fallback and pdf_path is not None,
+        strict_pdf_fallback=args.strict_pdf_fallback,
     )
     if not args.disable_page_retry and pdf_path is not None:
         equations = retry_fallback_equations_with_docling_pages(
