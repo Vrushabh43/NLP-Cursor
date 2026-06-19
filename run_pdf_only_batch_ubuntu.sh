@@ -7,6 +7,7 @@ REPORT_JSON="${REPORT_JSON:-output/pdf/equations_pdf_pdf_only_server_report.json
 MARKDOWN_DIR="${MARKDOWN_DIR:-output/pdf/docling_markdown_server}"
 MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-.cache/model_cache}"
 FORCE_CPU="${FORCE_CPU:-1}"
+LABEL_SCOPE="${LABEL_SCOPE:-all}"
 
 export HF_HOME="${PWD}/${MODEL_CACHE_DIR}/huggingface"
 export HF_HUB_CACHE="${HF_HOME}/hub"
@@ -39,6 +40,7 @@ for PAPER_NUMBER in "${PDF_ONLY_PAPERS[@]}"; do
     --output "${OUTPUT_JSON}" \
     --report-output "${REPORT_JSON}" \
     --merge \
+    --label-scope "${LABEL_SCOPE}" \
     --save-docling-markdown "${MARKDOWN_DIR}/paper_${PAPER_NUMBER}_docling.md"
 done
 

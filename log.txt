@@ -1,23 +1,23 @@
-olr-home/NLP-Cursor$ FORCE_CPU=0 bash run_pdf_only_batch_ubuntu.sh
+home/NLP-Cursor$ FORCE_CPU=0 bash run_pdf_only_batch_ubuntu.sh
 Processing paper 9 ...
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5870.51it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 6041.14it/s]
 [transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3758.47it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5395.33it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
 [transformers] Passing `generation_config` together with generation-related arguments=({'use_cache', 'do_sample', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
 arXiv:2409.18913: extracted 3 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7a44d1f13880>
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7e030cf079c0>
 Traceback (most recent call last):
   File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
 AttributeError: 'NoneType' object has no attribute 'warning'
 Processing paper 19 ...
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5007.95it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5599.15it/s]
 [transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4964.26it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3755.79it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
 [transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'use_cache', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
 MuPDF error: syntax error: could not parse color space (261 0 R)
@@ -26,69 +26,291 @@ MuPDF error: syntax error: could not parse color space (383 0 R)
 
 MuPDF error: syntax error: could not parse color space (415 0 R)
 
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5664.17it/s]
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5138.27it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5205.06it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4292.44it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5321.99it/s]
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3567.56it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5171.29it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3747.19it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
 arXiv:2402.10775: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x732f829ef880>
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x74baca9fb9c0>
 Traceback (most recent call last):
   File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
 AttributeError: 'NoneType' object has no attribute 'warning'
 Processing paper 27 ...
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 6106.00it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 4968.58it/s]
 [transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4213.45it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3466.62it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-[transformers] Passing `generation_config` together with generation-related arguments=({'use_cache', 'max_new_tokens', 'do_sample'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
-  if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5411.84it/s]
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4979.71it/s]
-[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens', 'do_sample', 'use_cache'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
 arXiv:2412.06576: extracted 3 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7e12251f7880>
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x79544df0b9c0>
 Traceback (most recent call last):
   File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
 AttributeError: 'NoneType' object has no attribute 'warning'
 Processing paper 37 ...
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5319.85it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5524.56it/s]
 [transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4947.45it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3185.26it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-[transformers] Passing `generation_config` together with generation-related arguments=({'use_cache', 'do_sample', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens', 'use_cache', 'do_sample'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5491.11it/s]
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4349.84it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5255.81it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4600.47it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5802.21it/s]
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3793.87it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5528.01it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4720.80it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5370.62it/s]
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3077.54it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5328.52it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3081.82it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:221: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
   if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5331.23it/s]
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3723.28it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5202.79it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3818.90it/s]
 [transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Error processing code/formula batch: CUDA out of memory. Tried to allocate 444.00 MiB. GPU 0 has a total capacity of 7.60 GiB of which 450.25 MiB is free. Including non-PyTorch memory, this process has 6.70 GiB memory in use. Of the allocated memory 6.48 GiB is allocated by PyTorch, and 56.24 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
 arXiv:2505.02834: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7fc057303880>
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x71f724deb9c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 40 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 4903.73it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3453.83it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'use_cache', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5404.25it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3653.40it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2409.10153: extracted 3 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7a16b03db9c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 41 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5257.83it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3558.54it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'use_cache', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+arXiv:2408.17089: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7ec4f550b9c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 47 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5387.18it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4910.28it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'use_cache', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5609.42it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4578.97it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5395.54it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3982.27it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5554.62it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4583.25it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2409.09033: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x742109b0b9c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 53 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 4962.74it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4553.51it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'max_new_tokens', 'use_cache'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+arXiv:2406.05767: extracted 0 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x73eb5aff79c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 54 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5199.09it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4024.89it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens', 'do_sample', 'use_cache'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5359.34it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4372.70it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2505.05563: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7eecefff79c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 55 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5313.72it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3783.04it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens', 'use_cache', 'do_sample'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+Error processing code/formula batch: CUDA out of memory. Tried to allocate 540.00 MiB. GPU 0 has a total capacity of 7.60 GiB of which 563.50 MiB is free. Including non-PyTorch memory, this process has 6.69 GiB memory in use. Of the allocated memory 6.48 GiB is allocated by PyTorch, and 64.63 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5249.70it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3588.52it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5359.79it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4305.89it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 6103.01it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4829.54it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2503.13644: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x78a75250b9c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 57 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 6144.41it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5086.13it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'use_cache', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5324.07it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4196.42it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5312.98it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4861.42it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5480.33it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4190.08it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2507.01292: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x711f9a9039c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 58 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5941.07it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3678.21it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'use_cache', 'max_new_tokens', 'do_sample'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5219.64it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4576.78it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2505.10513: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x778cb7f079c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 59 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5696.96it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5142.41it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'max_new_tokens', 'use_cache'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5424.93it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 3761.87it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 6822.60it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4458.85it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2401.07913: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x74de77d139c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 67 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5455.01it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5104.08it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens', 'do_sample', 'use_cache'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+Error processing code/formula batch: CUDA out of memory. Tried to allocate 540.00 MiB. GPU 0 has a total capacity of 7.60 GiB of which 555.31 MiB is free. Including non-PyTorch memory, this process has 6.63 GiB memory in use. Of the allocated memory 6.40 GiB is allocated by PyTorch, and 86.12 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5949.75it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5124.84it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2410.14472: extracted 7 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x709e5ed079c0>
+Traceback (most recent call last):
+  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
+AttributeError: 'NoneType' object has no attribute 'warning'
+Processing paper 69 ...
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5492.14it/s]
+[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4240.75it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'use_cache', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+Error processing code/formula batch: CUDA out of memory. Tried to allocate 540.00 MiB. GPU 0 has a total capacity of 7.60 GiB of which 454.31 MiB is free. Including non-PyTorch memory, this process has 6.72 GiB memory in use. Of the allocated memory 6.49 GiB is allocated by PyTorch, and 76.50 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:222: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5329.39it/s]
+Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5030.65it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+arXiv:2408.01538: extracted 2 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x711fa1b0f9c0>
 Traceback (most recent call last):
   File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
 AttributeError: 'NoneType' object has no attribute 'warning'
@@ -96,3 +318,4 @@ AttributeError: 'NoneType' object has no attribute 'warning'
 Done.
 Dataset: output/pdf/equations_pdf_pdf_only_server.json
 QA report: output/pdf/equations_pdf_pdf_only_server_report.json
+((.venv) ) 43e3@oth-aw.de@ki-010:~/solr-home/NLP-Cursor$ 

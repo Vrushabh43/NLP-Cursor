@@ -16,6 +16,7 @@ import time
 import unicodedata
 import urllib.error
 import urllib.request
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -305,6 +306,11 @@ def strip_equation_number(text: str, number: str | None = None) -> str:
     candidate_text = EQUATION_NUMBER_RE.sub("", candidate_text).strip()
     if number is not None:
         spaced_number = r"\s*".join(re.escape(character) for character in number)
+        trailing_label_and_layout_re = re.compile(
+            rf"(?:\\qquad|\\quad|,\s*|\s{{2,}})\s*(?:\\left\s*)?\(\s*{spaced_number}\s*"
+            rf"(?:\\right\s*)?\).*$"
+        )
+        candidate_text = trailing_label_and_layout_re.sub("", candidate_text).strip()
         embedded_label_re = re.compile(
             rf"(?:\\quad|,|\\\s+)?\s*(?:\\left\s*)?\(\s*{spaced_number}\s*"
             rf"(?:\\right\s*)?\)\s*(?:\\quad)?\s*"
@@ -388,6 +394,22 @@ def label_quality_warnings(number: str) -> list[str]:
     if re.match(r"\d+[A-Za-z]+", number):
         warnings.append("suspicious_alphanumeric_equation_label")
     return warnings
+
+
+def is_main_equation_label(number: str) -> bool:
+    """Return whether a label should count as a main-paper equation label."""
+
+    return bool(re.fullmatch(r"[1-9]\d?", number))
+
+
+def apply_label_scope(equations: list[EquationCandidate], label_scope: str) -> list[EquationCandidate]:
+    """Filter equations according to a generic label-scope policy."""
+
+    if label_scope == "all":
+        return equations
+    if label_scope == "main":
+        return [candidate for candidate in equations if is_main_equation_label(candidate.number)]
+    raise ValueError(f"unsupported label scope: {label_scope}")
 
 
 def window_context(lines: list[str], start: int, end: int, radius: int = 2) -> str:
@@ -986,11 +1008,28 @@ def build_validation_report(
         ]
         for candidate in equations
     }
+    confidence_counts = Counter(candidate.confidence for candidate in equations)
+    source_counts = Counter(candidate.source for candidate in equations)
+    clean_labels = [
+        candidate.number
+        for candidate in equations
+        if candidate.confidence in {"high", "medium"} and not actionable_warnings.get(candidate.number)
+    ]
+    main_equation_labels = [
+        candidate.number
+        for candidate in equations
+        if is_main_equation_label(candidate.number)
+    ]
     return {
         arxiv_id: {
             "equation_count": len(equations),
             "equation_labels": [candidate.number for candidate in equations],
+            "main_equation_count": len(main_equation_labels),
+            "main_equation_labels": main_equation_labels,
+            "clean_labels": clean_labels,
             "docling_status": conversion_metadata.get("status", "unknown"),
+            "confidence_counts": dict(sorted(confidence_counts.items())),
+            "source_counts": dict(sorted(source_counts.items())),
             "sources": {
                 candidate.number: candidate.source
                 for candidate in equations
@@ -1019,6 +1058,18 @@ def build_validation_report(
                 for candidate in equations
                 if candidate.confidence == "low" or actionable_warnings.get(candidate.number)
             ],
+            "review_summary": {
+                "fallback_only_count": sum(
+                    1 for candidate in equations if candidate.source == "pymupdf_text_fallback"
+                ),
+                "suspicious_label_count": sum(
+                    1 for candidate in equations if label_quality_warnings(candidate.number)
+                ),
+                "artifact_cleanup_count": sum(
+                    1 for warnings in actionable_warnings.values()
+                    if "needs_artifact_cleanup" in warnings
+                ),
+            },
         }
     }
 
@@ -1075,6 +1126,15 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=7,
         help="Maximum relevant enumerated equations to keep for this paper.",
+    )
+    parser.add_argument(
+        "--label-scope",
+        choices=("all", "main"),
+        default="all",
+        help=(
+            "Equation label policy: 'all' keeps every extracted enumerated label; "
+            "'main' keeps only normal main-paper numeric labels such as 1, 2, 3."
+        ),
     )
     parser.add_argument(
         "--sleep-seconds",
@@ -1163,6 +1223,7 @@ def main() -> None:
             enable_ocr=args.enable_ocr,
             retry_dir=args.page_retry_dir,
         )
+    equations = apply_label_scope(equations, args.label_scope)
     dataset_entry = build_dataset_entry(arxiv_id, equations, conversion_metadata)
     write_json(args.output, dataset_entry, merge=args.merge)
     if args.report_output is not None:
