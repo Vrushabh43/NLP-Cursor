@@ -1498,25 +1498,29 @@ $$\{ \dots \} \dots \text {end } \left \{ q _ { 1 } , q _ { 2 } , q \mapsto I \o
 
 After while-loop . After freeing 𝑞 1 , 𝑞 2 , we could prove that
 
-<!-- formula-not-decoded -->
+$$\Rightarrow \left \{ q _ { 1 } , q _ { 2 } , q \mapsto I \otimes V _ { 3 } | \lambda \rangle \langle \lambda | V _ { 3 } ^ { \dagger } \right \} \ q f r e e ( q _ { 1 } ) ; \ q f r e e ( q _ { 2 } ) \left \{ q \mapsto V _ { 3 } | \lambda \rangle \langle \lambda | V _ { 3 } ^ { \dagger } \right \}$$
 
 And we conclude the correctness specification for the whole program
 
-<!-- formula-not-decoded -->
+$$\vDash \{ q \mapsto | \lambda \rangle \} \, S \, \{ q \mapsto V _ { 3 } | \lambda \rangle \}$$
 
 ## C.3 Program with Recursion: Quantum Recursive Fourier Sampling
 
 For 𝑄𝑅𝐹𝑆 ( 𝑙 ) . We could prove that
 
-<!-- formula-not-decoded -->
+$$Program with Recursion: Quantum Recursive Fourier Sampling
+
+RFS(l). We could prove that
+
+ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle \right \} \\ & \quad q a l l o c ( q _ { l } ) ; \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle * q _ { l } \mapsto l \right \} \\ & \quad [ q _ { l } ] \coloneqq | 0 \rangle ; X [ q _ { l } ] ; H [ q _ { l } ] ; \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle * q _ { l } \mapsto | - \rangle \right \} \implies \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle | - \rangle \right \} \implies \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } , q _ { l } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle | - \rangle \right \} \implies \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } , q _ { l } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle | - \rangle \right \} \implies \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { g ( s _ { i } ) } ( - 1 ) ^ { b _ { i } } | i \rangle \right \} \equiv \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { g ( s _ { i } ) } ( - 1 ) ^ { b _ { i } } | i \rangle | - \rangle \right \} \implies \\ & \quad \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { l - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { l n } - 1 } ( - 1 ) ^ { g ( s _ { i } ) } ( - 1 ) ^ { b _ { i } } | i \rangle \right \}$$
 
 For QRFS(k). We could prove that
 
-<!-- formula-not-decoded -->
+$$\text {For QRFS} ( k ) . \text { We could prove that } & & \\ & \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { k - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { n } k - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle \right \} \\ & \ q a l l o c ( q _ { k } ) \colon [ q _ { k } ] \colon = | 0 ; X [ q _ { k } ] ; H [ q _ { k } ] ; \\ & \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { k - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { n } k - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle * q _ { k } \mapsto | \rightarrow \rangle \right \} \\ & \ q a l l o c ( \bar { x } _ { k } ) \colon [ \bar { x } _ { k } ] \colon = | 0 \rangle ; H ^ { n } [ \bar { x } _ { k } ] ; \\ & \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { k - 1 } \mapsto \sum _ { i = 0 } ^ { 2 ^ { n } k - 1 } ( - 1 ) ^ { b _ { i } } | i \rangle * q _ { k } \mapsto | \rightarrow \rangle * \bar { x } _ { k } \mapsto \sum _ { i = 0 } ^ { 2 ^ { n } - 1 } | i \rangle \right \} \\ & \Longrightarrow \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { k } \mapsto \sum _ { i = 0 } ^ { 2 ^ { k * 1 } n - 1 } ( - 1 ) ^ { b _ { i } ^ { \prime } } | i \rangle * q _ { k } \mapsto | \rightarrow \rangle \right \} \text {where } b _ { i } ^ { \prime } = b _ { \text {first kn} } \text {bits of } i \\ & \text {QRFS} ( k + 1 ) ; \\ & \left \{ \bar { x } _ { 0 } , \dots , \bar { x } _ { k } \mapsto \sum _ { i = 0 } ^ { 2 ^ { k * 1 } n - 1 } ( - 1 ) ^ { ( s i ) } ( - 1 ) ^ { b _ { i } ^ { \prime } | i ) } * q _ { k } \mapsto | \rightarrow \rangle \right \} \\ \text {For each } i \in \{ 0 . 1 \} ^ { ( k + 1 ) n } , \text { we divided it into two parts: the first kn bits and last n bits, which is }$$
 
 For each 𝑖 ∈ { 0 . 1 } ( 𝑘 + 1 ) 𝑛 , we divided it into two parts: the first 𝑘𝑛 bits and last 𝑛 bits, which is denoted as 𝑖 = 𝑥,𝑦 . We know that
 
-<!-- formula-not-decoded -->
+$$g ( s _ { i } ) = s _ { x } \cdot y \ b _ { i } ^ { \prime } = b _ { x }$$
 
 ## Therefore
 

@@ -374,17 +374,17 @@ We see the amplitudes of states 𝜓1 numbering 𝑃 × 𝑀 . Where the amplitu
 
 It  is  the  frequency 𝑓 of  this  sinusoid  that  we  wish  to determine, as it is related to the number of correct template matches 𝑘 by:
 
-<!-- formula-not-decoded -->
+$$k = \sin ^ { 2 } \frac { f \pi } { P }$$
 
 Determining phase/frequency information from amplitudes  of  states  requires  a  quantum  fourier  transform. The  quantum  fourier  transform  is  much  the  same  as  it's classical  counterpart  but  is  performed  on  amplitude/phase information stored on the states of qubits. It transfers information  stored  in  amplitudes  in  quantum  states  into phase  information.  There  also  exists  the  inverse  quantum fourier  transform  for  the  reverse  opperation.  The  quantum fourier transform acting on state |𝑝⟩ gives:
 
-<!-- formula-not-decoded -->
+$$Q F T \colon | x \rangle \mapsto \frac { 1 } { \sqrt { K } } \sum _ { k = 0 } ^ { K - 1 } e ^ { 2 \pi i \frac { k x } { K } | k \rangle }$$
 
 The  inverse  quantum  fourier transform is applied across the ancillary qubits the recover the phase information from  the  sinusoidal  behaviour  in  the  states  shown  in  the graph  above.  This  requires  creating  a 𝑄𝐹𝑇 -1 operator  of size 𝑃 × 𝑃 , which we will call 𝐹 ˆ 𝑃 as done below:
 
 Applying this across the ancillary states in |𝜓1 ⟩ :
 
-<!-- formula-not-decoded -->
+$$\psi _ { 2 } = \hat { F } _ { P } \psi _ { 1 }$$
 
 This  operation  changes |𝜓1 ⟩ to  the  states  in  the  plot (Fig. 18)
 
@@ -396,7 +396,7 @@ The  probabilities |𝜓2 | 2 are  seen  over  ancillary  and template states. T
 
 From knowing 𝑓 or 𝑃 - 𝑓 we can work out the number of matched templates 𝑘 with the relation:
 
-<!-- formula-not-decoded -->
+$$k = M \sin ^ { 2 } \frac { f \pi } { P }$$
 
 Doing this gives the number of matching templates.
 
@@ -404,7 +404,7 @@ If  the  number  is  greater  than  0  ,  we  have  matching templates.
 
 We find a corresponding matching template. To do this we  need  to  find  out  the  optimum  number  of  Grover's applications to apply. This can easily be found from knowing the number of matching templates:
 
-<!-- formula-not-decoded -->
+$$p _ { o p t } \approx \frac { \pi } { 4 } \sqrt { \frac { M } { k } }$$
 
 Now we can just apply Grover's algorithm 𝑝 opt times to 1 √𝑀 ∑𝑖=0 𝑀-1  |𝑚⟩ to result in a state with amplitudes maximally amplified corresponding to matching states: We observe  how  the  maximum  state  probability  changes  over applications of Grover's iterations. This is plotted (Fig. 19) along with a line indicating the determined optimal number of applications.
 

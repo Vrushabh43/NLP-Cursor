@@ -1633,11 +1633,11 @@ $$\Phi _ { \eta } ^ { \hat { \phi } _ { E } } ( \hat { U } _ { S } \, \hat { \rh
 
 Proof. The proof is straightforward and proceeds as follows.
 
-<!-- formula-not-decoded -->
+$$P r o f . \text { The proof is straightforward and proceeds as follows. } & \quad \text {Finally,} \\ \Phi _ { \eta } ^ { \hat { \phi } _ { E } } ( \hat { U } _ { S } \hat { \rho } _ { A } \hat { U } _ { S } ^ { \dagger } ) & & - \left ( - \alpha \left ( \hat { \rho } \left ( \hat { U } _ { S } \left ( \hat { U } _ { A } \hat { U } _ { S } ^ { \dagger } \right ) \\ = \text {tr} _ { E } \left [ \hat { U } _ { \eta } \left ( \hat { U } _ { S } \hat { \rho } _ { A } \hat { U } _ { S } ^ { \dagger } \otimes \hat { \phi } _ { E } \right ) \hat { U } _ { \eta } ^ { \dagger } \right ] & & B . \ L o w a l \\ & = \text {tr} _ { E } \left [ \hat { U } _ { \eta } \left ( \hat { U } _ { S } \otimes \hat { U } _ { S } \right ) \left ( \hat { \rho } _ { A } \otimes \hat { U } _ { S } ^ { \dagger } \hat { \phi } _ { E } \hat { U } _ { S } \right ) \left ( \hat { U } _ { S } \otimes \hat { U } _ { S } \right ) ^ { \dagger } \hat { U } _ { \eta } ^ { \dagger } \right ] & & \text {to comp} \\ & = \text {tr} _ { E } \left [ \left ( \hat { U } _ { S } \otimes \hat { U } _ { S } \right ) \hat { U } _ { \eta } \left ( \hat { \rho } _ { A } \otimes \hat { U } _ { S } ^ { \dagger } \hat { \phi } _ { E } \hat { U } _ { S } \right ) \hat { U } _ { \eta } ^ { \dagger } \left ( \hat { U } _ { S } \otimes \hat { U } _ { S } \right ) ^ { \dagger } \right ] & & \text {sian char} \\ & = \hat { U } _ { S } \text {tr} _ { E } [ \hat { U } _ { \eta } \left ( \hat { \rho } _ { A } \otimes \hat { U } _ { S } ^ { \dagger } \hat { \phi } _ { E } \hat { U } _ { S } \right ) \hat { U } _ { \eta } ^ { \dagger } ] & & \sup o v { \text { } & & \text {sup over} \\ & = \hat { U } _ { S } \Phi _ { \eta } ^ { \hat { U } _ { S } ^ { \dagger } \hat { \phi } _ { E } \hat { U } _ { S } } ( \hat { \rho } _ { A } ) \hat { U } _ { S } ^ { \dagger } . & & \text {channel} \\ & = \hat { U } _ { S } \Phi _ { \eta } ^ { \hat { U } _ { S } ^ { \dagger } \hat { \phi } _ { E } \hat { U } _ { S } } ( \hat { \rho } _ { A } ) \hat { U } _ { S } ^ { \dagger } . & & \text {a simple} \\ & \quad \Box \quad \text {the input}$$
 
 Proposition B.27. The squashed entanglement is invariant under local unitary transformations, i.e. ,
 
-<!-- formula-not-decoded -->
+$$g _ { \ } a & & E _ { s q } ( \hat { \rho } _ { A B } ) = E _ { s q } \left ( \left ( \hat { U } _ { A } \otimes \hat { U } _ { B } \right ) \hat { \rho } _ { A B } \left ( \hat { U } _ { A } \otimes \hat { U } _ { B } \right ) ^ { \dagger } \right ) . \quad ( 2 8 6 ) \\ \ n n e l & & E _ { s q } = - \, \overline { E } _ { s q } \left ( \left ( \hat { U } _ { A } \otimes \hat { U } _ { B } \right ) \hat { \rho } _ { A B } \left ( \hat { U } _ { A } \otimes \hat { U } _ { B } \right ) ^ { \dagger } \right ) .$$
 
 Proof. This is true since squashed entanglement is a entanglement measure, see [50].
 
@@ -1649,15 +1649,15 @@ In this section, the analytical results of Section VI are discussed.
 
 In this subsection we verify that the channel defined in Equation (187) fulfils the condition of being extreme, following the algorithm proposed in Section V-B. First, we derive the matrices K and α that describe the channel we wish to treat. The symplectic matrix describing the unitary ˆ U ( η 1 ,η 2 ) SE and acting on the system SE is given by
 
-<!-- formula-not-decoded -->
+$$\text { and } \text {acting on the system } S E \text { is given by} \\ \text {channel} \quad & \quad S _ { S E } ^ { ( \eta _ { 1 } , \eta _ { 2 } ) } \equiv \left ( \begin{array} { c c c c } \sqrt { \eta _ { 1 } } \, I _ { 2 } & 0 & \sqrt { 1 - \eta _ { 1 } } \, I _ { 2 } & 0 \\ 0 & \sqrt { \eta _ { 2 } } \, I _ { 2 } & 0 & \sqrt { 1 - \eta _ { 2 } } \, I _ { 2 } \\ - \sqrt { 1 - \eta _ { 1 } } \, I _ { 2 } & 0 & \sqrt { \eta _ { 1 } } \, I _ { 2 } & 0 \\ 0 & - \sqrt { 1 - \eta _ { 2 } } \, I _ { 2 } & 0 & \sqrt { \eta _ { 2 } } \, I _ { 2 } \end{array} \right ) , \\ \text {while the covariance matrix } \sigma _ { F } \text { of the environment state is}$$
 
 while the covariance matrix σ E of the environment state is the covariance matrix of the two-mode squeezed vacuum state ˆ ϕ κ E ,
 
-<!-- formula-not-decoded -->
+$$\sigma _ { E } = \begin{pmatrix} \left ( \kappa - \frac { 1 } { 2 } \right ) I _ { 2 } & \sqrt { \kappa ( \kappa - 1 ) } \, Z _ { 2 } \\ \sqrt { \kappa ( \kappa - 1 ) } \, Z _ { 2 } & \left ( \kappa - \frac { 1 } { 2 } \right ) I _ { 2 } \end{pmatrix} . \quad ( 2 8 8 ) \\ \intertext { o r m a l o r i h t h \, 1 \, a b o v e , \, w e t h e r e f o r e \, have t h e t h e \, c h i n n e }$$
 
 From Algorithm 1 above, we therefore have that the channel is described by the matrices
 
-<!-- formula-not-decoded -->
+$$K = \left ( \begin{matrix} \sqrt { \eta _ { 1 } } \, I _ { 2 } & 0 \\ 0 & \sqrt { \eta _ { 2 } } \, I _ { 2 } \end{matrix} \right )$$
 
 and
 
