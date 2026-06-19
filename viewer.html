@@ -87,12 +87,18 @@
 
 <div class="toolbar">
   <input type="text" id="url-input" placeholder="Paste arXiv URL or ID (e.g. 2409.18913)" />
+  <select id="max-eq" style="background:#0f172a;color:#e2e8f0;border:1px solid #475569;border-radius:8px;padding:9px 10px;font-size:.85rem">
+    <option value="7">Max 7 (assignment)</option>
+    <option value="50">Max 50</option>
+    <option value="200" selected>All equations</option>
+  </select>
   <button class="btn" id="extract-btn" onclick="doExtract()">Extract</button>
   <button class="btn btn-outline" onclick="loadDataset()">Browse Dataset</button>
 </div>
 
 <div class="stats" id="stats" style="display:none">
-  <div><span class="stat-val" id="s-total">0</span><br><span class="stat-lbl">Equations</span></div>
+  <div><span class="stat-val" id="s-total">0</span><br><span class="stat-lbl">Extracted</span></div>
+  <div><span class="stat-val" id="s-available">0</span><br><span class="stat-lbl">Total in Paper</span></div>
   <div><span class="stat-val" id="s-strong">0</span><br><span class="stat-lbl">Strong Relations</span></div>
   <div><span class="stat-val" id="s-paper">-</span><br><span class="stat-lbl">Paper</span></div>
 </div>
@@ -139,7 +145,7 @@
       const resp = await fetch('/extract', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({url: input})
+        body: JSON.stringify({url: input, max: parseInt(document.getElementById('max-eq').value)})
       });
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || 'Extraction failed');
@@ -234,8 +240,7 @@
       Object.values(eq.relations || {}).forEach(r => { if (r.grade === 'strong') strongCount++; });
     });
     document.getElementById('s-total').textContent = count;
-    const labels = document.querySelectorAll('.stat-lbl');
-    if (labels.length >= 2) labels[1].textContent = 'STRONG RELATIONS';
+    document.getElementById('s-available').textContent = data.total_available || count;
     document.getElementById('s-strong').textContent = strongCount;
     document.getElementById('s-paper').textContent = arxivId;
 

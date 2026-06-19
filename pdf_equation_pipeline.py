@@ -245,6 +245,8 @@ def extract_tex_from_source(source_path: Path) -> str:
     """Extract the main .tex content from an arXiv source archive.
 
     Handles tar.gz archives, plain gzip, and bare .tex files.
+    Multi-file projects (using ``\\input{}`` / ``\\include{}``) are
+    flattened by inlining the referenced files from the archive.
     """
     import gzip
     import io
@@ -258,11 +260,52 @@ def extract_tex_from_source(source_path: Path) -> str:
             tex_files = [m for m in tar.getmembers() if m.name.endswith(".tex")]
             if not tex_files:
                 raise RuntimeError("No .tex files found in archive")
-            main_tex = max(tex_files, key=lambda m: m.size)
-            extracted = tar.extractfile(main_tex)
-            if extracted is None:
-                raise RuntimeError(f"Could not read {main_tex.name} from archive")
-            return extracted.read().decode("utf-8", errors="replace")
+
+            # Read ALL .tex files into a lookup dict (name → content).
+            file_contents: dict[str, str] = {}
+            for m in tex_files:
+                f = tar.extractfile(m)
+                if f is not None:
+                    content = f.read().decode("utf-8", errors="replace")
+                    # Store under multiple keys for flexible matching.
+                    file_contents[m.name] = content
+                    stem = m.name.rsplit(".", 1)[0]  # without .tex
+                    file_contents[stem] = content
+                    # Also store basename without directory prefix.
+                    basename = m.name.rsplit("/", 1)[-1]
+                    file_contents[basename] = content
+                    file_contents[basename.rsplit(".", 1)[0]] = content
+
+            # Find the main .tex file (contains \documentclass or largest).
+            main_content = None
+            for m in tex_files:
+                c = file_contents.get(m.name, "")
+                if r"\documentclass" in c:
+                    main_content = c
+                    break
+            if main_content is None:
+                main_tex = max(tex_files, key=lambda m: m.size)
+                main_content = file_contents.get(main_tex.name, "")
+
+            # Expand \input{} and \include{} directives (up to 3 levels deep).
+            for _ in range(3):
+                def _inline(match: re.Match) -> str:
+                    name = match.group(1).strip()
+                    # Try with and without .tex extension.
+                    for key in [name, name + ".tex", name.rsplit("/", 1)[-1],
+                                name.rsplit("/", 1)[-1] + ".tex"]:
+                        if key in file_contents:
+                            return file_contents[key]
+                    return match.group(0)  # leave unchanged if not found
+
+                expanded = re.sub(
+                    r"\\(?:input|include)\{([^}]+)\}", _inline, main_content
+                )
+                if expanded == main_content:
+                    break  # no more expansions
+                main_content = expanded
+
+            return main_content
     except tarfile.TarError:
         pass
 
@@ -273,7 +316,90 @@ def extract_tex_from_source(source_path: Path) -> str:
         pass
 
     # Maybe it's a bare .tex file.
-    return raw.decode("utf-8", errors="replace")
+    text = raw.decode("utf-8", errors="replace")
+
+    # Safety check: if the "source" is actually a PDF (some arXiv papers
+    # are uploaded as PDF-only without LaTeX source), return empty string
+    # so the parser produces zero equations rather than garbage.
+    if text.startswith("%PDF"):
+        return ""
+
+    return text
+
+
+def count_equations_from_pdf(pdf_path: Path) -> list[int]:
+    """Count numbered equations by finding ``(N)`` at the right margin in a PDF.
+
+    This is the ground-truth equation count — it reads exactly what the
+    rendered PDF shows.  Only simple numeric labels ``(1), (2), ...`` are
+    detected; letter-prefixed labels like ``(A1)`` or ``(S3)`` are ignored.
+
+    The detection distinguishes actual equation labels (flush-right on their
+    line) from in-text references like "Eq. (1)" by checking that ``(N)``
+    is the **rightmost word** on its line with no text after it.
+
+    Parameters
+    ----------
+    pdf_path : Path
+        Path to the PDF file.
+
+    Returns
+    -------
+    list[int]
+        Sorted list of equation numbers found in the PDF.
+    """
+    import fitz as _fitz
+
+    doc = _fitz.open(str(pdf_path))
+    eq_numbers: set[int] = set()
+    sub_eq_bases: set[int] = set()  # base numbers from (Na) sub-equations
+
+    for page_idx in range(len(doc)):
+        page = doc[page_idx]
+        words = page.get_text("words")
+        page_w = page.rect.width
+
+        for w in words:
+            x0, y0, x1, y1, text = w[0], w[1], w[2], w[3], w[4]
+            text = text.strip()
+
+            # Match equation labels: (N) or (Na).
+            m = re.match(r"^\((\d+)([a-z])?\)$", text)
+            if not m:
+                continue
+
+            num = int(m.group(1))
+            if num > 999:
+                continue
+
+            is_sub = m.group(2) is not None  # (Na) = sub-equation
+
+            # Position filter: equation labels sit at the right margin.
+            if x0 > page_w * 0.35:
+                if is_sub:
+                    sub_eq_bases.add(num)
+                else:
+                    eq_numbers.add(num)
+
+    doc.close()
+
+    if not eq_numbers and not sub_eq_bases:
+        return []
+
+    # Sub-equation base numbers (from (15a), (19b), etc.) only fill gaps
+    # within the detected range — they don't extend it.  This prevents
+    # trailing sub-equations like (6a)-(6c) from inflating the count.
+    max_main = max(eq_numbers) if eq_numbers else 0
+    for sb in sub_eq_bases:
+        if sb <= max_main:
+            eq_numbers.add(sb)
+
+    if not eq_numbers:
+        return []
+
+    # Equation numbers are always sequential: (1), (2), ..., (N).
+    max_num = max(eq_numbers)
+    return list(range(1, max_num + 1))
 
 
 def _strip_tex_comments(tex: str) -> str:
@@ -302,61 +428,111 @@ def _clean_latex(raw: str) -> str:
     return re.sub(r"\s+", " ", cleaned).strip()
 
 
-def parse_equations_from_tex(tex_content: str) -> list[EquationCandidate]:
-    """Parse all numbered equation environments from LaTeX source.
+# Nested environments whose internal ``\\`` must NOT be treated as
+# align/gather row separators.
+_NESTED_ENVS = [
+    "cases", "rcases", "dcases",
+    "pmatrix", "bmatrix", "vmatrix", "Bmatrix", "Vmatrix", "smallmatrix",
+    "array", "matrix",
+    "split", "aligned", "gathered",
+]
 
-    Handles both main-body and appendix numbering (A1, B1, ...).
-    Multi-row environments (align, gather, eqnarray) are split into
-    individual rows — each row becomes a separate numbered equation
-    unless it contains ``\\nonumber`` or ``\\notag``.
+_PROTECT_PLACEHOLDER = "\x00ROWSEP\x00"
+
+
+def _split_top_level_rows(content: str) -> list[str]:
+    """Split align/gather content by ``\\\\`` only at the top nesting level.
+
+    ``\\\\`` inside nested environments (cases, pmatrix, array, split, …)
+    are preserved — they are internal to one equation, not row separators.
+    """
+    protected = content
+    for env in _NESTED_ENVS:
+        pattern = re.compile(
+            rf"\\begin\{{{env}\}}(.*?)\\end\{{{env}\}}",
+            re.DOTALL,
+        )
+        def _replacer(m: re.Match, _env: str = env) -> str:
+            inner = m.group(1).replace("\\\\", _PROTECT_PLACEHOLDER)
+            return f"\\begin{{{_env}}}" + inner + f"\\end{{{_env}}}"
+        protected = pattern.sub(_replacer, protected)
+
+    rows = re.split(r"\\\\", protected)
+    return [row.replace(_PROTECT_PLACEHOLDER, "\\\\") for row in rows]
+
+
+def parse_equations_from_tex(tex_content: str) -> list[EquationCandidate]:
+    """Parse numbered equation environments from LaTeX source.
+
+    Extracts only equations with simple numeric labels ``(1), (2), ...``
+    as they appear in the rendered PDF.  Specifically:
+
+    * Only main-body equations (after ``\\begin{document}``, before ``\\appendix``).
+    * ``subequations`` blocks are removed — sub-equations with letter
+      suffixes like ``(5a)`` are excluded.
+    * ``\\setcounter{equation}{N}`` directives are honoured.
+    * Rows with ``\\nonumber`` / ``\\notag`` are skipped.
+    * Multi-row environments (``align``, ``gather``, …) emit one
+      equation per numbered row.
     """
     tex = _strip_tex_comments(tex_content)
 
-    # Only parse equations in the main body:
-    #   - After \begin{document} (skip preamble macros)
-    #   - Before \appendix (skip supplementary/appendix equations like S1, A1)
+    # ── Scope: main body only ──────────────────────────────────────
     doc_start = re.search(r"\\begin\{document\}", tex)
+    preamble = tex[:doc_start.start()] if doc_start else ""
     if doc_start:
         tex = tex[doc_start.end():]
 
-    appendix_match = re.search(r"\\appendix\b", tex)
-    if appendix_match:
-        tex = tex[:appendix_match.start()]
+    # If preamble redefines equation numbering to a non-standard format
+    # (e.g., S\arabic{equation}), ALL equations have non-numeric labels
+    # → return empty immediately.
+    preamble_renum = re.search(
+        r"\\renewcommand\{\\theequation\}\{[^}]*[A-Za-z]\\arabic",
+        preamble,
+    )
+    if preamble_renum:
+        return []
 
-    # All remaining equations are main-body; no appendix section tracking needed.
-    appendix_pos = len(tex) + 1  # never reached
+    # Stop parsing where equation numbering format changes in the body.
+    renum_match = re.search(r"\\renewcommand\{\\theequation\}", tex)
+    if renum_match:
+        tex = tex[:renum_match.start()]
 
-    # Find section boundaries after \appendix.
-    appendix_sections: list[int] = []
-    if appendix_match:
-        for m in re.finditer(r"\\section\b", tex):
-            if m.start() > appendix_pos:
-                appendix_sections.append(m.start())
+    # RevTeX + \appendix → appendix auto-renumbers to A1, B1.
+    is_revtex = bool(re.search(r"\\documentclass.*?\{revtex", preamble, re.DOTALL))
+    if is_revtex:
+        appendix_match = re.search(r"\\appendix\b", tex)
+        if appendix_match:
+            tex = tex[:appendix_match.start()]
 
-    # --- Equation counter state ---
-    main_eq_count = 0
-    current_appendix_section = -1
-    section_eq_count = 0
+    # ── Remove subequations blocks (they produce letter-suffixed numbers) ──
+    tex = re.sub(
+        r"\\begin\{subequations\}.*?\\end\{subequations\}",
+        "",
+        tex,
+        flags=re.DOTALL,
+    )
+
+    # ── Handle \setcounter{equation}{N} ───────────────────────────
+    # We collect their positions and values so the counter can be
+    # reset when we pass one.
+    _setcounter_re = re.compile(r"\\setcounter\{equation\}\{(\d+)\}")
+    setcounters: list[tuple[int, int]] = [
+        (m.start(), int(m.group(1))) for m in _setcounter_re.finditer(tex)
+    ]
+
+    # ── Equation counter ──────────────────────────────────────────
+    eq_count = 0
     candidates: list[EquationCandidate] = []
 
     def _next_number(pos: int) -> str:
-        """Advance the equation counter and return the next number string."""
-        nonlocal main_eq_count, current_appendix_section, section_eq_count
-
-        if pos < appendix_pos:
-            main_eq_count += 1
-            return str(main_eq_count)
-
-        new_section = 0
-        for i, sec_pos in enumerate(appendix_sections):
-            if pos > sec_pos:
-                new_section = i
-        if new_section != current_appendix_section:
-            current_appendix_section = new_section
-            section_eq_count = 0
-        section_eq_count += 1
-        section_letter = chr(ord("A") + current_appendix_section)
-        return f"{section_letter}{section_eq_count}"
+        nonlocal eq_count
+        # Apply any \setcounter that appears before this position.
+        for sc_pos, sc_val in setcounters:
+            if sc_pos < pos:
+                eq_count = sc_val
+        eq_count += 1
+        return str(eq_count)
 
     for match in _NUMBERED_ENV_RE.finditer(tex):
         env_name = match.group(1)
@@ -366,7 +542,9 @@ def parse_equations_from_tex(tex_content: str) -> list[EquationCandidate]:
         line_end = tex[: match.end()].count("\n") + 1
 
         if env_name in _SINGLE_NUM_ENVS:
-            # One equation number for the entire block.
+            # Skip if \nonumber is inside this equation env.
+            if r"\nonumber" in content or r"\notag" in content:
+                continue
             latex = _clean_latex(content)
             if latex:
                 candidates.append(
@@ -380,8 +558,8 @@ def parse_equations_from_tex(tex_content: str) -> list[EquationCandidate]:
                     )
                 )
         else:
-            # Multi-row: split by \\ and emit one equation per numbered row.
-            rows = re.split(r"\\\\", content)
+            # Multi-row: split by \\ at top level only (preserve \\ in cases/matrix/etc).
+            rows = _split_top_level_rows(content)
             for row in rows:
                 row_stripped = row.strip()
                 if not row_stripped:

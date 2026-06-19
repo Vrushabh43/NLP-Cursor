@@ -31,12 +31,27 @@ def extract():
         return jsonify({"error": "Could not parse arXiv ID from input"}), 400
     arxiv_id = m.group(1)
 
+    max_eq = int(body.get("max", 7))
+
     try:
         from build_dataset import process_paper
-        entry, count = process_paper(
-            arxiv_id, Path("data/pdf_cache"), max_equations=7, sleep_seconds=1
+        # Also get the total available count (uncapped).
+        from pdf_equation_pipeline import count_equations_from_pdf, download_arxiv_pdf
+        pdf_path = download_arxiv_pdf(
+            arxiv_id, Path("data/pdf_cache"), sleep_seconds=1, force=False
         )
-        return jsonify({"arxiv_id": arxiv_id, "count": count, "equations": entry})
+        pdf_eq_nums = count_equations_from_pdf(pdf_path)
+        total_available = len(pdf_eq_nums)
+
+        entry, count = process_paper(
+            arxiv_id, Path("data/pdf_cache"), max_equations=max_eq, sleep_seconds=0
+        )
+        return jsonify({
+            "arxiv_id": arxiv_id,
+            "count": count,
+            "total_available": total_available,
+            "equations": entry,
+        })
     except Exception as exc:
         return jsonify({"error": str(exc)}), 500
 
