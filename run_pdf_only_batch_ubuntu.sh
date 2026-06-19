@@ -6,6 +6,7 @@ OUTPUT_JSON="${OUTPUT_JSON:-output/pdf/equations_pdf_pdf_only_server.json}"
 REPORT_JSON="${REPORT_JSON:-output/pdf/equations_pdf_pdf_only_server_report.json}"
 MARKDOWN_DIR="${MARKDOWN_DIR:-output/pdf/docling_markdown_server}"
 MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-.cache/model_cache}"
+FORCE_CPU="${FORCE_CPU:-1}"
 
 export HF_HOME="${PWD}/${MODEL_CACHE_DIR}/huggingface"
 export HF_HUB_CACHE="${HF_HOME}/hub"
@@ -13,6 +14,11 @@ export HUGGINGFACE_HUB_CACHE="${HF_HOME}/hub"
 export TRANSFORMERS_CACHE="${PWD}/${MODEL_CACHE_DIR}/transformers"
 export XDG_CACHE_HOME="${PWD}/${MODEL_CACHE_DIR}/xdg"
 export HF_HUB_DISABLE_SYMLINKS_WARNING=1
+export PYTORCH_CUDA_ALLOC_CONF="${PYTORCH_CUDA_ALLOC_CONF:-expandable_segments:True}"
+if [[ "${FORCE_CPU}" == "1" ]]; then
+  export CUDA_VISIBLE_DEVICES=""
+  echo "FORCE_CPU=1: hiding CUDA devices to avoid Docling GPU OOM."
+fi
 mkdir -p "${HF_HOME}" "${HF_HUB_CACHE}" "${TRANSFORMERS_CACHE}" "${XDG_CACHE_HOME}"
 
 # PDF-only papers identified in the first 70 entries of paper_list_16.txt.
