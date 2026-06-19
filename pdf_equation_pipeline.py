@@ -305,7 +305,7 @@ def normalize_equation_for_output(text: str) -> str:
 def confidence_for_source(source: str) -> str:
     """Assign confidence based on the extraction source."""
 
-    if source == "docling_markdown_math_block":
+    if source in {"docling_markdown_math_block", "docling_page_retry_math_block"}:
         return "high"
     if source == "docling_markdown_numbered_line":
         return "medium"
@@ -316,6 +316,8 @@ def quality_warnings(source: str, equation: str, raw_latex: str) -> list[str]:
     """Create short QA warnings for audit and validation reports."""
 
     warnings: list[str] = []
+    if source == "docling_page_retry_math_block":
+        warnings.append("page_retry_replaced_fallback")
     if source == "pymupdf_text_fallback":
         warnings.append("fallback_only_needs_review")
         warnings.append("pymupdf_text_is_recall_signal_not_trusted_latex")
@@ -640,6 +642,108 @@ def extract_from_pdf_text(pdf_path: Path, max_equations: int) -> list[EquationCa
     return candidates
 
 
+def page_number_from_location(source_location: str) -> int | None:
+    """Parse a 1-based PDF page number from a candidate source location."""
+
+    match = re.search(r"PDF page\s+(\d+)", source_location)
+    if not match:
+        return None
+    return int(match.group(1))
+
+
+def create_single_page_pdf(source_pdf: Path, page_number: int, output_dir: Path) -> Path:
+    """Create a single-page PDF for page-targeted Docling retry."""
+
+    try:
+        import fitz
+    except ImportError as exc:
+        raise RuntimeError(
+            "PyMuPDF is required for page retry. Install dependencies with "
+            "`python -m pip install -r requirements.txt`."
+        ) from exc
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    page_pdf = output_dir / f"{source_pdf.stem}_page_{page_number}.pdf"
+    if page_pdf.exists():
+        return page_pdf
+
+    with fitz.open(source_pdf) as source_document:
+        if page_number < 1 or page_number > source_document.page_count:
+            raise ValueError(f"page {page_number} is outside {source_pdf}")
+        with fitz.open() as page_document:
+            page_document.insert_pdf(source_document, from_page=page_number - 1, to_page=page_number - 1)
+            page_document.save(page_pdf)
+    return page_pdf
+
+
+def with_page_retry_source(candidate: EquationCandidate) -> EquationCandidate:
+    """Return a Docling page-retry candidate with updated source metadata."""
+
+    source = "docling_page_retry_math_block"
+    return EquationCandidate(
+        number=candidate.number,
+        latex=candidate.latex,
+        raw_latex=candidate.raw_latex,
+        source=source,
+        confidence=confidence_for_source(source),
+        warnings=quality_warnings(source, candidate.latex, candidate.raw_latex),
+        line_start=candidate.line_start,
+        line_end=candidate.line_end,
+        context=candidate.context,
+        source_location=f"Page retry from {candidate.source_location}",
+    )
+
+
+def retry_fallback_equations_with_docling_pages(
+    pdf_path: Path,
+    equations: list[EquationCandidate],
+    *,
+    enable_ocr: bool,
+    retry_dir: Path,
+) -> list[EquationCandidate]:
+    """Try to replace fallback-only equations with Docling output from single pages."""
+
+    fallback_pages = sorted(
+        {
+            page_number
+            for candidate in equations
+            if candidate.source == "pymupdf_text_fallback"
+            for page_number in [page_number_from_location(candidate.source_location)]
+            if page_number is not None
+        }
+    )
+    if not fallback_pages:
+        return equations
+
+    replacements: dict[str, EquationCandidate] = {}
+    for page_number in fallback_pages:
+        try:
+            page_pdf = create_single_page_pdf(pdf_path, page_number, retry_dir)
+            page_markdown, _metadata = convert_pdf_with_docling(page_pdf, enable_ocr=enable_ocr)
+            page_candidates = extract_equations(
+                page_markdown,
+                max_equations=20,
+                use_pdf_fallback=False,
+            )
+        except Exception as exc:
+            print(f"Page retry failed for {pdf_path.name} page {page_number}: {exc}")
+            continue
+
+        for candidate in page_candidates:
+            replacements[candidate.number] = with_page_retry_source(candidate)
+
+    if not replacements:
+        return equations
+
+    improved: list[EquationCandidate] = []
+    for candidate in equations:
+        if candidate.source == "pymupdf_text_fallback" and candidate.number in replacements:
+            improved.append(replacements[candidate.number])
+        else:
+            improved.append(candidate)
+    return improved
+
+
 def equation_number_sort_key(number: str) -> tuple[int, int, str]:
     """Sort common equation labels in document order."""
 
@@ -858,6 +962,17 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Disable PyMuPDF text-layer fallback extraction.",
     )
+    parser.add_argument(
+        "--disable-page-retry",
+        action="store_true",
+        help="Disable page-level Docling retry for PyMuPDF fallback equations.",
+    )
+    parser.add_argument(
+        "--page-retry-dir",
+        type=Path,
+        default=Path("data/page_retry_cache"),
+        help="Directory for cached single-page PDFs used by Docling page retry.",
+    )
     return parser.parse_args()
 
 
@@ -895,6 +1010,13 @@ def main() -> None:
         pdf_path=pdf_path,
         use_pdf_fallback=not args.disable_pdf_fallback,
     )
+    if not args.disable_page_retry:
+        equations = retry_fallback_equations_with_docling_pages(
+            pdf_path,
+            equations,
+            enable_ocr=args.enable_ocr,
+            retry_dir=args.page_retry_dir,
+        )
     dataset_entry = build_dataset_entry(arxiv_id, equations, conversion_metadata)
     write_json(args.output, dataset_entry, merge=args.merge)
     if args.report_output is not None:
