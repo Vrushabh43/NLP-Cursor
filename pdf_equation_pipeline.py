@@ -372,6 +372,21 @@ def quality_warnings(source: str, equation: str, raw_latex: str) -> list[str]:
     return warnings
 
 
+def label_quality_warnings(number: str) -> list[str]:
+    """Warn about labels that may be appendix/supplement or false positives."""
+
+    warnings: list[str] = []
+    if number == "0":
+        warnings.append("suspicious_zero_equation_label")
+    if re.search(r"\d+\.\d+", number):
+        warnings.append("suspicious_decimal_equation_label")
+    if re.match(r"[A-Za-z]\d+", number):
+        warnings.append("appendix_or_supplement_label")
+    if re.match(r"\d+[A-Za-z]+", number):
+        warnings.append("suspicious_alphanumeric_equation_label")
+    return warnings
+
+
 def window_context(lines: list[str], start: int, end: int, radius: int = 2) -> str:
     """Return a short neighboring text window for audit and later QA."""
 
@@ -859,7 +874,7 @@ def build_dataset_entry(
                     f"Selected equation {rank}/{len(equations)} from {candidate.source}"
                 ),
                 "extraction_confidence": candidate.confidence,
-                "quality_warnings": candidate.warnings,
+                "quality_warnings": candidate.warnings + label_quality_warnings(candidate.number),
                 "equation_location": candidate.source_location,
                 "equation_raw": candidate.raw_latex,
                 "normalize_equation": (
@@ -881,7 +896,8 @@ def build_validation_report(
 
     actionable_warnings = {
         candidate.number: [
-            warning for warning in candidate.warnings if warning != "normalized_from_raw"
+            warning for warning in candidate.warnings + label_quality_warnings(candidate.number)
+            if warning != "normalized_from_raw"
         ]
         for candidate in equations
     }
@@ -899,10 +915,15 @@ def build_validation_report(
                 for candidate in equations
             },
             "quality_warnings": {
-                candidate.number: candidate.warnings
+                candidate.number: candidate.warnings + label_quality_warnings(candidate.number)
                 for candidate in equations
-                if candidate.warnings
+                if candidate.warnings or label_quality_warnings(candidate.number)
             },
+            "suspicious_labels": [
+                candidate.number
+                for candidate in equations
+                if label_quality_warnings(candidate.number)
+            ],
             "fallback_only_labels": [
                 candidate.number
                 for candidate in equations
