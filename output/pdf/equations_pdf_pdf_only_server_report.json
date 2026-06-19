@@ -26,12 +26,17 @@
         "normalized_from_raw"
       ],
       "S1": [
-        "normalized_from_raw"
+        "normalized_from_raw",
+        "appendix_or_supplement_label"
       ]
     },
+    "suspicious_labels": [
+      "S1"
+    ],
     "fallback_only_labels": [],
     "needs_review": [
-      "2"
+      "2",
+      "S1"
     ]
   },
   "2402.10775": {
@@ -94,9 +99,13 @@
         "normalized_from_raw"
       ],
       "D1": [
-        "normalized_from_raw"
+        "normalized_from_raw",
+        "appendix_or_supplement_label"
       ]
     },
+    "suspicious_labels": [
+      "D1"
+    ],
     "fallback_only_labels": [
       "1",
       "5",
@@ -105,7 +114,8 @@
     "needs_review": [
       "1",
       "5",
-      "6"
+      "6",
+      "D1"
     ]
   },
   "2412.06576": {
@@ -140,6 +150,7 @@
         "normalized_from_raw"
       ]
     },
+    "suspicious_labels": [],
     "fallback_only_labels": [
       "2"
     ],
@@ -207,6 +218,7 @@
         "pymupdf_text_is_recall_signal_not_trusted_latex"
       ]
     },
+    "suspicious_labels": [],
     "fallback_only_labels": [
       "1",
       "2",
@@ -245,7 +257,8 @@
     "quality_warnings": {
       "0": [
         "needs_artifact_cleanup",
-        "normalized_from_raw"
+        "normalized_from_raw",
+        "suspicious_zero_equation_label"
       ],
       "1": [
         "needs_artifact_cleanup",
@@ -256,6 +269,9 @@
         "pymupdf_text_is_recall_signal_not_trusted_latex"
       ]
     },
+    "suspicious_labels": [
+      "0"
+    ],
     "fallback_only_labels": [
       "2"
     ],
@@ -272,6 +288,7 @@
     "sources": {},
     "confidence": {},
     "quality_warnings": {},
+    "suspicious_labels": [],
     "fallback_only_labels": [],
     "needs_review": []
   },
@@ -338,6 +355,7 @@
         "pymupdf_text_is_recall_signal_not_trusted_latex"
       ]
     },
+    "suspicious_labels": [],
     "fallback_only_labels": [
       "1",
       "2",
@@ -364,6 +382,7 @@
     "sources": {},
     "confidence": {},
     "quality_warnings": {},
+    "suspicious_labels": [],
     "fallback_only_labels": [],
     "needs_review": []
   },
@@ -425,6 +444,7 @@
         "pymupdf_text_is_recall_signal_not_trusted_latex"
       ]
     },
+    "suspicious_labels": [],
     "fallback_only_labels": [
       "1",
       "4",
@@ -470,7 +490,8 @@
     },
     "quality_warnings": {
       "0": [
-        "normalized_from_raw"
+        "normalized_from_raw",
+        "suspicious_zero_equation_label"
       ],
       "1": [
         "fallback_only_needs_review",
@@ -500,6 +521,9 @@
         "normalized_from_raw"
       ]
     },
+    "suspicious_labels": [
+      "0"
+    ],
     "fallback_only_labels": [
       "1",
       "2",
@@ -508,6 +532,7 @@
       "5"
     ],
     "needs_review": [
+      "0",
       "1",
       "2",
       "3",
@@ -551,7 +576,8 @@
       ],
       "1n": [
         "fallback_only_needs_review",
-        "pymupdf_text_is_recall_signal_not_trusted_latex"
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "suspicious_alphanumeric_equation_label"
       ],
       "2": [
         "fallback_only_needs_review",
@@ -574,6 +600,9 @@
         "pymupdf_text_is_recall_signal_not_trusted_latex"
       ]
     },
+    "suspicious_labels": [
+      "1n"
+    ],
     "fallback_only_labels": [
       "1n",
       "2",
@@ -651,6 +680,7 @@
         "pymupdf_text_is_recall_signal_not_trusted_latex"
       ]
     },
+    "suspicious_labels": [],
     "fallback_only_labels": [
       "1",
       "2",
@@ -733,6 +763,7 @@
         "normalized_from_raw"
       ]
     },
+    "suspicious_labels": [],
     "fallback_only_labels": [
       "1",
       "2",
@@ -784,7 +815,8 @@
     },
     "quality_warnings": {
       "0": [
-        "normalized_from_raw"
+        "normalized_from_raw",
+        "suspicious_zero_equation_label"
       ],
       "1": [
         "fallback_only_needs_review",
@@ -799,7 +831,8 @@
         "normalized_from_raw"
       ],
       "3.92": [
-        "normalized_from_raw"
+        "normalized_from_raw",
+        "suspicious_decimal_equation_label"
       ],
       "4": [
         "fallback_only_needs_review",
@@ -810,14 +843,20 @@
         "normalized_from_raw"
       ]
     },
+    "suspicious_labels": [
+      "0",
+      "3.92"
+    ],
     "fallback_only_labels": [
       "1",
       "2",
       "4"
     ],
     "needs_review": [
+      "0",
       "1",
       "2",
+      "3.92",
       "4",
       "5"
     ]
@@ -839,17 +878,24 @@
     },
     "quality_warnings": {
       "0": [
-        "normalized_from_raw"
+        "normalized_from_raw",
+        "suspicious_zero_equation_label"
       ],
       "2x": [
         "fallback_only_needs_review",
-        "pymupdf_text_is_recall_signal_not_trusted_latex"
+        "pymupdf_text_is_recall_signal_not_trusted_latex",
+        "suspicious_alphanumeric_equation_label"
       ]
     },
+    "suspicious_labels": [
+      "0",
+      "2x"
+    ],
     "fallback_only_labels": [
       "2x"
     ],
     "needs_review": [
+      "0",
       "2x"
     ]
   }

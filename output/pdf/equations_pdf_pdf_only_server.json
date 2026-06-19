@@ -77,7 +77,8 @@
         "extract_enumerated_equations": "Selected equation 3/3 from docling_markdown_math_block",
         "extraction_confidence": "high",
         "quality_warnings": [
-          "normalized_from_raw"
+          "normalized_from_raw",
+          "appendix_or_supplement_label"
         ],
         "equation_location": "Docling Markdown lines 121-121",
         "equation_raw": "M _ { i j } ( t ) = e ^ { 2 } \\int d ^ { 3 } r \\, \\frac { \\psi _ { i } ^ { * } ( r ) \\, \\psi _ { j } ( r ) } { | r - r _ { 0 } ( t ) | } \\quad",
@@ -397,7 +398,8 @@
         "extract_enumerated_equations": "Selected equation 7/7 from docling_markdown_math_block",
         "extraction_confidence": "high",
         "quality_warnings": [
-          "normalized_from_raw"
+          "normalized_from_raw",
+          "appendix_or_supplement_label"
         ],
         "equation_location": "Docling Markdown lines 209-209",
         "equation_raw": "S _ { 2 1 } ( f ) = a e ^ { i \\alpha } e ^ { - 2 \\pi f \\tau } \\left [ 1 - \\frac { ( Q _ { l } / | Q _ { c } | ) e ^ { i \\phi } } { 1 + 2 i Q _ { l } ( f / f _ { r } - 1 ) } \\right ] \\quad ( D 1 ) \\quad \\text {in the} \\quad \\text {plane}",
@@ -834,7 +836,8 @@
         "extraction_confidence": "high",
         "quality_warnings": [
           "needs_artifact_cleanup",
-          "normalized_from_raw"
+          "normalized_from_raw",
+          "suspicious_zero_equation_label"
         ],
         "equation_location": "Docling Markdown lines 171-171",
         "equation_raw": "\\begin{array} { r l } { J } & { 0 } & { 1 } \\\\ { ( 1 ) } & { \\rho ^ { \\prime } } & { \\triangle q \\frac { 1 } { 2 } ( | 0 \\rangle _ { q } \\langle 0 | + | 1 \\rangle _ { q } \\langle 1 | ) \\otimes | 0 \\rangle _ { q ^ { \\prime } } \\langle 0 | } \\\\ { ( 2 ) } & { \\rho ^ { \\prime } } & { \\triangle q \\frac { 1 } { 2 } ( | 0 0 \\rangle + | 1 1 \\rangle ) _ { q , q ^ { \\prime } } ( \\langle 0 0 | + \\langle 1 1 | ) } \\\\ { ( 0 ) } & { \\theta } & { 1 } \\end{array}",
@@ -1575,7 +1578,8 @@
         "extract_enumerated_equations": "Selected equation 1/7 from docling_markdown_math_block",
         "extraction_confidence": "high",
         "quality_warnings": [
-          "normalized_from_raw"
+          "normalized_from_raw",
+          "suspicious_zero_equation_label"
         ],
         "equation_location": "Docling Markdown lines 347-347",
         "equation_raw": "| \\langle \\psi ( \\theta ^ { ( i ) } ) | M | \\psi ( \\theta ^ { ( j ) } ) \\rangle | ^ { 2 } = 1 - 2 P ( | 0 \\dots \\rangle ) . \\quad ( 1 0 ) ^ { | \\psi ( 0 ) | ^ { 2 } }",
@@ -1939,7 +1943,8 @@
         "extraction_confidence": "low",
         "quality_warnings": [
           "fallback_only_needs_review",
-          "pymupdf_text_is_recall_signal_not_trusted_latex"
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "suspicious_alphanumeric_equation_label"
         ],
         "equation_location": "PDF page 3, text lines 20-20",
         "equation_raw": "that, on input (puzz, ans′), outputs ⊤/⊥. Correctness requires that Vrfy accepts (puzz, ans) ←Samp",
@@ -2851,7 +2856,8 @@
         "extract_enumerated_equations": "Selected equation 1/7 from docling_markdown_math_block",
         "extraction_confidence": "high",
         "quality_warnings": [
-          "normalized_from_raw"
+          "normalized_from_raw",
+          "suspicious_zero_equation_label"
         ],
         "equation_location": "Docling Markdown lines 363-363",
         "equation_raw": "\\Delta _ { A | M } ( \\hat { \\rho } _ { A M } ) ( \\alpha ) & \\coloneqq I ( A \\colon \\mathbb { X } | M ) _ { \\hat { \\sigma } _ { A M X } } \\geq 0 \\, , \\\\ \\Delta _ { A | U } ( \\hat { \\rho } _ { A U } ) ( 0 ) & \\coloneqq 0 \\, .",
@@ -3030,7 +3036,8 @@
         "extract_enumerated_equations": "Selected equation 5/7 from docling_markdown_math_block",
         "extraction_confidence": "high",
         "quality_warnings": [
-          "normalized_from_raw"
+          "normalized_from_raw",
+          "suspicious_decimal_equation_label"
         ],
         "equation_location": "Docling Markdown lines 205-205",
         "equation_raw": "P r o f \\, \\text { See [44, Equation (3.92)]} .",
@@ -3146,7 +3153,8 @@
         "extract_enumerated_equations": "Selected equation 1/2 from docling_markdown_math_block",
         "extraction_confidence": "high",
         "quality_warnings": [
-          "normalized_from_raw"
+          "normalized_from_raw",
+          "suspicious_zero_equation_label"
         ],
         "equation_location": "Docling Markdown lines 1019-1019",
         "equation_raw": "\\Gamma _ { N S } ( x ) \\xrightarrow { x \\to 0 } \\frac { \\Gamma _ { N S } ( Q ) } { \\pi x } , \\quad \\Upsilon _ { N S } ^ { \\prime } ( 0 ) = \\frac { \\pi } { \\Gamma _ { N S } ^ { 2 } ( Q ) } .",
@@ -3171,7 +3179,8 @@
         "extraction_confidence": "low",
         "quality_warnings": [
           "fallback_only_needs_review",
-          "pymupdf_text_is_recall_signal_not_trusted_latex"
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "suspicious_alphanumeric_equation_label"
         ],
         "equation_location": "PDF page 41, text lines 23-23",
         "equation_raw": "ΥNS",

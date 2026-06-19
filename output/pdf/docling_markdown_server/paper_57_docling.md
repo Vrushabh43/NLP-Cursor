@@ -1757,17 +1757,17 @@ this completes the proof.
 
 Proof of Claim 5.15. From Hoeffding's inequality, for each fixed ( a, b ) ∈ { 0 , 1 } n ×{ 0 , 1 } n , with probability at least 1 -2 · 2 ( -t ( n ) 32 n 2 · ϵ ( n ) 2 ) over { x i } i ∈ [ t ( n )] ←T ⊗ t ( n ) and { r i (1) , r i (2) , r i (3) } i ∈ [ t ( n )] ←{ 0 , 1 } p ( n ) , where p ( n ) is the size of { r i (1) , r i (2) , r i (3) } i ∈ [ t ( n )] , we have
 
-<!-- formula-not-decoded -->
+$$\left | \left ( \sum _ { i \in [ t ( n ) ] } \frac { \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , x _ { i } ; r _ { i } ( 1 ) ) } { t ( n ) } - \sum _ { i \in [ t ( n ) ] } \frac { \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , X _ { a , r _ { i } ( 2 ) } ; r _ { i } ( 3 ) ) } { t ( n ) } \right )$$
 
-<!-- formula-not-decoded -->
+$$I _ { 1 }$$
 
-<!-- formula-not-decoded -->
+$$- \left ( \Pr \left [ 1 \leftarrow \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , x ) \colon x \leftarrow \mathcal { T } \right ] - \Pr \left [ 1 \leftarrow \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , x ) \colon x \leftarrow \mathcal { D } ( a ) \right ] \right ) \right ] \Big | \leq \frac { 1 } { 8 n \cdot \epsilon ( n ) } .$$
 
 Therefore, from union bound, with probability at least 1 -1 /δ ( n ) over { x i } i ∈ [ t ( n )] ← T ⊗ t ( n ) and { r i (1) , r i (2) , r i (3) } i ∈ [ t ( n )] ←{ 0 , 1 } p ( n ) , we have
 
-<!-- formula-not-decoded -->
+$$\left | \left ( \sum _ { i \in [ t ( n ) ] } \frac { \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , x _ { i } ; r _ { i } ( 1 ) ) } { t ( n ) } - \sum _ { i \in [ t ( n ) ] } \frac { \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , X _ { a , r _ { i } ( 2 ) } ; r _ { i } ( 3 ) ) } { t ( n ) } \right )$$
 
-<!-- formula-not-decoded -->
+$$I _ { 1 }$$
 
 $$- \left ( \Pr \left [ 1 \leftarrow \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , x ) \colon x \leftarrow \mathcal { T } \right ] - \Pr \left [ 1 \leftarrow \text {Dis} _ { \epsilon } ^ { \text {NP} } ( a , b , x ) \colon x \leftarrow \mathcal { D } ( a ) \right ] \right ) \right ] \Big | \leq \frac { 1 } { 8 n \cdot \epsilon ( n ) } \quad ( 2 4 3 )$$
 
