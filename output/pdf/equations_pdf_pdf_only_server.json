@@ -469,7 +469,7 @@
       }
     },
     "3": {
-      "equation": "I_{s a t} = \\frac{ 4 \\pi^{3} } {3} \\hbar{c} \\frac{ \\Gamma_{h} } { \\zeta \\lambda^{3} } . & & ( 3 ) & \\quad \\text{with}",
+      "equation": "I_{s a t} = \\frac{ 4 \\pi^{3} } {3} \\hbar{c} \\frac{ \\Gamma_{h} } { \\zeta \\lambda^{3} } . \\quad \\quad ( 3 ) \\quad \\begin{matrix} \\text{with} \\\\ \\text{white} \\end{matrix}",
       "meaning": "",
       "symbols": {},
       "relations": {
@@ -491,9 +491,326 @@
           "normalized_from_raw"
         ],
         "equation_location": "Docling Markdown lines 113-113",
-        "equation_raw": "I _ { s a t } = \\frac { 4 \\pi ^ { 3 } } { 3 } \\hbar { c } \\frac { \\Gamma _ { h } } { \\zeta \\lambda ^ { 3 } } . & & ( 3 ) & \\quad \\text {with}",
+        "equation_raw": "I _ { s a t } = \\frac { 4 \\pi ^ { 3 } } { 3 } \\hbar { c } \\frac { \\Gamma _ { h } } { \\zeta \\lambda ^ { 3 } } . \\quad \\quad ( 3 ) \\quad \\begin{matrix} \\text {with} \\\\ \\text {white} \\end{matrix}",
         "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
-        "context_window": "Using the measured linewidth, Γ ℎ = 2 𝜋 · 3 . 3 MHz, we are able to calculate the saturation intensity 𝐼 sat of a perfectly coupling single ion. Starting from the resonant saturation parameter given in [31] and expressing the Rabi frequency in terms of cavity QED parameters for a Fabry-Pérot type cavity mode, we arrive at the following expression: $$I _ { s a t } = \\frac { 4 \\pi ^ { 3 } } { 3 } \\hbar { c } \\frac { \\Gamma _ { h } } { \\zeta \\lambda ^ { 3 } } . & & ( 3 ) & \\quad \\text {with}$$ This"
+        "context_window": "Using the measured linewidth, Γ ℎ = 2 𝜋 · 3 . 3 MHz, we are able to calculate the saturation intensity 𝐼 sat of a perfectly coupling single ion. Starting from the resonant saturation parameter given in [31] and expressing the Rabi frequency in terms of cavity QED parameters for a Fabry-Pérot type cavity mode, we arrive at the following expression: $$I _ { s a t } = \\frac { 4 \\pi ^ { 3 } } { 3 } \\hbar { c } \\frac { \\Gamma _ { h } } { \\zeta \\lambda ^ { 3 } } . \\quad \\quad ( 3 ) \\quad \\begin{matrix"
+      }
+    }
+  },
+  "2505.02834": {
+    "1": {
+      "equation": "Im \\langle Lu|Lv \\rangle= Im \\langle u|v \\rangle",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 4, text lines 8-10",
+        "equation_raw": "Im \\langle Lu|Lv \\rangle= Im \\langle u|v \\rangle",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "2.1. Symplectic and Orthosymplectic Matrices. By a symplectic transformation of Cd we mean a real linear operator L on Cd that preserves the standard symplectic form, i.e., Im ⟨Lu|Lv⟩= Im ⟨u|v⟩ ∀u, v ∈Cd. (1) Now, fix an identification of Cd with R2d, as described in the previous section. This identifi- cation allows us to represent the real linear transformation L as a 2d × 2d real matrix (again"
+      }
+    },
+    "2": {
+      "equation": "u2d i ∈M2d(R) and J = [Jik] ∈M2d(R), then L ∈Sp(2d, J) ⇐⇒uT i Juk = Jik, ∀1 \\le i, k \\le 2d",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 4, text lines 28-35",
+        "equation_raw": "u2d i ∈M2d(R) and J = [Jik] ∈M2d(R), then L ∈Sp(2d, J) ⇐⇒uT i Juk = Jik, ∀1 \\le i, k \\le 2d.",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "u2 · · · u2d i ∈M2d(R) and J = [Jik] ∈M2d(R), then L ∈Sp(2d, J) ⇐⇒uT i Juk = Jik, ∀1 ≤i, k ≤2d. (2) Consequently, a matrix L = h"
+      }
+    },
+    "3": {
+      "equation": "later. Definition 2.1. Let ρ be a state on Γ(Cd). Then the map bρ : Cd →C defined by",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 5, text lines 20-22",
+        "equation_raw": "later. Definition 2.1. Let ρ be a state on Γ(Cd). Then the map bρ : Cd →C defined by",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "2.3. Gaussian States. In this section, we define Gaussian states and describe their prop- erties which we need in a basis independent way. This will help us provide rigorous proofs later. Definition 2.1. Let ρ be a state on Γ(Cd). Then the map bρ : Cd →C defined by (3) is called the quantum characteristic function of ρ. If there exist a vector m ∈Cd and a real linear operator S on Cd such that"
+      }
+    },
+    "6": {
+      "equation": "1 =",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 164-164",
+        "equation_raw": "1 = \\\\",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "$$\\Psi ( \\varrho ) \\coloneqq & \\text {tr} _ { 2 } \\left ( W ( \\mathbf u ) \\Gamma ( L ) ( \\varrho \\otimes \\rho _ { ( 0 , I _ { d _ { 2 } } ) } ) ( W ( \\mathbf u ) \\Gamma ( L ) ) ^ { \\dagger } \\right ) , \\quad \\forall \\, \\varrho \\in \\mathcal { T } ( \\Gamma _ { s } ( \\mathbb { C } ^ { d _ { 1 } } ) ) ,$$ $$1 = \\\\ ( 6 )$$ is a quantum channel that maps Gaussian states to Gaussian states. Indeed,"
+      }
+    },
+    "7": {
+      "equation": "Ψ(ρ(m,S)) = ρ(LT 11m+2J2d1u1,LT 11SL11+LT",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 7, text lines 18-22",
+        "equation_raw": "Ψ(ρ(m,S)) = ρ(LT 11m+2J2d1u1,LT 11SL11+LT",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(6) is a quantum channel that maps Gaussian states to Gaussian states. Indeed, Ψ(ρ(m,S)) = ρ(LT 11m+2J2d1u1,LT 11SL11+LT 21L21), (7) for every Gaussian states ρ(m,S) on Γ(Cd1). Proof. Since U := W(u)Γ(L) is a unitary, by Stinespring representation theorem, we know"
+      }
+    },
+    "8": {
+      "equation": "Theorem 3.1. Let Ψ : T(Γ(Cd)) →T(Γ(Cd)) be a quantum channel. Then the following are equivalent: (i) The channel Ψ maps Gaussian states to Gaussian states; (ii) There exist X, Y ∈M2d(R) and w ∈R2d such that for every Gaussian state ρ(m,S), the transformed state Ψ(ρ(m,S)) is also a Gaussian state with mean XT m + w and covariance XT SX + Y , i.e., Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y );",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 10, text lines 85-92",
+        "equation_raw": "Theorem 3.1. Let Ψ : T(Γ(Cd)) →T(Γ(Cd)) be a quantum channel. Then the following are equivalent: (i) The channel Ψ maps Gaussian states to Gaussian states; (ii) There exist X, Y ∈M2d(R) and w ∈R2d such that for every Gaussian state ρ(m,S), the transformed state Ψ(ρ(m,S)) is also a Gaussian state with mean XT m + w and covariance XT SX + Y , i.e., Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y );",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "□ Now we are ready to prove our main theorem. Theorem 3.1. Let Ψ : T(Γ(Cd)) →T(Γ(Cd)) be a quantum channel. Then the following are equivalent: (i) The channel Ψ maps Gaussian states to Gaussian states; (ii) There exist X, Y ∈M2d(R) and w ∈R2d such that for every Gaussian state ρ(m,S), the transformed state Ψ(ρ(m,S)) is also a Gaussian state with mean XT m + w and covariance XT SX + Y , i.e., Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y ); (8) (iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ∗: "
+      }
+    },
+    "9": {
+      "equation": "(iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ^*: B(Γ(Cd)) → B(Γ(Cd)) satisfies Ψ^*(W(z)) = exp",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 10, text lines 93-102",
+        "equation_raw": "(iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ^*: B(Γ(Cd)) → B(Γ(Cd)) satisfies Ψ^*(W(z)) = exp",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y ); (8) (iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ∗: B(Γ(Cd)) → B(Γ(Cd)) satisfies Ψ∗(W(z)) = exp \u001a −iwT z −1 2zT Y z \u001b W(Xz), ∀z ∈R2d; (9) (iv) There exists a Gaussian unitary operator U on Γ(Cd+d′) = Γ(Cd) ⊗Γ(Cd′), for some d′ ≥1, such that"
       }
     }
   }

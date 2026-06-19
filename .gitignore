@@ -52,13 +52,9 @@ mlruns/
 # Large or generated data directories
 data/raw/
 data/interim/
-data/processed/
-datasets/
 downloads/
 
 # Generated project outputs
-reports/
-results/
 
 # Logs and temporary files
 *.log
