@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PDF Equation Extractor</title>
+  <title>Equations Knowledge Graph - Viewer</title>
   <script>
     window.MathJax = {
       tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] },
@@ -12,193 +12,355 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
-    .header { background: #1e293b; border-bottom: 1px solid #334155; padding: 24px 32px; }
-    .header h1 { font-size: 1.5rem; font-weight: 600; }
-    .header p { color: #94a3b8; font-size: 0.85rem; margin-top: 4px; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
+    a{color:#60a5fa;text-decoration:none}
+    a:hover{text-decoration:underline}
 
-    .input-bar { background: #1e293b; border-bottom: 1px solid #334155; padding: 16px 32px; display: flex; gap: 12px; align-items: center; }
-    .input-bar input[type="text"] {
-      flex: 1; background: #0f172a; color: #e2e8f0; border: 1px solid #475569;
-      border-radius: 8px; padding: 10px 16px; font-size: 0.95rem; outline: none;
-    }
-    .input-bar input:focus { border-color: #3b82f6; }
-    .btn {
-      background: #3b82f6; color: #fff; border: none; border-radius: 8px;
-      padding: 10px 24px; font-size: 0.95rem; font-weight: 600; cursor: pointer;
-    }
-    .btn:hover { background: #2563eb; }
-    .btn:disabled { background: #475569; cursor: not-allowed; }
+    .header{background:#1e293b;border-bottom:1px solid #334155;padding:20px 32px}
+    .header h1{font-size:1.4rem;font-weight:600}
+    .header p{color:#94a3b8;font-size:.82rem;margin-top:4px}
 
-    .stats { display: flex; gap: 32px; padding: 16px 32px; background: #1e293b; border-bottom: 1px solid #334155; }
-    .stat-value { font-size: 1.4rem; font-weight: 700; color: #3b82f6; }
-    .stat-label { font-size: 0.7rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+    .toolbar{background:#1e293b;border-bottom:1px solid #334155;padding:14px 32px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    .toolbar input[type=text]{flex:1;min-width:200px;background:#0f172a;color:#e2e8f0;border:1px solid #475569;border-radius:8px;padding:9px 14px;font-size:.9rem;outline:none}
+    .toolbar input:focus{border-color:#3b82f6}
+    .btn{background:#3b82f6;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:.9rem;font-weight:600;cursor:pointer}
+    .btn:hover{background:#2563eb}
+    .btn:disabled{background:#475569;cursor:not-allowed}
+    .btn-outline{background:transparent;border:1px solid #475569;color:#94a3b8}
+    .btn-outline:hover{border-color:#3b82f6;color:#3b82f6}
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px 32px; }
+    .stats{display:flex;gap:28px;padding:14px 32px;background:#1e293b;border-bottom:1px solid #334155}
+    .stat-val{font-size:1.3rem;font-weight:700;color:#3b82f6}
+    .stat-lbl{font-size:.68rem;color:#64748b;text-transform:uppercase;letter-spacing:.04em}
 
-    .tabs { display: flex; gap: 0; margin-bottom: 20px; }
-    .tab {
-      padding: 10px 20px; background: #1e293b; border: 1px solid #334155;
-      color: #94a3b8; cursor: pointer; font-size: 0.85rem; font-weight: 500;
-    }
-    .tab:first-child { border-radius: 8px 0 0 8px; }
-    .tab:last-child { border-radius: 0 8px 8px 0; }
-    .tab.active { background: #3b82f6; color: #fff; border-color: #3b82f6; }
+    .container{max-width:1100px;margin:0 auto;padding:20px 32px}
 
-    .eq-card {
-      background: #1e293b; border: 1px solid #334155; border-radius: 10px;
-      padding: 20px 24px; margin-bottom: 14px;
-    }
-    .eq-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-    .eq-num { background: #3b82f6; color: #fff; font-weight: 700; font-size: 0.85rem; padding: 3px 12px; border-radius: 20px; }
-    .eq-render { background: #0f172a; border-radius: 8px; padding: 14px 18px; text-align: center; overflow-x: auto; min-height: 40px; }
-    .eq-symbols { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-    .sym-label { color: #64748b; font-size: 0.75rem; }
-    .sym { background: #312e81; color: #c7d2fe; padding: 2px 10px; border-radius: 12px; font-size: 0.9rem; }
+    .tabs{display:flex;gap:0;margin-bottom:18px}
+    .tab{padding:9px 18px;background:#1e293b;border:1px solid #334155;color:#94a3b8;cursor:pointer;font-size:.82rem;font-weight:500}
+    .tab:first-child{border-radius:8px 0 0 8px}
+    .tab:last-child{border-radius:0 8px 8px 0}
+    .tab.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
 
-    .json-view { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 20px; overflow: auto; max-height: 70vh; }
-    .json-view pre { font-size: 0.8rem; color: #a5f3fc; white-space: pre-wrap; word-break: break-all; }
+    .eq-card{background:#1e293b;border:1px solid #334155;border-radius:10px;padding:18px 22px;margin-bottom:14px}
+    .eq-card:hover{border-color:#475569}
+    .eq-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .eq-num{background:#3b82f6;color:#fff;font-weight:700;font-size:.82rem;padding:3px 12px;border-radius:20px}
+    .eq-meaning{color:#94a3b8;font-size:.82rem;font-style:italic;margin-bottom:8px}
+    .eq-render{background:#0f172a;border-radius:8px;padding:14px 18px;text-align:center;overflow-x:auto;min-height:40px;margin-bottom:10px}
 
-    .empty { text-align: center; padding: 80px 20px; color: #64748b; }
-    .empty h2 { color: #94a3b8; margin-bottom: 6px; }
-    .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: spin .6s linear infinite; margin-right: 8px; vertical-align: middle; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .error { background: #7f1d1d; border: 1px solid #991b1b; color: #fca5a5; padding: 12px 20px; border-radius: 8px; margin-bottom: 16px; }
+    .section-title{color:#64748b;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;margin:10px 0 6px;font-weight:600}
+    .sym-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:4px}
+    .sym-key{background:#312e81;color:#c7d2fe;padding:2px 8px;border-radius:4px;font-size:.8rem;font-family:monospace}
+    .sym-desc{color:#94a3b8;font-size:.8rem}
+    .rel-row{display:flex;gap:8px;align-items:center;margin-bottom:3px;font-size:.8rem}
+    .grade-strong{background:#166534;color:#86efac;padding:1px 8px;border-radius:10px;font-size:.72rem;font-weight:600}
+    .grade-potential{background:#713f12;color:#fde68a;padding:1px 8px;border-radius:10px;font-size:.72rem;font-weight:600}
+    .grade-none{background:#334155;color:#64748b;padding:1px 8px;border-radius:10px;font-size:.72rem}
+    .audit-key{color:#60a5fa;font-family:monospace;font-size:.75rem}
+    .audit-val{color:#94a3b8;font-size:.75rem}
+    .collapsible{cursor:pointer;user-select:none}
+    .collapsible:hover{color:#60a5fa}
+    .collapse-body{display:none;margin-top:6px}
+    .collapse-body.open{display:block}
+
+    .json-view{background:#0f172a;border:1px solid #334155;border-radius:10px;padding:20px;overflow:auto;max-height:70vh}
+    .json-view pre{font-size:.78rem;color:#a5f3fc;white-space:pre-wrap;word-break:break-all}
+
+    .paper-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+    .paper-card{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:14px 18px;cursor:pointer}
+    .paper-card:hover{border-color:#3b82f6}
+    .paper-id{font-weight:600;font-size:.9rem}
+    .paper-count{color:#64748b;font-size:.8rem}
+
+    .empty{text-align:center;padding:60px 20px;color:#64748b}
+    .empty h2{color:#94a3b8;margin-bottom:6px}
+    .error{background:#7f1d1d;border:1px solid #991b1b;color:#fca5a5;padding:12px 20px;border-radius:8px;margin-bottom:14px}
   </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>PDF Equation Extractor</h1>
-  <p>Paste an arXiv URL or ID to extract all numbered math equations as LaTeX + JSON</p>
+  <h1>Equations Knowledge Graph</h1>
+  <p>Extract and browse math equations from arXiv quantum physics papers - with meaning, symbols, relations, and audit trail</p>
 </div>
 
-<div class="input-bar">
-  <input type="text" id="url-input" placeholder="e.g. https://arxiv.org/abs/2410.07429 or just 2410.07429" />
+<div class="toolbar">
+  <input type="text" id="url-input" placeholder="Paste arXiv URL or ID (e.g. 2409.18913)" />
   <button class="btn" id="extract-btn" onclick="doExtract()">Extract</button>
+  <button class="btn btn-outline" onclick="loadDataset()">Browse Dataset</button>
 </div>
 
 <div class="stats" id="stats" style="display:none">
-  <div><span class="stat-value" id="s-total">0</span><br><span class="stat-label">Equations</span></div>
-  <div><span class="stat-value" id="s-syms">0</span><br><span class="stat-label">Unique Symbols</span></div>
-  <div><span class="stat-value" id="s-paper">-</span><br><span class="stat-label">arXiv ID</span></div>
+  <div><span class="stat-val" id="s-total">0</span><br><span class="stat-lbl">Equations</span></div>
+  <div><span class="stat-val" id="s-strong">0</span><br><span class="stat-lbl">Strong Relations</span></div>
+  <div><span class="stat-val" id="s-paper">-</span><br><span class="stat-lbl">Paper</span></div>
 </div>
 
 <div class="container">
   <div id="error-box"></div>
-
   <div id="empty" class="empty">
     <h2>No equations yet</h2>
-    <p>Paste an arXiv URL above and click Extract</p>
+    <p>Paste an arXiv URL above and click <b>Extract</b>, or click <b>Browse Dataset</b> to explore the pre-built 350-equation dataset</p>
   </div>
-
   <div id="content" style="display:none">
-    <div class="tabs">
+    <div class="tabs" id="tabs">
       <div class="tab active" onclick="switchTab('cards')">Equations</div>
-      <div class="tab" onclick="switchTab('json')">JSON Preview</div>
+      <div class="tab" onclick="switchTab('json')">JSON Output</div>
     </div>
     <div id="tab-cards"></div>
     <div id="tab-json" style="display:none" class="json-view"><pre id="json-pre"></pre></div>
+    <div id="tab-dataset" style="display:none"></div>
   </div>
 </div>
 
 <script>
-  let currentData = [];
-
-  document.getElementById('url-input').addEventListener('keydown', (e) => {
+  document.getElementById('url-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') doExtract();
   });
+
+  function showError(msg) {
+    const box = document.getElementById('error-box');
+    box.textContent = '';
+    const el = document.createElement('div');
+    el.className = 'error';
+    el.textContent = msg;
+    box.appendChild(el);
+  }
 
   async function doExtract() {
     const input = document.getElementById('url-input').value.trim();
     if (!input) return;
-
     const btn = document.getElementById('extract-btn');
     btn.disabled = true;
     btn.textContent = 'Extracting...';
     document.getElementById('error-box').textContent = '';
-
     try {
       const resp = await fetch('/extract', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: input })
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({url: input})
       });
       const data = await resp.json();
       if (!resp.ok) throw new Error(data.error || 'Extraction failed');
-      showResults(data);
+      renderPaper(data.arxiv_id, data.equations, data.count);
     } catch (err) {
-      document.getElementById('error-box').textContent = '';
-      const box = document.createElement('div');
-      box.className = 'error';
-      box.textContent = err.message;
-      document.getElementById('error-box').appendChild(box);
+      showError(err.message);
     } finally {
       btn.disabled = false;
       btn.textContent = 'Extract';
     }
   }
 
-  function showResults(data) {
-    currentData = data.equations;
+  async function loadDataset() {
+    document.getElementById('error-box').textContent = '';
+    try {
+      const resp = await fetch('/dataset');
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error);
+      renderDatasetList(data);
+    } catch (err) {
+      showError(err.message);
+    }
+  }
+
+  async function loadPaperFromDataset(arxivId) {
+    document.getElementById('error-box').textContent = '';
+    try {
+      const resp = await fetch('/dataset/' + arxivId);
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.error);
+      renderPaper(data.arxiv_id, data.equations, data.count);
+    } catch (err) {
+      showError(err.message);
+    }
+  }
+
+  function renderDatasetList(data) {
     document.getElementById('empty').style.display = 'none';
     document.getElementById('content').style.display = 'block';
     document.getElementById('stats').style.display = 'flex';
+    document.getElementById('s-total').textContent = data.total_equations;
+    document.getElementById('s-strong').textContent = data.papers;
+    document.querySelector('#stats .stat-lbl:last-child') || 0;
+    // Update labels
+    const labels = document.querySelectorAll('.stat-lbl');
+    if (labels.length >= 2) labels[1].textContent = 'PAPERS';
+    document.getElementById('s-paper').textContent = 'Dataset';
 
-    const allSyms = new Set();
-    currentData.forEach(eq => eq.mathsSymbol.forEach(s => allSyms.add(s)));
-    document.getElementById('s-total').textContent = data.count;
-    document.getElementById('s-syms').textContent = allSyms.size;
-    document.getElementById('s-paper').textContent = data.arxiv_id;
+    document.getElementById('tabs').style.display = 'none';
+    document.getElementById('tab-cards').style.display = 'none';
+    document.getElementById('tab-json').style.display = 'none';
 
-    // JSON tab
-    document.getElementById('json-pre').textContent = JSON.stringify(currentData, null, 2);
+    const container = document.getElementById('tab-dataset');
+    container.style.display = 'block';
+    container.textContent = '';
 
-    // Cards tab
+    const title = document.createElement('h3');
+    title.style.cssText = 'color:#94a3b8;margin-bottom:14px;font-size:.9rem';
+    title.textContent = 'Click a paper to view its equations:';
+    container.appendChild(title);
+
+    const grid = document.createElement('div');
+    grid.className = 'paper-list';
+    data.summary.forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'paper-card';
+      card.onclick = () => loadPaperFromDataset(p.arxiv_id);
+      const id = document.createElement('div');
+      id.className = 'paper-id';
+      id.textContent = 'arXiv:' + p.arxiv_id;
+      const cnt = document.createElement('div');
+      cnt.className = 'paper-count';
+      cnt.textContent = p.count + ' equation' + (p.count !== 1 ? 's' : '');
+      card.appendChild(id);
+      card.appendChild(cnt);
+      grid.appendChild(card);
+    });
+    container.appendChild(grid);
+  }
+
+  function renderPaper(arxivId, equations, count) {
+    document.getElementById('empty').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    document.getElementById('stats').style.display = 'flex';
+    document.getElementById('tab-dataset').style.display = 'none';
+    document.getElementById('tabs').style.display = 'flex';
+    switchTab('cards');
+
+    // Stats
+    let strongCount = 0;
+    Object.values(equations).forEach(eq => {
+      Object.values(eq.relations || {}).forEach(r => { if (r.grade === 'strong') strongCount++; });
+    });
+    document.getElementById('s-total').textContent = count;
+    const labels = document.querySelectorAll('.stat-lbl');
+    if (labels.length >= 2) labels[1].textContent = 'STRONG RELATIONS';
+    document.getElementById('s-strong').textContent = strongCount;
+    document.getElementById('s-paper').textContent = arxivId;
+
+    // JSON
+    document.getElementById('json-pre').textContent = JSON.stringify(
+      {[arxivId]: equations}, null, 2
+    );
+
+    // Cards
     const container = document.getElementById('tab-cards');
     container.textContent = '';
 
-    currentData.forEach((eq) => {
+    Object.entries(equations).forEach(([eqNum, eq]) => {
       const card = document.createElement('div');
       card.className = 'eq-card';
 
+      // Top: number
       const top = document.createElement('div');
       top.className = 'eq-top';
       const num = document.createElement('span');
       num.className = 'eq-num';
-      num.textContent = '(' + eq.number + ')';
+      num.textContent = '(' + eqNum + ')';
       top.appendChild(num);
       card.appendChild(top);
 
+      // Meaning
+      if (eq.meaning) {
+        const meaning = document.createElement('div');
+        meaning.className = 'eq-meaning';
+        meaning.textContent = eq.meaning;
+        card.appendChild(meaning);
+      }
+
+      // Rendered equation
       const render = document.createElement('div');
       render.className = 'eq-render';
       render.textContent = '$$' + eq.equation + '$$';
       card.appendChild(render);
 
-      const syms = document.createElement('div');
-      syms.className = 'eq-symbols';
-      const label = document.createElement('span');
-      label.className = 'sym-label';
-      label.textContent = 'Symbols: ';
-      syms.appendChild(label);
-      if (eq.mathsSymbol.length === 0) {
-        const none = document.createElement('span');
-        none.style.cssText = 'color:#475569;font-size:0.8rem;';
-        none.textContent = 'none';
-        syms.appendChild(none);
-      } else {
-        eq.mathsSymbol.forEach(s => {
-          const badge = document.createElement('span');
-          badge.className = 'sym';
-          badge.textContent = s;
-          syms.appendChild(badge);
+      // Symbols section
+      const syms = eq.symbols || {};
+      if (Object.keys(syms).length > 0) {
+        const symTitle = document.createElement('div');
+        symTitle.className = 'section-title';
+        symTitle.textContent = 'Symbols';
+        card.appendChild(symTitle);
+        Object.entries(syms).forEach(([k, v]) => {
+          const row = document.createElement('div');
+          row.className = 'sym-row';
+          const key = document.createElement('span');
+          key.className = 'sym-key';
+          key.textContent = k;
+          row.appendChild(key);
+          if (v) {
+            const desc = document.createElement('span');
+            desc.className = 'sym-desc';
+            desc.textContent = v;
+            row.appendChild(desc);
+          }
+          card.appendChild(row);
         });
       }
-      card.appendChild(syms);
+
+      // Relations section (collapsible)
+      const rels = eq.relations || {};
+      const relEntries = Object.entries(rels);
+      const strongRels = relEntries.filter(([,r]) => r.grade === 'strong');
+      const potRels = relEntries.filter(([,r]) => r.grade === 'potential');
+      if (strongRels.length > 0 || potRels.length > 0) {
+        const relTitle = document.createElement('div');
+        relTitle.className = 'section-title collapsible';
+        relTitle.textContent = 'Relations (' + strongRels.length + ' strong, ' + potRels.length + ' potential) [click to expand]';
+        const relBody = document.createElement('div');
+        relBody.className = 'collapse-body';
+        relTitle.onclick = () => relBody.classList.toggle('open');
+
+        [...strongRels, ...potRels].forEach(([otherNum, rel]) => {
+          const row = document.createElement('div');
+          row.className = 'rel-row';
+          const badge = document.createElement('span');
+          badge.className = 'grade-' + rel.grade;
+          badge.textContent = rel.grade;
+          row.appendChild(badge);
+          const txt = document.createElement('span');
+          txt.textContent = 'Eq (' + otherNum + '): ' + (rel.description || '');
+          txt.style.color = '#cbd5e1';
+          row.appendChild(txt);
+          relBody.appendChild(row);
+        });
+        card.appendChild(relTitle);
+        card.appendChild(relBody);
+      }
+
+      // Audit trail (collapsible)
+      const trail = eq['audit-trail'] || {};
+      const trailEntries = Object.entries(trail);
+      if (trailEntries.length > 0) {
+        const auditTitle = document.createElement('div');
+        auditTitle.className = 'section-title collapsible';
+        auditTitle.textContent = 'Audit Trail (' + trailEntries.length + ' entries) [click to expand]';
+        const auditBody = document.createElement('div');
+        auditBody.className = 'collapse-body';
+        auditTitle.onclick = () => auditBody.classList.toggle('open');
+
+        trailEntries.forEach(([k, v]) => {
+          const row = document.createElement('div');
+          row.style.marginBottom = '3px';
+          const key = document.createElement('span');
+          key.className = 'audit-key';
+          key.textContent = k + ': ';
+          const val = document.createElement('span');
+          val.className = 'audit-val';
+          val.textContent = v;
+          row.appendChild(key);
+          row.appendChild(val);
+          auditBody.appendChild(row);
+        });
+        card.appendChild(auditTitle);
+        card.appendChild(auditBody);
+      }
+
       container.appendChild(card);
     });
 
+    // Typeset MathJax
     if (window.MathJax && MathJax.typesetPromise) {
       MathJax.typesetPromise([container]).catch(err => console.warn('MathJax:', err));
     }
@@ -210,8 +372,8 @@
     });
     document.getElementById('tab-cards').style.display = name === 'cards' ? 'block' : 'none';
     document.getElementById('tab-json').style.display = name === 'json' ? 'block' : 'none';
+    document.getElementById('tab-dataset').style.display = 'none';
   }
 </script>
-
 </body>
 </html>

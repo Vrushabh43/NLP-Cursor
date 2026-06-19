@@ -312,9 +312,19 @@ def parse_equations_from_tex(tex_content: str) -> list[EquationCandidate]:
     """
     tex = _strip_tex_comments(tex_content)
 
-    # Locate structural markers.
+    # Only parse equations in the main body:
+    #   - After \begin{document} (skip preamble macros)
+    #   - Before \appendix (skip supplementary/appendix equations like S1, A1)
+    doc_start = re.search(r"\\begin\{document\}", tex)
+    if doc_start:
+        tex = tex[doc_start.end():]
+
     appendix_match = re.search(r"\\appendix\b", tex)
-    appendix_pos = appendix_match.start() if appendix_match else len(tex) + 1
+    if appendix_match:
+        tex = tex[:appendix_match.start()]
+
+    # All remaining equations are main-body; no appendix section tracking needed.
+    appendix_pos = len(tex) + 1  # never reached
 
     # Find section boundaries after \appendix.
     appendix_sections: list[int] = []
