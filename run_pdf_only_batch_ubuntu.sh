@@ -5,6 +5,15 @@ PYTHON_EXE="${PYTHON_EXE:-.venv/bin/python}"
 OUTPUT_JSON="${OUTPUT_JSON:-output/pdf/equations_pdf_pdf_only_server.json}"
 REPORT_JSON="${REPORT_JSON:-output/pdf/equations_pdf_pdf_only_server_report.json}"
 MARKDOWN_DIR="${MARKDOWN_DIR:-output/pdf/docling_markdown_server}"
+MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-.cache/model_cache}"
+
+export HF_HOME="${PWD}/${MODEL_CACHE_DIR}/huggingface"
+export HF_HUB_CACHE="${HF_HOME}/hub"
+export HUGGINGFACE_HUB_CACHE="${HF_HOME}/hub"
+export TRANSFORMERS_CACHE="${PWD}/${MODEL_CACHE_DIR}/transformers"
+export XDG_CACHE_HOME="${PWD}/${MODEL_CACHE_DIR}/xdg"
+export HF_HUB_DISABLE_SYMLINKS_WARNING=1
+mkdir -p "${HF_HOME}" "${HF_HUB_CACHE}" "${TRANSFORMERS_CACHE}" "${XDG_CACHE_HOME}"
 
 # PDF-only papers identified in the first 70 entries of paper_list_16.txt.
 PDF_ONLY_PAPERS=(9 19 27 37 40 41 47 53 54 55 57 58 59 67 69)

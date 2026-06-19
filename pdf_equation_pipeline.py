@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import time
 import unicodedata
@@ -22,6 +23,7 @@ from typing import Any
 
 ARXIV_PDF_URL = "https://arxiv.org/pdf/{arxiv_id}"
 DEFAULT_USER_AGENT = "NLP-Cursor-equation-extractor/0.1 (student project; respectful single-paper requests)"
+DEFAULT_MODEL_CACHE_DIR = Path(".cache/model_cache")
 EQUATION_NUMBER_RE = re.compile(
     r"(?<![\w.])\(\s*([A-Za-z]?\s*\d+(?:\.\d+)?\s*[a-z]?)\s*\)\s*$"
 )
@@ -156,9 +158,47 @@ def download_arxiv_pdf(
     return pdf_path
 
 
+def is_writable_directory(path: Path) -> bool:
+    """Return whether a directory can be created and written by this process."""
+
+    try:
+        path.mkdir(parents=True, exist_ok=True)
+        probe = path / ".write_test"
+        probe.write_text("ok", encoding="utf-8")
+        probe.unlink(missing_ok=True)
+    except OSError:
+        return False
+    return True
+
+
+def configure_writable_model_cache(cache_dir: Path = DEFAULT_MODEL_CACHE_DIR) -> None:
+    """Force Docling/Hugging Face model downloads into a writable local cache."""
+
+    cache_root = cache_dir.resolve()
+    huggingface_home = cache_root / "huggingface"
+    huggingface_hub = huggingface_home / "hub"
+    transformers_cache = cache_root / "transformers"
+    xdg_cache = cache_root / "xdg"
+
+    def set_if_unwritable(env_name: str, path: Path) -> None:
+        current = os.environ.get(env_name)
+        if current and is_writable_directory(Path(current)):
+            return
+        path.mkdir(parents=True, exist_ok=True)
+        os.environ[env_name] = str(path)
+
+    set_if_unwritable("HF_HOME", huggingface_home)
+    set_if_unwritable("HF_HUB_CACHE", huggingface_hub)
+    set_if_unwritable("HUGGINGFACE_HUB_CACHE", huggingface_hub)
+    set_if_unwritable("TRANSFORMERS_CACHE", transformers_cache)
+    set_if_unwritable("XDG_CACHE_HOME", xdg_cache)
+    os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS_WARNING", "1")
+
+
 def make_docling_converter(*, enable_ocr: bool) -> Any:
     """Create a Docling PDF converter with formula enrichment when available."""
 
+    configure_writable_model_cache()
     try:
         from docling.datamodel.base_models import InputFormat
         from docling.datamodel.pipeline_options import PdfPipelineOptions

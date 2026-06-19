@@ -3,6 +3,15 @@ set -euo pipefail
 
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 VENV_PATH="${VENV_PATH:-.venv}"
+MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-.cache/model_cache}"
+
+export HF_HOME="${PWD}/${MODEL_CACHE_DIR}/huggingface"
+export HF_HUB_CACHE="${HF_HOME}/hub"
+export HUGGINGFACE_HUB_CACHE="${HF_HOME}/hub"
+export TRANSFORMERS_CACHE="${PWD}/${MODEL_CACHE_DIR}/transformers"
+export XDG_CACHE_HOME="${PWD}/${MODEL_CACHE_DIR}/xdg"
+export HF_HUB_DISABLE_SYMLINKS_WARNING=1
+mkdir -p "${HF_HOME}" "${HF_HUB_CACHE}" "${TRANSFORMERS_CACHE}" "${XDG_CACHE_HOME}"
 
 echo "Creating virtual environment at ${VENV_PATH} ..."
 "${PYTHON_BIN}" -m venv "${VENV_PATH}"
