@@ -22,8 +22,11 @@ fi
 mkdir -p "${HF_HOME}" "${HF_HUB_CACHE}" "${TRANSFORMERS_CACHE}" "${XDG_CACHE_HOME}"
 
 # PDF-only papers identified in the first 70 entries of paper_list_16.txt.
-#PDF_ONLY_PAPERS=(9 19 27 37 40 41 47 53 54 55 57 58 59 67 69)
-PDF_ONLY_PAPERS=(9 19 27 37)
+if [[ -n "${PDF_ONLY_PAPERS_OVERRIDE:-}" ]]; then
+  read -r -a PDF_ONLY_PAPERS <<< "${PDF_ONLY_PAPERS_OVERRIDE}"
+else
+  PDF_ONLY_PAPERS=(9 19 27 37 40 41 47 53 54 55 57 58 59 67 69)
+fi
 
 mkdir -p "$(dirname "${OUTPUT_JSON}")" "$(dirname "${REPORT_JSON}")" "${MARKDOWN_DIR}"
 rm -f "${OUTPUT_JSON}" "${REPORT_JSON}"

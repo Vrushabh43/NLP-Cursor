@@ -29,6 +29,7 @@ EQUATION_NUMBER_RE = re.compile(
 )
 TAG_RE = re.compile(r"\\tag\{([^{}]+)\}")
 SPACED_NUMBER_RE = re.compile(r"\(\s*([A-Za-z]?\s*\d+(?:\.\d+)?\s*[a-z]?)\s*\)")
+PROSE_EQUATION_REFERENCE_RE = re.compile(r"\b[Ee]q\.?\s*\(?\s*([1-9]\d?[a-z]?)\s*\)?")
 LATEX_LABEL_RE = re.compile(
     r"(?:\\quad|,|\\\s+)\s*"
     r"(?:\\left\s*)?\(\s*([A-Za-z]?\s*\d+(?:\.\d+)?\s*[a-z]?)\s*"
@@ -347,7 +348,7 @@ def confidence_for_source(source: str) -> str:
 
     if source in {"docling_markdown_math_block", "docling_page_retry_math_block"}:
         return "high"
-    if source == "docling_markdown_numbered_line":
+    if source in {"docling_markdown_numbered_line", "docling_markdown_neighbor_reference"}:
         return "medium"
     return "low"
 
@@ -358,6 +359,8 @@ def quality_warnings(source: str, equation: str, raw_latex: str) -> list[str]:
     warnings: list[str] = []
     if source == "docling_page_retry_math_block":
         warnings.append("page_retry_replaced_fallback")
+    if source == "docling_markdown_neighbor_reference":
+        warnings.append("label_inferred_from_nearby_prose")
     if source == "pymupdf_text_fallback":
         warnings.append("fallback_only_needs_review")
         warnings.append("pymupdf_text_is_recall_signal_not_trusted_latex")
@@ -517,6 +520,87 @@ def extract_from_numbered_lines(markdown: str) -> list[EquationCandidate]:
                     source_location=f"Docling Markdown lines {start + 1}-{index + 1}",
                 )
             )
+    return candidates
+
+
+def nearest_prose_equation_reference(lines: list[str], start: int, end: int, radius: int = 2) -> str | None:
+    """Find an equation number referenced near an unnumbered Docling math block."""
+
+    search_indices: list[int] = []
+    for offset in range(1, radius + 1):
+        search_indices.append(end + offset)
+    for offset in range(1, radius + 1):
+        search_indices.append(start - offset)
+
+    for index in search_indices:
+        if index < 0 or index >= len(lines):
+            continue
+        line = lines[index].strip()
+        if not line or line.startswith("$$"):
+            continue
+        references = PROSE_EQUATION_REFERENCE_RE.findall(line)
+        if len(references) == 1:
+            return re.sub(r"\s+", "", references[0])
+    return None
+
+
+def extract_unnumbered_math_blocks_with_neighbor_references(markdown: str) -> list[EquationCandidate]:
+    """Label Docling math blocks when the equation number is only in nearby prose.
+
+    Some PDFs render the display equation without a visible ``(N)`` marker but
+    mention it immediately afterwards as ``Eq. N``. This extractor keeps the
+    Docling formula text and marks the label inference in the audit trail.
+    """
+
+    lines = markdown.splitlines()
+    candidates: list[EquationCandidate] = []
+    index = 0
+    while index < len(lines):
+        line = lines[index].strip()
+        starts_block = line.startswith("$$") or line.startswith(r"\[") or line.startswith("```math")
+        if not starts_block:
+            index += 1
+            continue
+
+        start = index
+        block_lines = [lines[index]]
+        if line.endswith("$$") or line.endswith(r"\]"):
+            end = index
+        else:
+            index += 1
+            while index < len(lines):
+                block_lines.append(lines[index])
+                stripped = lines[index].strip()
+                if stripped.endswith("$$") or stripped.endswith(r"\]") or stripped == "```":
+                    break
+                index += 1
+            end = index
+
+        raw_block = "\n".join(block_lines)
+        if extract_number_from_text(raw_block, allow_embedded_label=True) is None:
+            number = nearest_prose_equation_reference(lines, start, end)
+            raw_latex = normalize_latex(raw_block)
+            if number is not None and MATH_SIGNAL_RE.search(raw_latex):
+                latex = normalize_equation_for_output(raw_latex)
+                source = "docling_markdown_neighbor_reference"
+                candidates.append(
+                    EquationCandidate(
+                        number=number,
+                        latex=latex,
+                        raw_latex=raw_latex,
+                        source=source,
+                        confidence=confidence_for_source(source),
+                        warnings=quality_warnings(source, latex, raw_latex),
+                        line_start=start + 1,
+                        line_end=end + 1,
+                        context=window_context(lines, start, end),
+                        source_location=(
+                            f"Docling Markdown lines {start + 1}-{end + 1}; "
+                            f"label inferred from nearby Eq. {number} reference"
+                        ),
+                    )
+                )
+        index += 1
     return candidates
 
 
@@ -835,6 +919,7 @@ def extract_equations(
 
     candidates = extract_from_math_blocks(markdown)
     candidates.extend(extract_from_numbered_lines(markdown))
+    candidates.extend(extract_unnumbered_math_blocks_with_neighbor_references(markdown))
     if use_pdf_fallback and pdf_path is not None:
         candidates.extend(extract_from_pdf_text(pdf_path, max_equations))
     return deduplicate_candidates(candidates, max_equations)
