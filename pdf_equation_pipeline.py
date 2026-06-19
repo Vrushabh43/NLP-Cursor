@@ -1159,6 +1159,12 @@ def parse_args() -> argparse.Namespace:
         help="Optional path for saving Docling Markdown for manual audit.",
     )
     parser.add_argument(
+        "--docling-markdown-input",
+        type=Path,
+        default=None,
+        help="Optional cached Docling Markdown input. Skips Docling PDF conversion when the file exists.",
+    )
+    parser.add_argument(
         "--enable-ocr",
         action="store_true",
         help="Enable OCR for scanned PDFs. Leave off for normal arXiv text-layer PDFs.",
@@ -1188,24 +1194,50 @@ def main() -> None:
     args = parse_args()
     paper_ids = read_paper_list(args.paper_list)
     arxiv_id = select_arxiv_id(paper_ids, args.paper_number)
-    pdf_path = download_arxiv_pdf(
-        arxiv_id,
-        args.cache_dir,
-        sleep_seconds=args.sleep_seconds,
-        force=args.force_download,
+    cached_markdown_available = (
+        args.docling_markdown_input is not None and args.docling_markdown_input.exists()
     )
-    try:
-        markdown, conversion_metadata = convert_pdf_with_docling(pdf_path, enable_ocr=args.enable_ocr)
-    except Exception as exc:
-        markdown = ""
+    needs_pdf = (
+        not cached_markdown_available
+        or not args.disable_pdf_fallback
+        or not args.disable_page_retry
+    )
+    pdf_path = (
+        download_arxiv_pdf(
+            arxiv_id,
+            args.cache_dir,
+            sleep_seconds=args.sleep_seconds,
+            force=args.force_download,
+        )
+        if needs_pdf
+        else None
+    )
+    if cached_markdown_available:
+        markdown = args.docling_markdown_input.read_text(encoding="utf-8")
         conversion_metadata = {
-            "status": f"docling_failed:{type(exc).__name__}",
+            "status": "cached_docling_markdown",
             "converter": "docling",
             "ocr_enabled": args.enable_ocr,
-            "markdown_chars": 0,
-            "error": str(exc),
+            "markdown_chars": len(markdown),
+            "cached_markdown": str(args.docling_markdown_input),
         }
-        print(f"Docling failed for arXiv:{arxiv_id}; continuing with PDF text fallback: {exc}")
+    else:
+        if args.docling_markdown_input is not None:
+            print(f"Cached Markdown not found at {args.docling_markdown_input}; running Docling.")
+        if pdf_path is None:
+            raise RuntimeError("PDF path is required when cached Markdown is unavailable.")
+        try:
+            markdown, conversion_metadata = convert_pdf_with_docling(pdf_path, enable_ocr=args.enable_ocr)
+        except Exception as exc:
+            markdown = ""
+            conversion_metadata = {
+                "status": f"docling_failed:{type(exc).__name__}",
+                "converter": "docling",
+                "ocr_enabled": args.enable_ocr,
+                "markdown_chars": 0,
+                "error": str(exc),
+            }
+            print(f"Docling failed for arXiv:{arxiv_id}; continuing with PDF text fallback: {exc}")
     if args.save_docling_markdown is not None:
         args.save_docling_markdown.parent.mkdir(parents=True, exist_ok=True)
         args.save_docling_markdown.write_text(markdown, encoding="utf-8")
@@ -1214,9 +1246,9 @@ def main() -> None:
         markdown,
         args.max_equations,
         pdf_path=pdf_path,
-        use_pdf_fallback=not args.disable_pdf_fallback,
+        use_pdf_fallback=not args.disable_pdf_fallback and pdf_path is not None,
     )
-    if not args.disable_page_retry:
+    if not args.disable_page_retry and pdf_path is not None:
         equations = retry_fallback_equations_with_docling_pages(
             pdf_path,
             equations,

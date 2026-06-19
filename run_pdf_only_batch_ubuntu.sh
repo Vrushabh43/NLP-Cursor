@@ -8,6 +8,7 @@ MARKDOWN_DIR="${MARKDOWN_DIR:-output/pdf/docling_markdown_server}"
 MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-.cache/model_cache}"
 FORCE_CPU="${FORCE_CPU:-1}"
 LABEL_SCOPE="${LABEL_SCOPE:-all}"
+REUSE_MARKDOWN="${REUSE_MARKDOWN:-0}"
 
 export HF_HOME="${PWD}/${MODEL_CACHE_DIR}/huggingface"
 export HF_HUB_CACHE="${HF_HOME}/hub"
@@ -34,6 +35,13 @@ rm -f "${OUTPUT_JSON}" "${REPORT_JSON}"
 
 for PAPER_NUMBER in "${PDF_ONLY_PAPERS[@]}"; do
   echo "Processing paper ${PAPER_NUMBER} ..."
+  MARKDOWN_FILE="${MARKDOWN_DIR}/paper_${PAPER_NUMBER}_docling.md"
+  EXTRA_ARGS=()
+  if [[ "${REUSE_MARKDOWN}" == "1" && -s "${MARKDOWN_FILE}" ]]; then
+    echo "Reusing cached Docling Markdown: ${MARKDOWN_FILE}"
+    EXTRA_ARGS+=(--docling-markdown-input "${MARKDOWN_FILE}")
+    EXTRA_ARGS+=(--disable-page-retry)
+  fi
   "${PYTHON_EXE}" pdf_equation_pipeline.py \
     --paper-number "${PAPER_NUMBER}" \
     --sleep-seconds 3 \
@@ -41,7 +49,8 @@ for PAPER_NUMBER in "${PDF_ONLY_PAPERS[@]}"; do
     --report-output "${REPORT_JSON}" \
     --merge \
     --label-scope "${LABEL_SCOPE}" \
-    --save-docling-markdown "${MARKDOWN_DIR}/paper_${PAPER_NUMBER}_docling.md"
+    --save-docling-markdown "${MARKDOWN_FILE}" \
+    "${EXTRA_ARGS[@]}"
 done
 
 echo
