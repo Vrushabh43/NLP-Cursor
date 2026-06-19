@@ -110,7 +110,7 @@ The measured linewidth is about a factor of two higher than the value of 1.6 MHz
 
 Using the measured linewidth, Γ ℎ = 2 𝜋 · 3 . 3 MHz, we are able to calculate the saturation intensity 𝐼 sat of a perfectly coupling single ion. Starting from the resonant saturation parameter given in [31] and expressing the Rabi frequency in terms of cavity QED parameters for a Fabry-Pérot type cavity mode, we arrive at the following expression:
 
-$$I _ { s a t } = \frac { 4 \pi ^ { 3 } } { 3 } \hbar { c } \frac { \Gamma _ { h } } { \zeta \lambda ^ { 3 } } . \quad \quad ( 3 ) \quad \begin{matrix} \text {with} \\ \text {white} \end{matrix}$$
+$$I _ { s a t } = \frac { 4 \pi ^ { 3 } } { 3 } \hbar { c } \frac { \Gamma _ { h } } { \zeta \lambda ^ { 3 } } . & & ( 3 ) & \quad \text {with}$$
 
 This results in a value of 𝐼 sat = 2 · 10 4 W/m 2 or a intracavity saturation power of 𝑃 sat = 61 nW for the 580 nm transition at 4.3 K.
 
