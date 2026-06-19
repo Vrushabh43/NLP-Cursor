@@ -57,7 +57,6 @@ datasets/
 downloads/
 
 # Generated project outputs
-output/
 reports/
 results/
 
@@ -89,3 +88,5 @@ Desktop.ini
 *_debug.pdf
 *_fixed.pdf
 *_validation.pdf
+
+.cache/

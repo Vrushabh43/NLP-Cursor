@@ -1,0 +1,3183 @@
+{
+  "2409.18913": {
+    "1": {
+      "equation": "\\dot{\\alpha}_{i} ( t ) = - \\frac{ \\mathrm{i} } { \\hbar{} } \\sum_{j \\neq i} e^{ i \\varepsilon_{i j} t } \\, M_{i j} ( t ) \\, \\alpha_{j} ( t )",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "S1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.18913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/3 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 39-39",
+        "equation_raw": "\\dot { \\alpha } _ { i } ( t ) = - \\frac { \\mathbf i } { \\hbar { } } \\sum _ { j \\neq i } e ^ { i \\varepsilon _ { i j } t } \\, M _ { i j } ( t ) \\, \\alpha _ { j } ( t ) \\quad \\ \\",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "In general, the wave functions of the Rydberg states can be calculated analogously to those of the hydrogen atom using the so-called quantum defect theory [54], where the differences between the Coulomb potential of the proton in hydrogen and the actual potential experienced by a Rydberg electron are conveniently encapsulated in a species-dependent model potential with empirical parameters [1, 54, 55]. For simplicity, in this work, we consider Rydberg states described by hydrogenic wave function"
+      }
+    },
+    "2": {
+      "equation": "P_{i \\to f}^{( 1 )} = \\left ( \\frac{ 2 e \\varepsilon_{f i} } { \\hbar{v}^{2} } \\right )^{2} \\left [ | d_{f i , x} |^{2} K_{1}^{2} \\left ( \\frac{ | \\varepsilon_{f i} | b } {v} \\right ) + | d_{f i , z} |^{2} K_{0}^{2} \\left ( \\frac{ | \\varepsilon_{f i} | b } {v} \\right ) \\right ] , }",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "S1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.18913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/3 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "needs_artifact_cleanup",
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 51-51",
+        "equation_raw": "\\begin{array} { r l } { s e d } & P _ { i \\to f } ^ { ( 1 ) } = \\left ( \\frac { 2 e \\varepsilon _ { f i } } { \\hbar { v } ^ { 2 } } \\right ) ^ { 2 } \\left [ | d _ { f i , x } | ^ { 2 } K _ { 1 } ^ { 2 } \\left ( \\frac { | \\varepsilon _ { f i } | b } { v } \\right ) + | d _ { f i , z } | ^ { 2 } K _ { 0 } ^ { 2 } \\left ( \\frac { | \\varepsilon _ { f i } | b } { v } \\right ) \\right ] , } \\end{array}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "The electric dipole moment of a highly excited Rydberg atom exhibits a ∝ n 2 scaling with the principal quantum number, reaching large values for n ≫ 1 (Fig. 1b). In the dipolar limit (i.e., for e-beams passing far away from the atom, so that the interaction is dominated by dipolar transitions), the probability reduces to [33, 34] $$\\begin{array} { r l } { s e d } & P _ { i \\to f } ^ { ( 1 ) } = \\left ( \\frac { 2 e \\varepsilon _ { f i } } { \\hbar { v } ^ { 2 } } \\right ) ^ { 2 } \\left [ | d _ { "
+      }
+    },
+    "S1": {
+      "equation": "M_{i j} ( t ) = e^{2} \\int d^{3} r \\, \\frac{ \\psi_{i}^{*} ( r ) \\, \\psi_{j} ( r ) } { | r - r_{0} ( t ) | }",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.18913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/3 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 121-121",
+        "equation_raw": "M _ { i j } ( t ) = e ^ { 2 } \\int d ^ { 3 } r \\, \\frac { \\psi _ { i } ^ { * } ( r ) \\, \\psi _ { j } ( r ) } { | r - r _ { 0 } ( t ) | } \\quad",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "We solve Eq. (1) by direct time integration using the nonretarded ( c →∞ ) matrix elements $$M _ { i j } ( t ) = e ^ { 2 } \\int d ^ { 3 } r \\, \\frac { \\psi _ { i } ^ { * } ( r ) \\, \\psi _ { j } ( r ) } { | r - r _ { 0 } ( t ) | } \\quad ( S 1 )$$ associated with | nj , l j , mj ⟩ → | ni , l i , mi ⟩ transitions produced by an electron following a trajectory given by r = r 0 ( t ). These elements admit analytical expressions when using real-space hydrogenic wave functions"
+      }
+    }
+  },
+  "2402.10775": {
+    "1": {
+      "equation": "\\langle n \\rangle= Z0 Zr Q2 l |Qc| 2Pin ħ(2\\pifr)2",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "D1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2402.10775",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "possible_pdf_text_degradation",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 1, text lines 88-95",
+        "equation_raw": "\\langle n \\rangle= Z0 Zr Q2 l |Qc| 2Pin ħ(2\\pifr)2 ,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "The average number of photons ⟨n⟩circulating in the resonator is estimated using the relation ⟨n⟩= Z0 Zr Q2 l |Qc| 2Pin ℏ(2πfr)2 , (1) where Z0 and Zr are the characteristic impedances of the transmission line and the resonator, respectively."
+      }
+    },
+    "2": {
+      "equation": "\\frac{1} { Q_{i} } = F \\delta_{T L S}^{0} \\frac{ \\tanh \\left ( h f_{r} / 2 k_{B} T \\right ) } { \\left ( 1 + \\langle n \\rangle / n_{c} \\right )^{\\beta} } + \\delta_{0}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "D1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2402.10775",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 65-65",
+        "equation_raw": "\\frac { 1 } { Q _ { i } } = F \\delta _ { T L S } ^ { 0 } \\frac { \\tanh \\left ( h f _ { r } / 2 k _ { B } T \\right ) } { \\left ( 1 + \\langle n \\rangle / n _ { c } \\right ) ^ { \\beta } } + \\delta _ { 0 } ,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "The standard resonator characterization shows the expected trend where Q i is suppressed at low ⟨ n ⟩ due to interaction with parasitic TLSs. This observation fits the so-called standard tunnelling model [21] $$\\frac { 1 } { Q _ { i } } = F \\delta _ { T L S } ^ { 0 } \\frac { \\tanh \\left ( h f _ { r } / 2 k _ { B } T \\right ) } { \\left ( 1 + \\langle n \\rangle / n _ { c } \\right ) ^ { \\beta } } + \\delta _ { 0 } , \\quad \\left ( 2 \\right )$$ where Fδ 0 TLS describes the power-dependent loss due to p"
+      }
+    },
+    "3": {
+      "equation": "\\dot{ \\hat{a} } = - i \\omega_{0} \\hat{a} - \\frac{ \\kappa_{0} + \\kappa_{e x t} } {2} \\hat{a} - \\frac{ \\kappa_{T L S} ( | a | ) } {2} \\hat{a} - \\sqrt{ \\kappa_{e x t} } a_{i n} ,",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "D1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2402.10775",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 104-104",
+        "equation_raw": "\\dot { \\hat { a } } = - i \\omega _ { 0 } \\hat { a } - \\frac { \\kappa _ { 0 } + \\kappa _ { e x t } } { 2 } \\hat { a } - \\frac { \\kappa _ { T L S } ( | a | ) } { 2 } \\hat { a } - \\sqrt { \\kappa _ { e x t } } a _ { i n } , \\",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "We model our resonator as a driven harmonic oscillator with non-linear damping caused by parasitic TLSs. The Heisenberg-Langevin equation of motion describing the dynamics of the resonator in the rotating-wave approximation is then $$\\dot { \\hat { a } } = - i \\omega _ { 0 } \\hat { a } - \\frac { \\kappa _ { 0 } + \\kappa _ { e x t } } { 2 } \\hat { a } - \\frac { \\kappa _ { T L S } ( | a | ) } { 2 } \\hat { a } - \\sqrt { \\kappa _ { e x t } } a _ { i n } , \\ ( 3 )$$ where ˆ a and a in are the time-depe"
+      }
+    },
+    "4": {
+      "equation": "\\kappa_{T L S} ( | a | ) a = \\frac{ \\kappa_{T L S} } { \\left [ 1 + ( | a | / a_{c} )^{2} \\right ]^{\\beta} } , \\quad ( 4 ) \\quad \\text{matt} \\quad \\begin{matrix} 4 \\\\ 2 \\end{matrix}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "D1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2402.10775",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 108-108",
+        "equation_raw": "\\kappa _ { T L S } ( | a | ) a = \\frac { \\kappa _ { T L S } } { \\left [ 1 + ( | a | / a _ { c } ) ^ { 2 } \\right ] ^ { \\beta } } , \\quad ( 4 ) \\quad \\text {matt} \\quad \\begin{matrix} 4 \\\\ 2 \\end{matrix}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "where ˆ a and a in are the time-dependent intra-cavity modes and the input drives respectively, ω 0 the resonant frequency, κ 0 the internal linear loss rate, κ ext the external coupling to the transmission line, and κ TLS ( | a | ) the power-dependent loss due to parasitic TLSs. We consider a power-dependent damping of the standard form of Eq. (2), giving $$\\kappa _ { T L S } ( | a | ) a = \\frac { \\kappa _ { T L S } } { \\left [ 1 + ( | a | / a _ { c } ) ^ { 2 } \\right ] ^ { \\beta } } , \\quad ( "
+      }
+    },
+    "5": {
+      "equation": "̇\\hat a = -i\\omega0\\hat a - N X n=1 cn|a|n-1\\hat a -\\sqrt\\kappaextain",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "D1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2402.10775",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "possible_pdf_text_degradation",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 4, text lines 100-105",
+        "equation_raw": "̇\\hat a = -i\\omega0\\hat a - N X n=1 cn|a|n-1\\hat a -\\sqrt\\kappaextain,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "we expand the TLS damping in Eq. 4 in a power series, transforming the equation of motion to ˙ˆa = −iω0ˆa − N X n=1 cn|a|n−1ˆa −√κextain, (5) which is linear in the coefficients cn. The coefficients are independent of the proposed model, allowing the appli-"
+      }
+    },
+    "6": {
+      "equation": "cients cn [17] X l Hklpl = -Ain,k",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "D1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2402.10775",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "possible_prose_contamination",
+          "possible_pdf_text_degradation",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 4, text lines 118-122",
+        "equation_raw": "cients cn [17] X l Hklpl = -Ain,k,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "By Fourier transforming and rewriting Eq. (5) in ma- trix form, we arrive at an expression linear in the coeffi- cients cn [17] X l Hklpl = −Ain,k, (6) where the kth row of the matrix Hkl is given by Hk ="
+      }
+    },
+    "D1": {
+      "equation": "S_{2 1} ( f ) = a e^{i \\alpha} e^{- 2 \\pi f \\tau} \\left [ 1 - \\frac{ ( Q_{l} / | Q_{c} | ) e^{i \\phi} } { 1 + 2 i Q_{l} ( f / f_{r} - 1 ) } \\right ] \\quad ( D 1 ) \\quad \\text{in the} \\quad \\text{plane}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2402.10775",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 209-209",
+        "equation_raw": "S _ { 2 1 } ( f ) = a e ^ { i \\alpha } e ^ { - 2 \\pi f \\tau } \\left [ 1 - \\frac { ( Q _ { l } / | Q _ { c } | ) e ^ { i \\phi } } { 1 + 2 i Q _ { l } ( f / f _ { r } - 1 ) } \\right ] \\quad ( D 1 ) \\quad \\text {in the} \\quad \\text {plane}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "<!-- image --> $$S _ { 2 1 } ( f ) = a e ^ { i \\alpha } e ^ { - 2 \\pi f \\tau } \\left [ 1 - \\frac { ( Q _ { l } / | Q _ { c } | ) e ^ { i \\phi } } { 1 + 2 i Q _ { l } ( f / f _ { r } - 1 ) } \\right ] \\quad ( D 1 ) \\quad \\text {in the} \\quad \\text {plane}$$ where f r is the resonance frequency, f the probe frequency, ϕ the impedance mismatch, Q c the coupling quality factor and Q l the loaded quality factor, from which Q i can be extracted with Q -1 l = Q -1 i + Re { Q -1 c } . The remaining param"
+      }
+    }
+  },
+  "2412.06576": {
+    "1": {
+      "equation": "F_{P} = \\frac{6} { \\pi^{3} } \\, \\left ( \\frac{\\lambda}{n} \\right )^{2} \\, \\frac{ \\mathcal{F} } { w_{0}^{2} }",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2412.06576",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/3 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 37-37",
+        "equation_raw": "F _ { P } = \\frac { 6 } { \\pi ^ { 3 } } \\, \\left ( \\frac { \\lambda } { n } \\right ) ^ { 2 } \\, \\frac { \\mathcal { F } } { w _ { 0 } ^ { 2 } } . \\quad",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "<!-- image --> $$F _ { P } = \\frac { 6 } { \\pi ^ { 3 } } \\, \\left ( \\frac { \\lambda } { n } \\right ) ^ { 2 } \\, \\frac { \\mathcal { F } } { w _ { 0 } ^ { 2 } } . \\quad \\ \\ ( 1 ) \\quad \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\"
+      }
+    },
+    "2": {
+      "equation": "Megahertz. The zero-power value Γ0 of the fit func- tion, Γh(P) = \\alpha1 \\sqrt P+ Γ0",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2412.06576",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/3 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "possible_prose_contamination",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 6, text lines 104-109",
+        "equation_raw": "Megahertz. The zero-power value Γ0 of the fit func- tion, Γh(P) = \\alpha1 \\sqrt P+ Γ0,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "and plot these results in Fig. 6B. The laser linewidth can be neglected, since it is significantly below one Megahertz. The zero-power value Γ0 of the fit func- tion, Γh(𝑃) = 𝛼1 √ 𝑃+ Γ0, (2) reveals an upper bound of the homogeneous linewidth, which amounts to 3.3(6) MHz, corresponding to a co-"
+      }
+    },
+    "3": {
+      "equation": "I_{s a t} = \\frac{ 4 \\pi^{3} } {3} \\hbar{c} \\frac{ \\Gamma_{h} } { \\zeta \\lambda^{3} } . \\quad \\quad ( 3 ) \\quad \\begin{matrix} \\text{with} \\\\ \\text{white} \\end{matrix}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2412.06576",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/3 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 113-113",
+        "equation_raw": "I _ { s a t } = \\frac { 4 \\pi ^ { 3 } } { 3 } \\hbar { c } \\frac { \\Gamma _ { h } } { \\zeta \\lambda ^ { 3 } } . \\quad \\quad ( 3 ) \\quad \\begin{matrix} \\text {with} \\\\ \\text {white} \\end{matrix}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Using the measured linewidth, Γ ℎ = 2 𝜋 · 3 . 3 MHz, we are able to calculate the saturation intensity 𝐼 sat of a perfectly coupling single ion. Starting from the resonant saturation parameter given in [31] and expressing the Rabi frequency in terms of cavity QED parameters for a Fabry-Pérot type cavity mode, we arrive at the following expression: $$I _ { s a t } = \\frac { 4 \\pi ^ { 3 } } { 3 } \\hbar { c } \\frac { \\Gamma _ { h } } { \\zeta \\lambda ^ { 3 } } . \\quad \\quad ( 3 ) \\quad \\begin{matrix"
+      }
+    }
+  },
+  "2505.02834": {
+    "1": {
+      "equation": "Im \\langle Lu|Lv \\rangle= Im \\langle u|v \\rangle",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 4, text lines 8-10",
+        "equation_raw": "Im \\langle Lu|Lv \\rangle= Im \\langle u|v \\rangle",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "2.1. Symplectic and Orthosymplectic Matrices. By a symplectic transformation of Cd we mean a real linear operator L on Cd that preserves the standard symplectic form, i.e., Im ⟨Lu|Lv⟩= Im ⟨u|v⟩ ∀u, v ∈Cd. (1) Now, fix an identification of Cd with R2d, as described in the previous section. This identifi- cation allows us to represent the real linear transformation L as a 2d × 2d real matrix (again"
+      }
+    },
+    "2": {
+      "equation": "u2d i ∈M2d(R) and J = [Jik] ∈M2d(R), then L ∈Sp(2d, J) ⇐⇒uT i Juk = Jik, ∀1 \\le i, k \\le 2d",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 4, text lines 28-35",
+        "equation_raw": "u2d i ∈M2d(R) and J = [Jik] ∈M2d(R), then L ∈Sp(2d, J) ⇐⇒uT i Juk = Jik, ∀1 \\le i, k \\le 2d.",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "u2 · · · u2d i ∈M2d(R) and J = [Jik] ∈M2d(R), then L ∈Sp(2d, J) ⇐⇒uT i Juk = Jik, ∀1 ≤i, k ≤2d. (2) Consequently, a matrix L = h"
+      }
+    },
+    "3": {
+      "equation": "later. Definition 2.1. Let ρ be a state on Γ(Cd). Then the map bρ : Cd →C defined by",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 5, text lines 20-22",
+        "equation_raw": "later. Definition 2.1. Let ρ be a state on Γ(Cd). Then the map bρ : Cd →C defined by",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "2.3. Gaussian States. In this section, we define Gaussian states and describe their prop- erties which we need in a basis independent way. This will help us provide rigorous proofs later. Definition 2.1. Let ρ be a state on Γ(Cd). Then the map bρ : Cd →C defined by (3) is called the quantum characteristic function of ρ. If there exist a vector m ∈Cd and a real linear operator S on Cd such that"
+      }
+    },
+    "6": {
+      "equation": "1 =",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 164-164",
+        "equation_raw": "1 = \\\\",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "$$\\Psi ( \\varrho ) \\coloneqq & \\text {tr} _ { 2 } \\left ( W ( \\mathbf u ) \\Gamma ( L ) ( \\varrho \\otimes \\rho _ { ( 0 , I _ { d _ { 2 } } ) } ) ( W ( \\mathbf u ) \\Gamma ( L ) ) ^ { \\dagger } \\right ) , \\quad \\forall \\, \\varrho \\in \\mathcal { T } ( \\Gamma _ { s } ( \\mathbb { C } ^ { d _ { 1 } } ) ) ,$$ $$1 = \\\\ ( 6 )$$ is a quantum channel that maps Gaussian states to Gaussian states. Indeed,"
+      }
+    },
+    "7": {
+      "equation": "Ψ(ρ(m,S)) = ρ(LT 11m+2J2d1u1,LT 11SL11+LT",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 7, text lines 18-22",
+        "equation_raw": "Ψ(ρ(m,S)) = ρ(LT 11m+2J2d1u1,LT 11SL11+LT",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(6) is a quantum channel that maps Gaussian states to Gaussian states. Indeed, Ψ(ρ(m,S)) = ρ(LT 11m+2J2d1u1,LT 11SL11+LT 21L21), (7) for every Gaussian states ρ(m,S) on Γ(Cd1). Proof. Since U := W(u)Γ(L) is a unitary, by Stinespring representation theorem, we know"
+      }
+    },
+    "8": {
+      "equation": "Theorem 3.1. Let Ψ : T(Γ(Cd)) →T(Γ(Cd)) be a quantum channel. Then the following are equivalent: (i) The channel Ψ maps Gaussian states to Gaussian states; (ii) There exist X, Y ∈M2d(R) and w ∈R2d such that for every Gaussian state ρ(m,S), the transformed state Ψ(ρ(m,S)) is also a Gaussian state with mean XT m + w and covariance XT SX + Y , i.e., Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y );",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "9": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 10, text lines 85-92",
+        "equation_raw": "Theorem 3.1. Let Ψ : T(Γ(Cd)) →T(Γ(Cd)) be a quantum channel. Then the following are equivalent: (i) The channel Ψ maps Gaussian states to Gaussian states; (ii) There exist X, Y ∈M2d(R) and w ∈R2d such that for every Gaussian state ρ(m,S), the transformed state Ψ(ρ(m,S)) is also a Gaussian state with mean XT m + w and covariance XT SX + Y , i.e., Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y );",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "□ Now we are ready to prove our main theorem. Theorem 3.1. Let Ψ : T(Γ(Cd)) →T(Γ(Cd)) be a quantum channel. Then the following are equivalent: (i) The channel Ψ maps Gaussian states to Gaussian states; (ii) There exist X, Y ∈M2d(R) and w ∈R2d such that for every Gaussian state ρ(m,S), the transformed state Ψ(ρ(m,S)) is also a Gaussian state with mean XT m + w and covariance XT SX + Y , i.e., Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y ); (8) (iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ∗: "
+      }
+    },
+    "9": {
+      "equation": "(iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ^*: B(Γ(Cd)) → B(Γ(Cd)) satisfies Ψ^*(W(z)) = exp",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        },
+        "8": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.02834",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 10, text lines 93-102",
+        "equation_raw": "(iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ^*: B(Γ(Cd)) → B(Γ(Cd)) satisfies Ψ^*(W(z)) = exp",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Ψ(ρ(m,S)) = ρ(XT m+w,XT SX+Y ); (8) (iii) There exist X, Y ∈M2d(R) and w ∈R2d such that the dual map Ψ∗: B(Γ(Cd)) → B(Γ(Cd)) satisfies Ψ∗(W(z)) = exp \u001a −iwT z −1 2zT Y z \u001b W(Xz), ∀z ∈R2d; (9) (iv) There exists a Gaussian unitary operator U on Γ(Cd+d′) = Γ(Cd) ⊗Γ(Cd′), for some d′ ≥1, such that"
+      }
+    }
+  },
+  "2409.10153": {
+    "0": {
+      "equation": "{J} & {0} & {1} \\\\ {( 1 )} & { \\rho^{\\prime} } & { \\triangle q \\frac{1}{2} ( | 0 \\rangle_{q} \\langle 0 | + | 1 \\rangle_{q} \\langle 1 | ) \\otimes | 0 \\rangle_{ q^{\\prime} } \\langle 0 | } \\\\ {( 2 )} & { \\rho^{\\prime} } & { \\triangle q \\frac{1}{2} ( | 0 0 \\rangle + | 1 1 \\rangle )_{ q , q^{\\prime} } ( \\langle 0 0 | + \\langle 1 1 | ) } \\\\ {( 0 )} & {\\theta} & {1}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.10153",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/3 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "needs_artifact_cleanup",
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 171-171",
+        "equation_raw": "\\begin{array} { r l } { J } & { 0 } & { 1 } \\\\ { ( 1 ) } & { \\rho ^ { \\prime } } & { \\triangle q \\frac { 1 } { 2 } ( | 0 \\rangle _ { q } \\langle 0 | + | 1 \\rangle _ { q } \\langle 1 | ) \\otimes | 0 \\rangle _ { q ^ { \\prime } } \\langle 0 | } \\\\ { ( 2 ) } & { \\rho ^ { \\prime } } & { \\triangle q \\frac { 1 } { 2 } ( | 0 0 \\rangle + | 1 1 \\rangle ) _ { q , q ^ { \\prime } } ( \\langle 0 0 | + \\langle 1 1 | ) } \\\\ { ( 0 ) } & { \\theta } & { 1 } \\end{array}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Example 3.5 (Diversity in Allocation of Dirty Qubits). Let 𝜌 ≜ 1 2 (| 0 ⟩ 𝑞 ⟨ 0 | + | 1 ⟩ 𝑞 ⟨ 1 |) . The following heaps are all possible outputs after allocating a dirty qubit 𝑞 ′ : $$\\begin{array} { r l } { J } & { 0 } & { 1 } \\\\ { ( 1 ) } & { \\rho ^ { \\prime } } & { \\triangle q \\frac { 1 } { 2 } ( | 0 \\rangle _ { q } \\langle 0 | + | 1 \\rangle _ { q } \\langle 1 | ) \\otimes | 0 \\rangle _ { q ^ { \\prime } } \\langle 0 | } \\\\ { ( 2 ) } & { \\rho ^ { \\prime } } & { \\triangle q \\frac { 1 } { 2 } ( | "
+      }
+    },
+    "1": {
+      "equation": "S & \\triangle q \\ a l l o c ( g_{0} ; q a l l o c ( g_{1} ; C N O T [ g_{1} , a_{2} ] ; C N O T [ a_{1} , g_{1} ] ; X [ a_{1} ] ; T o f f o l i [ g_{0} , a_{1} , g_{1} ] ; \\\\ & C N O T [ a_{0} , g_{0} ] ; T o f f o l i [ g_{0} , a_{1} , g_{1} ] ; C N O T [ g_{1} , a_{2} ] ; T o f f o l i [ g_{0} , a_{1} , g_{1} ] ; & ( 1 ) \\\\ & C N O T [ a_{0} , g_{0} ] ; T o f f o l i [ g_{0} , a_{1} , g_{1} ] ; X [ a_{1} ] ; C N O T [ a_{1} , g_{1} ] ; q f r e e ( g_{0} ) ; q f r e e ( g_{1} ) &",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.10153",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/3 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "needs_artifact_cleanup",
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 538-538",
+        "equation_raw": "\\begin{array} { c c c } S & \\triangle q \\ a l l o c ( g _ { 0 } ; q a l l o c ( g _ { 1 } ; C N O T [ g _ { 1 } , a _ { 2 } ] ; C N O T [ a _ { 1 } , g _ { 1 } ] ; X [ a _ { 1 } ] ; T o f f o l i [ g _ { 0 } , a _ { 1 } , g _ { 1 } ] ; \\\\ & C N O T [ a _ { 0 } , g _ { 0 } ] ; T o f f o l i [ g _ { 0 } , a _ { 1 } , g _ { 1 } ] ; C N O T [ g _ { 1 } , a _ { 2 } ] ; T o f f o l i [ g _ { 0 } , a _ { 1 } , g _ { 1 } ] ; & ( 1 ) \\\\ & C N O T [ a _ { 0 } , g _ { 0 } ] ; T o f f o l i [ g _ { 0 } , a _ { 1 } , g _ { 1 } ] ; X [ a _ { 1 } ] ; C N O T [ a _ { 1 } , g _ { 1 } ] ; q f r e e ( g _ { 0 } ) ; q f r e e ( g _ { 1 } ) & \\end{array}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "The first example is the one introduced in Section 2, where the circuit shown in Fig. 1 functions as an in-place constant adder computing the last bit of 𝑟 = 𝑎 + ( 011 ) 2 . The quantum circuit can be implemented in Qwhile-hp as follows: $$\\begin{array} { c c c } S & \\triangle q \\ a l l o c ( g _ { 0 } ; q a l l o c ( g _ { 1 } ; C N O T [ g _ { 1 } , a _ { 2 } ] ; C N O T [ a _ { 1 } , g _ { 1 } ] ; X [ a _ { 1 } ] ; T o f f o l i [ g _ { 0 } , a _ { 1 } , g _ { 1 } ] ; \\\\ & C N O T [ a _ { 0 }"
+      }
+    },
+    "2": {
+      "equation": "2 |- \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) -|11 \\rangle(ZXSX|\\lambda \\rangle)]} Next, because q↦→|v \\rangle+ |w \\rangle=⇒q↦→|v \\rangle\\langle v| + |w \\rangle\\langle w| =⇒q↦→|v \\rangle∨q↦→|w \\rangle, thus {q3,q1,q2,q↦→ 1 2 \\sqrt 2 |+ \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) + |11 \\rangle(ZXSX|\\lambda \\rangle)] + 1 2 \\sqrt 2 |- \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) -|11 \\rangle(ZXSX|\\lambda \\rangle)]} =⇒ {q3,q1,q2,q↦→1 2 |+ \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) + |11 \\rangle(ZXSX|\\lambda \\rangle)]∨ q3,q1,q2,q↦→1 2 |- \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) -|11 \\rangle(ZXSX|\\lambda \\rangle)]}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.10153",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/3 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 48, text lines 55-70",
+        "equation_raw": "2 |- \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) -|11 \\rangle(ZXSX|\\lambda \\rangle)]} Next, because q↦→|v \\rangle+ |w \\rangle=⇒q↦→|v \\rangle\\langle v| + |w \\rangle\\langle w| =⇒q↦→|v \\rangle∨q↦→|w \\rangle, thus {q3,q1,q2,q↦→ 1 2 \\sqrt 2 |+ \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) + |11 \\rangle(ZXSX|\\lambda \\rangle)] + 1 2 \\sqrt 2 |- \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) -|11 \\rangle(ZXSX|\\lambda \\rangle)]} =⇒ {q3,q1,q2,q↦→1 2 |+ \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) + |11 \\rangle(ZXSX|\\lambda \\rangle)]∨ q3,q1,q2,q↦→1 2 |- \\rangle[(|00 \\rangle+ |01 \\rangle+ |10 \\rangle)(ZS|\\lambda \\rangle) -|11 \\rangle(ZXSX|\\lambda \\rangle)]}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "2 √ 2 |−⟩[(|00⟩+ |01⟩+ |10⟩)(𝑍𝑆|𝜆⟩) −|11⟩(𝑍𝑋𝑆𝑋|𝜆⟩)]} Next, because 𝑞↦→|𝑣⟩+ |𝑤⟩=⇒𝑞↦→|𝑣⟩⟨𝑣| + |𝑤⟩⟨𝑤| =⇒𝑞↦→|𝑣⟩∨𝑞↦→|𝑤⟩, thus {𝑞3,𝑞1,𝑞2,𝑞↦→ 1 2 √ 2 |+⟩[(|00⟩+ |01⟩+ |10⟩)(𝑍𝑆|𝜆⟩) + |11⟩(𝑍𝑋𝑆𝑋|𝜆⟩)] + 1 2 √ 2 |−⟩[(|00⟩+ |01⟩+ |10⟩)(𝑍𝑆|𝜆⟩) −|11⟩(𝑍𝑋𝑆𝑋|𝜆⟩)]} =⇒ {𝑞3,𝑞1,𝑞2,𝑞↦→1 2 |+⟩[(|00⟩+ |01⟩+ |10⟩)(𝑍𝑆|𝜆⟩) + |11⟩(𝑍𝑋𝑆𝑋|𝜆⟩)]∨ 𝑞3,𝑞1,𝑞2,𝑞↦→1 2 |−⟩[(|00⟩+ |01⟩+ |10⟩)(𝑍𝑆|𝜆⟩) −|11⟩(𝑍𝑋𝑆𝑋|𝜆⟩)]} (2) , Vol. 1, No. 1, Article . Publication date: September 2024. BI-based Reasoning about Quantum Programs with Heap Manip"
+      }
+    }
+  },
+  "2408.17089": {},
+  "2409.09033": {
+    "1": {
+      "equation": "bij =",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.09033",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 1, text lines 71-74",
+        "equation_raw": "bij =",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "achieves such control through a class of index-dependent, element-wise transformations of the form bij = aij gf(i, j) . (1) These transformations may be viewed as a generalized Hadamard (Schur) scaling of the matrix entries [16], with"
+      }
+    },
+    "2": {
+      "equation": "gf(i, j) = g(L) f (i) g(R)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.09033",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 1, text lines 85-90",
+        "equation_raw": "gf(i, j) = g(L) f (i) g(R)",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "show that massless states are preserved if and only if the transformation function is separable, gf(i, j) = g(L) f (i) g(R) f (j) . (2) The separability condition plays a crucial role: the fac- tors g(L)"
+      }
+    },
+    "3": {
+      "equation": "bij =",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.09033",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 2, text lines 80-83",
+        "equation_raw": "bij =",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "index-dependent element-wise transformation producing a new matrix B with entries bij = aij gf(i, j) , (3) where gf(i, j) is a nonvanishing function acting on the row and column indices. The label f ∈F parameterizes"
+      }
+    },
+    "4": {
+      "equation": "gf(i, j) = g(L) f (i) g(R)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.09033",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 2, text lines 105-110",
+        "equation_raw": "gf(i, j) = g(L) f (i) g(R)",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "formation bij = aij/gf(i, j) preserves the rank and nullity of A if and only if gf(i, j) is separable, gf(i, j) = g(L) f (i) g(R) f (j) . (4) To understand the origin of this condition, consider a row vi0 of A that is linearly dependent on the remaining rows,"
+      }
+    },
+    "5": {
+      "equation": "vi0 = X j̸=i0 \\alphajvj",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.09033",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "possible_pdf_text_degradation",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 2, text lines 113-117",
+        "equation_raw": "vi0 = X j̸=i0 \\alphajvj .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "To understand the origin of this condition, consider a row vi0 of A that is linearly dependent on the remaining rows, vi0 = X j̸=i0 αjvj . (5) 3 Examining the kth component before and after the trans-"
+      }
+    },
+    "6": {
+      "equation": "gf(j, k) gf(i0, k) = Gf(j)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.09033",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 3, text lines 4-6",
+        "equation_raw": "gf(j, k) gf(i0, k) = Gf(j) ,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Examining the kth component before and after the trans- formation leads to the requirement gf(j, k) gf(i0, k) = Gf(j) , (6) where Gf(j) is independent of the column index k. This condition is equivalent to the functional separability of"
+      }
+    },
+    "7": {
+      "equation": "are (v′i)j = (vi)j g(R)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2409.09033",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 3, text lines 31-35",
+        "equation_raw": "are (v′i)j = (vi)j g(R)",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(j), the corresponding null space of B is spanned by vectors v′i whose components are (v′i)j = (vi)j g(R) f (j) . (7) This follows from substituting alj = blj g(L) f"
+      }
+    }
+  },
+  "2406.05767": {},
+  "2505.05563": {
+    "1": {
+      "equation": "form C (t -t0) = Tr [ρA (t) B (t0)]",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.05563",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 1, text lines 83-85",
+        "equation_raw": "form C (t -t0) = Tr [ρA (t) B (t0)]",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "tools for the natural sciences. In this context, time correlation functions of the form C (t −t0) = Tr [ρA (t) B (t0)] (1) with t > 0 are particularly useful to characterize the behavior of the systems under study. In the equation"
+      }
+    },
+    "2": {
+      "equation": "H_{s} \\left ( t^{\\prime} \\right ) = \\int s \\left ( r^{\\prime} , t^{\\prime} \\right ) o_{ r^{\\prime} } \\left ( t^{\\prime} \\right ) d r^{\\prime}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.05563",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 39-39",
+        "equation_raw": "H _ { s } \\left ( t ^ { \\prime } \\right ) = \\int s \\left ( r ^ { \\prime } , t ^ { \\prime } \\right ) o _ { r ^ { \\prime } } \\left ( t ^ { \\prime } \\right ) d r ^ { \\prime } \\, ,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Let H 0 be the Hamiltonian describing a system in isolation and H = H 0 + H s ( t ) be the total Hamiltonian for the system weakly coupled to an external timedependent perturbation (or source ) H s ( t ) that can be turned on and off adiabatically. Let us consider the expectation value 〈 o R 〉 = 〈 ψ 0 | o R | ψ 0 〉 of a local observable o R , evaluated on the ground state | ψ 0 〉 of H 0 . Here R indicates a generic 3 D coordinate in the system and could be, for instance, a specific lattice site "
+      }
+    },
+    "3": {
+      "equation": "U_{s} \\left ( t , t_{0} \\right ) = \\mathcal{T} \\exp \\left ( - i \\int_{ t_{0} }^{t} H_{s}^{I} \\left ( t^{\\prime} \\right ) d t^{\\prime} \\right )",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.05563",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 43-43",
+        "equation_raw": "U _ { s } \\left ( t , t _ { 0 } \\right ) = \\mathcal { T } \\exp \\left ( - i \\int _ { t _ { 0 } } ^ { t } H _ { s } ^ { I } \\left ( t ^ { \\prime } \\right ) d t ^ { \\prime } \\right ) \\ ,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "assuming that the external perturbation couples linearly to the system operators o r ′ ( t ′ ) at positions r ′ through the force function s ( r ′ , t ′ ) . Moving into the interaction picture, the operator o R evolves under the action of the unperturbed Hamiltonian H 0 according to o I R ( t ) = e i H 0 t o R e -i H 0 t . Meanwhile, the propagator for quantum states is given by the time-ordered exponential $$U _ { s } \\left ( t , t _ { 0 } \\right ) = \\mathcal { T } \\exp \\left ( - i \\int _ { t _"
+      }
+    },
+    "4": {
+      "equation": "\\langle oR (t) \\rangles = \\langle ψ0| U † s (t, t0) oI R (t) Us (t, t0) |ψ0 \\rangle",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.05563",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 2, text lines 107-110",
+        "equation_raw": "\\langle oR (t) \\rangles = \\langle ψ0| U † s (t, t0) oI R (t) Us (t, t0) |ψ0 \\rangle.",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "The evolution in time of ⟨oR⟩induced by the action of the source can then be written as ⟨oR (t)⟩s = ⟨ψ0| U † s (t, t0) oI R (t) Us (t, t0) |ψ0⟩. (4) Expectation values are from now on taken with re- spect to the ground state |ψ0⟩, unless otherwise"
+      }
+    },
+    "5": {
+      "equation": "\\Delta \\left \\langle o_{R} \\left ( T \\right ) \\right \\rangle_{s} = i \\int_{- \\infty}^{T} \\left \\langle \\left [ H_{s}^{I} \\left ( t^{\\prime} \\right ) , o_{R}^{I} \\left ( T \\right ) \\right ] \\right \\rangle d t^{\\prime}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.05563",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 53-53",
+        "equation_raw": "\\Delta \\left \\langle o _ { R } \\left ( T \\right ) \\right \\rangle _ { s } = i \\int _ { - \\infty } ^ { T } \\left \\langle \\left [ H _ { s } ^ { I } \\left ( t ^ { \\prime } \\right ) , o _ { R } ^ { I } \\left ( T \\right ) \\right ] \\right \\rangle d t ^ { \\prime } \\, , \\quad",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Expectation values are from now on taken with respect to the ground state | ψ 0 〉 , unless otherwise stated. By expanding the propagator to linear order in the perturbation H s , the change in expectation value of Eq. (4) up to a final time T is given by the Kubo formula [30] $$\\Delta \\left \\langle o _ { R } \\left ( T \\right ) \\right \\rangle _ { s } = i \\int _ { - \\infty } ^ { T } \\left \\langle \\left [ H _ { s } ^ { I } \\left ( t ^ { \\prime } \\right ) , o _ { R } ^ { I } \\left ( T \\right ) \\righ"
+      }
+    },
+    "6": {
+      "equation": "\\langle oR (T) \\rangles = Z dr′ Z T -\\infty",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.05563",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 2, text lines 144-150",
+        "equation_raw": "\\langle oR (T) \\rangles = Z dr′ Z T -\\infty",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "evolved expectation value ∆⟨oR (T)⟩s = ⟨oR (T)⟩s. Using Eq. (2), Eq. (5) can then be rewritten as ⟨oR (T)⟩s = Z dr′ Z T −∞ G (R, r′, T, t′) s (r′, t′) dt′ , (6) Accepted in Quantum 2026-02-21, click title to verify. Published under CC-BY 4.0. 2"
+      }
+    },
+    "7": {
+      "equation": "G (R, r′, T, t′) = -iΘ (T -t′)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.05563",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 3, text lines 23-31",
+        "equation_raw": "G (R, r′, T, t′) = -iΘ (T -t′)",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "U (·) indicates the time evolution operator, U (0) ≡1⊗L and the quantum register is composed of L qubits. where G (R, r′, T, t′) = −iΘ (T −t′)  \u0002 oI R (T) , oI r′ (t′) \u0003  (7) is a generalized susceptibility, with the step function Θ (T −t′) explicitly enforcing causality. This object"
+      }
+    }
+  },
+  "2503.13644": {
+    "0": {
+      "equation": "| \\langle \\psi ( \\theta^{( i )} ) | M | \\psi ( \\theta^{( j )} ) \\rangle |^{2} = 1 - 2 P ( | 0 \\dots \\rangle ) . \\quad ( 1 0 )^{ | \\psi ( 0 ) |^{2} }",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2503.13644",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 347-347",
+        "equation_raw": "| \\langle \\psi ( \\theta ^ { ( i ) } ) | M | \\psi ( \\theta ^ { ( j ) } ) \\rangle | ^ { 2 } = 1 - 2 P ( | 0 \\dots \\rangle ) . \\quad ( 1 0 ) ^ { | \\psi ( 0 ) | ^ { 2 } }",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "for each index in the sum of eq. 5, obtaining: $$| \\langle \\psi ( \\theta ^ { ( i ) } ) | M | \\psi ( \\theta ^ { ( j ) } ) \\rangle | ^ { 2 } = 1 - 2 P ( | 0 \\dots \\rangle ) . \\quad ( 1 0 ) ^ { | \\psi ( 0 ) | ^ { 2 } }$$ In order to correctly implement the SwapTest, the matrix M must satisfy one of the following requirements:"
+      }
+    },
+    "1": {
+      "equation": "max / min v∈Rp:∥v∥2=1",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2503.13644",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 2, text lines 45-48",
+        "equation_raw": "max / min v∈Rp:∥v∥2=1",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "tative components from matrix data [36, 37]. This unsupervised learning problem effectively looks for the top (or bottom) principal component of a data matrix calculated via: max / min v∈Rp:∥v∥2=1 v⊤Mv, (1) where M = 1"
+      }
+    },
+    "2": {
+      "equation": "max / min θ∈Rm \\langle ψ(θ)|M|ψ(θ) \\rangle s.t. |ψ(θ) \\rangle= l-1 Y i=0 Ui(θi)|ψ0 \\rangle",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2503.13644",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 3, text lines 12-21",
+        "equation_raw": "max / min θ∈Rm \\langle ψ(θ)|M|ψ(θ) \\rangle s.t. |ψ(θ) \\rangle= l-1 Y i=0 Ui(θi)|ψ0 \\rangle.",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "is prepared through a set of parameters θ ∈Rm to calculate the eigenvector/eigenstate corresponding to the largest or least eigenvalue of M via: max / min θ∈Rm ⟨ψ(θ)|M|ψ(θ)⟩ s.t. |ψ(θ)⟩= ℓ−1 Y i=0 Ui(θi)|ψ0⟩. (2) |0⟩ H"
+      }
+    },
+    "3": {
+      "equation": "max θ∈Rm \\langle ψ(θ)|Mj+1|ψ(θ) \\rangle s.t. |ψ(θ) \\rangle= l-1 Y i=0 Ui(θi)|ψ0 \\rangle",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2503.13644",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 3, text lines 102-111",
+        "equation_raw": "max θ∈Rm \\langle ψ(θ)|Mj+1|ψ(θ) \\rangle s.t. |ψ(θ) \\rangle= l-1 Y i=0 Ui(θi)|ψ0 \\rangle,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "How could quantum deflation look in math? At the (j +1)-th iteration of deflation, we estimate the leading eigenvector of: max θ∈Rm ⟨ψ(θ)|Mj+1|ψ(θ)⟩ s.t. |ψ(θ)⟩= ℓ−1 Y i=0 Ui(θi)|ψ0⟩, (3) 3 where Mj+1 is the deflated Hamiltonian, based on Mj+1 = Mj−λj|ψj⟩⟨ψj|, where Mj is the deflated"
+      }
+    },
+    "4": {
+      "equation": "f(vi | vj<i) := v⊤ i Mvi - X j<i",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2503.13644",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "possible_pdf_text_degradation"
+        ],
+        "equation_location": "PDF page 4, text lines 25-37",
+        "equation_raw": "f(vi | vj<i) := v⊤ i Mvi - X j<i",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "  f(vi | vj<i) := v⊤ i Mvi − X j<i (v⊤ i Mvj) 2 v⊤ j Mvj   . (4) Algorithm 2 EigenGame for the i-th player Input: M ∈Rp×p, initial vectors vi,init, learned par-"
+      }
+    },
+    "5": {
+      "equation": "s.t. |ψ(θ(r)) \\rangle= l-1 Y i=0 Ui(θ(r) i )|ψ0 \\rangle",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2503.13644",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 4, text lines 101-109",
+        "equation_raw": "s.t. |ψ(θ(r)) \\rangle= l-1 Y i=0 Ui(θ(r) i )|ψ0 \\rangle.",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "  s.t. |ψ(θ(r))⟩= ℓ−1 Y i=0 Ui(θ(r) i )|ψ0⟩. (5) What differentiates (5) from the classical VQE formulation in (2) is the inclusion of the regulariza- tion term in red. That is, (5) defines different objectives per “player”. Note that the term in blue is"
+      }
+    },
+    "7": {
+      "equation": "[ \\sec^{0} ( r ) \\min_{ \\theta^{( r )} \\in \\mathbb{R}^{n} } \\langle \\psi ( \\theta^{( r )} ) | M | \\psi ( \\theta^{( r )} ) \\rangle + \\sum_{j < r} \\beta | \\langle \\psi ( \\theta^{( r )} ) | \\psi ( \\theta^{( j )} ) \\rangle |^{2} \\ \\ s . t . \\ \\ | \\psi ( \\theta^{( r )} ) \\rangle = \\prod_{i = 0}^{\\ell - 1} U_{i} ( \\theta_{i}^{( r )} ) | \\psi_{0} \\rangle",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2503.13644",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 205-205",
+        "equation_raw": "[ \\sec ^ { 0 } ( r ) \\min _ { \\theta ^ { ( r ) } \\in \\mathbb { R } ^ { n } } \\langle \\psi ( \\theta ^ { ( r ) } ) | M | \\psi ( \\theta ^ { ( r ) } ) \\rangle + \\sum _ { j < r } \\beta | \\langle \\psi ( \\theta ^ { ( r ) } ) | \\psi ( \\theta ^ { ( j ) } ) \\rangle | ^ { 2 } \\ \\ s . t . \\ \\ | \\psi ( \\theta ^ { ( r ) } ) \\rangle = \\prod _ { i = 0 } ^ { \\ell - 1 } U _ { i } ( \\theta _ { i } ^ { ( r ) } ) | \\psi _ { 0 } \\rangle , \\ \\",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "<!-- image --> $$[ \\sec ^ { 0 } ( r ) \\min _ { \\theta ^ { ( r ) } \\in \\mathbb { R } ^ { n } } \\langle \\psi ( \\theta ^ { ( r ) } ) | M | \\psi ( \\theta ^ { ( r ) } ) \\rangle + \\sum _ { j < r } \\beta | \\langle \\psi ( \\theta ^ { ( r ) } ) | \\psi ( \\theta ^ { ( j ) } ) \\rangle | ^ { 2 } \\ \\ s . t . \\ \\ | \\psi ( \\theta ^ { ( r ) } ) \\rangle = \\prod _ { i = 0 } ^ { \\ell - 1 } U _ { i } ( \\theta _ { i } ^ { ( r ) } ) | \\psi _ { 0 } \\rangle , \\ \\ ( 7 )$$ a similar approach to our algorithm but instead in"
+      }
+    }
+  },
+  "2507.01292": {
+    "1": {
+      "equation": "| \\Pr [ 1 \\leftarrow \\text{Dis} ( x ) \\colon x \\leftarrow \\mathcal{D} ( 1 ) ] - \\Pr [ 1 \\leftarrow \\text{Dis} ( x ) \\colon x \\leftarrow \\mathcal{D} ( 0 ) ] | = \\text{SD} ( \\mathcal{D} ( 0 ) , \\mathcal{D} ( 1 ) )",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1n": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2507.01292",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 289-289",
+        "equation_raw": "| \\Pr [ 1 \\leftarrow \\text {Dis} ( x ) \\colon x \\leftarrow \\mathcal { D } ( 1 ) ] - \\Pr [ 1 \\leftarrow \\text {Dis} ( x ) \\colon x \\leftarrow \\mathcal { D } ( 0 ) ] | = \\text {SD} ( \\mathcal { D } ( 0 ) , \\mathcal { D } ( 1 ) ) .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "In order to make our explanation simpler, let us first assume that D 's input z is just a single bit. In this setting, access to an NP oracle, not a Σ P 3 oracle, is enough. Given x 1 , ..., x t independently sampled from T , the learner has to find b ∈ { 0 , 1 } such that T is statistically closer to D ( b ) than D ( b ⊕ 1) . How can we do that? By the definition of the statistical distance, there exists an unbounded algorithm Dis such that $$| \\Pr [ 1 \\leftarrow \\text {Dis} ( x ) \\colon x \\lef"
+      }
+    },
+    "1n": {
+      "equation": "that, on input (puzz, ans′), outputs ⊤/⊥. Correctness requires that Vrfy accepts (puzz, ans) ←Samp",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2507.01292",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 3, text lines 20-20",
+        "equation_raw": "that, on input (puzz, ans′), outputs ⊤/⊥. Correctness requires that Vrfy accepts (puzz, ans) ←Samp",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "is a pair (Samp, Vrfy) of two algorithms. Samp is a quantum polynomial-time (QPT) algorithm that, on input the security parameter 1n, outputs two classical bit strings, ans and puzz. Vrfy is an unbounded algorithm that, on input (puzz, ans′), outputs ⊤/⊥. Correctness requires that Vrfy accepts (puzz, ans) ←Samp(1n) with high probability. Security requires that no QPT adversary that receives puzz can output ans′ such that (puzz, ans′) is accepted by Vrfy with high probability."
+      }
+    },
+    "2": {
+      "equation": "|Pr[1 ←Dis(x) : x ←D(1)] -Pr[1 ←Dis(x) : x ←D(0)]| = SD(D(0), D(1))",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "1n": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2507.01292",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 11, text lines 46-47",
+        "equation_raw": "|Pr[1 ←Dis(x) : x ←D(1)] -Pr[1 ←Dis(x) : x ←D(0)]| = SD(D(0), D(1)).",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "the learner has to find b ∈{0, 1} such that T is statistically closer to D(b) than D(b ⊕1). How can we do that? By the definition of the statistical distance, there exists an unbounded algorithm Dis such that |Pr[1 ←Dis(x) : x ←D(1)] −Pr[1 ←Dis(x) : x ←D(0)]| = SD(D(0), D(1)). (2) Given x1, ..., xt as input, which is independently sampled from T , the learner first estimates the value of Pr[1 ←Dis(x) : x ←T ]. It then outputs 0 (1) if the estimated value of Pr[1 ←Dis(x) : x ←T ] is closer to"
+      }
+    },
+    "3": {
+      "equation": "2 . \\text{For all} i \\in [ t ( n ) ] , \\text{run} X_{ a , r_{i} ( 2 ) } \\leftarrow \\mathcal{D} ( a ; r_{i} ( 2 ) ) \\text{and Dis}^{ \\text{NP} }_{\\epsilon} ( a , b , X_{ a , r_{i} ( 2 ) } ; r_{i} ( 3 ) )",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "1n": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2507.01292",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 1583-1583",
+        "equation_raw": "2 . \\text { For all } i \\in [ t ( n ) ] , \\text { run } X _ { a , r _ { i } ( 2 ) } \\leftarrow \\mathcal { D } ( a ; r _ { i } ( 2 ) ) \\text { and Dis} ^ { \\text {NP} } _ { \\epsilon } ( a , b , X _ { a , r _ { i } ( 2 ) } ; r _ { i } ( 3 ) ) .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "1. Run Dis NP ϵ ( a, b, x i ; r i (1)) for all i ∈ [ t ( n )] . $$2 . \\text { For all } i \\in [ t ( n ) ] , \\text { run } X _ { a , r _ { i } ( 2 ) } \\leftarrow \\mathcal { D } ( a ; r _ { i } ( 2 ) ) \\text { and Dis} ^ { \\text {NP} } _ { \\epsilon } ( a , b , X _ { a , r _ { i } ( 2 ) } ; r _ { i } ( 3 ) ) .$$ 3. Output 1 if"
+      }
+    },
+    "4": {
+      "equation": "|Pr[1 ←Dis(a, b, x) : x ←D(a)] -Pr[1 ←Dis(a, b, x) : x ←D(b)]| = SD(D(a), D(b))",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "1n": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2507.01292",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 12, text lines 12-13",
+        "equation_raw": "|Pr[1 ←Dis(a, b, x) : x ←D(a)] -Pr[1 ←Dis(a, b, x) : x ←D(b)]| = SD(D(a), D(b))",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Next let us consider the actual case where D’s input z is an n-bit string. Again, from the definition of the statistical distance, there exists an unbounded algorithm Dis such that |Pr[1 ←Dis(a, b, x) : x ←D(a)] −Pr[1 ←Dis(a, b, x) : x ←D(b)]| = SD(D(a), D(b)) (4) for all a and b. Given x1, ..., xt independently sampled from T , the learner first estimates the value of Pr[1 ←Dis(a, b, x) : x ←T ] for all a, b. The learner outputs a∗such that"
+      }
+    },
+    "5": {
+      "equation": "|Pr[1 ←Dis(a, b, x) : x ←D(a)] -Pr[1 ←Dis(a, b, x) : x ←D(b)]| = SD(D(a), D(b))",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "1n": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2507.01292",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 12, text lines 12-17",
+        "equation_raw": "|Pr[1 ←Dis(a, b, x) : x ←D(a)] -Pr[1 ←Dis(a, b, x) : x ←D(b)]| = SD(D(a), D(b))",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Next let us consider the actual case where D’s input z is an n-bit string. Again, from the definition of the statistical distance, there exists an unbounded algorithm Dis such that |Pr[1 ←Dis(a, b, x) : x ←D(a)] −Pr[1 ←Dis(a, b, x) : x ←D(b)]| = SD(D(a), D(b)) (4) for all a and b. Given x1, ..., xt independently sampled from T , the learner first estimates the value of Pr[1 ←Dis(a, b, x) : x ←T ] for all a, b. The learner outputs a∗such that |Pr[1 ←Dis(a∗, b, x) : x ←T ] −Pr[1 ←Dis(a∗, b, x) : x"
+      }
+    },
+    "6": {
+      "equation": "inequality: SD(T , D(a)) \\le SD(T , D(b)) + SD(D(a), D(b))",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "1n": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2507.01292",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 12, text lines 19-21",
+        "equation_raw": "inequality: SD(T , D(a)) \\le SD(T , D(b)) + SD(D(a), D(b))",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(5) is small for all b. The reason why this learning algorithm works can be understood from the following inequality: SD(T , D(a)) ≤SD(T , D(b)) + SD(D(a), D(b)) (6) = SD(T , D(b)) + |Pr[1 ←Dis(a, b, x) : x ←D(b)] −Pr[1 ←Dis(a, b, x) : x ←D(a)]| (7)"
+      }
+    }
+  },
+  "2505.10513": {
+    "1": {
+      "equation": "Ut =",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.10513",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 2, text lines 118-123",
+        "equation_raw": "Ut =",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "hereafter referred to as the linear combinations of chan- nels (LCC) decomposition Ut = X i xiUn i (1) 3 where xi are real coefficients that can be positive or neg-"
+      }
+    },
+    "2": {
+      "equation": "OUn i (ρ)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.10513",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 3, text lines 25-29",
+        "equation_raw": "OUn i (ρ)",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "xiTr \u0002 OUn i (ρ) \u0003 . (2) The expectation values Tr \u0002"
+      }
+    },
+    "3": {
+      "equation": "\\delta = 2 \\exp \\left ( \\frac{ - N \\epsilon^{2} } { 2 ( \\sum_{i} | x_{i} | )^{2} } \\right )",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.10513",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 55-55",
+        "equation_raw": "\\delta = 2 \\exp \\left ( \\frac { - N \\epsilon ^ { 2 } } { 2 ( \\sum _ { i } | x _ { i } | ) ^ { 2 } } \\right ) \\quad \\ \\",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "The expectation values Tr [ O U n i ( ρ ) ] associated with noisy channels U n i can be estimated using Monte Carlo sampling. Each noisy operation U n i , specified by index i , is applied with probability | x i | / ∑ i | x i | , and the resulting expectation value is multiplied by sign( x i ) ∑ i | x i | [26, 31]. From this, an estimate of the ideal expectation value can be calculated up to an accuracy ϵ and probability greater than 1 -δ , where $$\\delta = 2 \\exp \\left ( \\frac { - N \\epsilon ^ "
+      }
+    },
+    "4": {
+      "equation": "ing’s inequality to be N = 2 \\varepsilon2 \u0012 X i |xi| \u00132 ln \u00122 \\delta",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.10513",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "possible_pdf_text_degradation"
+        ],
+        "equation_location": "PDF page 3, text lines 55-67",
+        "equation_raw": "ing’s inequality to be N = 2 \\varepsilon2 \u0012 X i |xi| \u00132 ln \u00122 \\delta",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(3) and the number of samples N is determined by Hoeffd- ing’s inequality to be N = 2 ϵ2 \u0012 X i |xi| \u00132 ln \u00122 δ \u0013 . (4) Thus, the number of samples scale as O \u0000λ2/ϵ2\u0001"
+      }
+    },
+    "5": {
+      "equation": "G = {T k : 1 \\le k \\le 8} = {I, T, S, ST, Z, ZT, ZS, ZST}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.10513",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 3, text lines 94-96",
+        "equation_raw": "G = {T k : 1 \\le k \\le 8} = {I, T, S, ST, Z, ZT, ZS, ZST},",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "angle θ. In this geometric picture, we label eight channels corresponding to the action of a basis set of gates G = {T k : 1 ≤k ≤8} = {I, T, S, ST, Z, ZT, ZS, ZST}, (5) 𝑧 𝑥"
+      }
+    },
+    "6": {
+      "equation": "G = {T k(ρ) = (T k)ρ(T k)† : 1 \\le k \\le 8}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.10513",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 3, text lines 121-122",
+        "equation_raw": "G = {T k(ρ) = (T k)ρ(T k)† : 1 \\le k \\le 8}.",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "gate under multiplication. We represent these gates in their channel representation to form a set G such that G = {T k(ρ) = (T k)ρ(T k)† : 1 ≤k ≤8}. (6) The LCC decomposition is given by Rθ"
+      }
+    },
+    "7": {
+      "equation": "Rθ z(\\cdot) = X U∈G xUU(\\cdot)U † =",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2505.10513",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 3, text lines 124-132",
+        "equation_raw": "Rθ z(\\cdot) = X U∈G xUU(\\cdot)U † =",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(6) The LCC decomposition is given by Rθ z(·) = X U∈G xUU(·)U † = X U∈G xUU(·), (7) where Rθ z(·) represents the single qubit Z-rotation chan-"
+      }
+    }
+  },
+  "2401.07913": {
+    "1": {
+      "equation": "\\omega = p k/μ. With this substitution, the full Hamiltonian is written as \\hat H = - ̄h2 2μ d2 dx2 + 1 2m\\omega2x2",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2401.07913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 2, text lines 34-42",
+        "equation_raw": "\\omega = p k/μ. With this substitution, the full Hamiltonian is written as \\hat H = - ̄h2 2μ d2 dx2 + 1 2m\\omega2x2 .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "2µω2x2, where µ is reduced mass, k is the force constant and x is position. It is useful to write the force constant in terms of the oscillator’s natural frequency ω as ω = p k/µ. With this substitution, the full Hamiltonian is written as ˆH = −¯h2 2µ d2 dx2 + 1 2mω2x2 . (1) Therefore, the time-independent Schr¨odinger equation for the 1D harmonic oscillator is: −¯h2"
+      }
+    },
+    "2": {
+      "equation": "- ̄h2 2μ d2 dx2ψ + 1 2μ\\omega2x2ψ = Eψ",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2401.07913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 2, text lines 44-49",
+        "equation_raw": "- ̄h2 2μ d2 dx2ψ + 1 2μ\\omega2x2ψ = Eψ .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(1) Therefore, the time-independent Schr¨odinger equation for the 1D harmonic oscillator is: −¯h2 2µ d2 dx2ψ + 1 2µω2x2ψ = Eψ . (2) After a bit of manipulation this becomes ¯h"
+      }
+    },
+    "3": {
+      "equation": "ψ = 0",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2401.07913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 2, text lines 59-60",
+        "equation_raw": "ψ = 0 .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "2¯h x2 \u0013 ψ = 0 . (3) 2 The parabolic cylinder diﬀerential equation is of the form [40]:"
+      }
+    },
+    "4": {
+      "equation": "y = 0",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2401.07913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 3, text lines 9-10",
+        "equation_raw": "y = 0 ,",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "4z2 \u0013 y = 0 , (4) where n is an integer. Eq. (3) can be transformed into the form of Eq. (4) with the aid of the following substitution:"
+      }
+    },
+    "5": {
+      "equation": "z = r 2μ\\omega",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2401.07913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 3, text lines 13-17",
+        "equation_raw": "z = r 2μ\\omega",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "where n is an integer. Eq. (3) can be transformed into the form of Eq. (4) with the aid of the following substitution: z = r 2µω ¯h x . (5) From Eq. (5) one ﬁnds that d2ψ"
+      }
+    },
+    "6": {
+      "equation": "d2ψ dx2 = 2\\omegaμ ̄h d2ψ",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "7": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2401.07913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 3, text lines 19-24",
+        "equation_raw": "d2ψ dx2 = 2\\omegaμ ̄h d2ψ",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(5) From Eq. (5) one ﬁnds that d2ψ dx2 = 2ωµ ¯h d2ψ dz2 . (6) Using Eqs (6) and (5) in Eq. (3) leads to d2ψ"
+      }
+    },
+    "7": {
+      "equation": "ψ = 0",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        },
+        "6": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2401.07913",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 3, text lines 32-33",
+        "equation_raw": "ψ = 0 .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "4 \u0013 ψ = 0 . (7) As we are expecting quantized energy levels we set E = En and let En = ¯hω(n + 1/2) ."
+      }
+    }
+  },
+  "2410.14472": {
+    "0": {
+      "equation": "\\Delta_{A | M} ( \\hat{\\rho}_{A M} ) ( \\alpha ) & \\coloneqq I ( A \\colon \\mathbb{X} | M )_{ \\hat{\\sigma}_{A M X} } \\geq 0 \\, , \\\\ \\Delta_{A | U} ( \\hat{\\rho}_{A U} ) ( 0 ) & \\coloneqq 0",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "3.92": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2410.14472",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 363-363",
+        "equation_raw": "\\Delta _ { A | M } ( \\hat { \\rho } _ { A M } ) ( \\alpha ) & \\coloneqq I ( A \\colon \\mathbb { X } | M ) _ { \\hat { \\sigma } _ { A M X } } \\geq 0 \\, , \\\\ \\Delta _ { A | U } ( \\hat { \\rho } _ { A U } ) ( 0 ) & \\coloneqq 0 \\, .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "Definition III.10 (integral conditional quantum Fisher information) . Let A be a n -mode bosonic quantum system, M a generic quantum system and ˆ ρ AM a quantum state of AM . For any α ∈ R 2 n × 2 n ≥ 0 , we define the quantum integral Fisher information of A conditioned on M as $$\\Delta _ { A | M } ( \\hat { \\rho } _ { A M } ) ( \\alpha ) & \\coloneqq I ( A \\colon \\mathbb { X } | M ) _ { \\hat { \\sigma } _ { A M X } } \\geq 0 \\, , \\\\ \\Delta _ { A | U } ( \\hat { \\rho } _ { A U } ) ( 0 ) & \\coloneqq 0"
+      }
+    },
+    "1": {
+      "equation": "[1] S(X) ∶= -∫Rn ln(p(x))dp(x)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "3.92": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2410.14472",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex",
+          "normalized_from_raw"
+        ],
+        "equation_location": "PDF page 1, text lines 39-41",
+        "equation_raw": "[1] S(X) ∶= -∫Rn ln(p(x))dp(x),",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "HE Shannon differential entropy of a random variable X with values in Rn and probability density p(x)dnx is [1] S(X) ∶= −∫Rn ln(p(x))dp(x), (1) and quantifies the noise or the information contained in X. The classical Entropy Power Inequality (EPI) [2]–[4] determines"
+      }
+    },
+    "2": {
+      "equation": "exp(2S(X1 + X2) n ) \\ge exp(2S(X1) n ) + exp(2S(X2)",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "3.92": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2410.14472",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 3/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 1, text lines 47-54",
+        "equation_raw": "exp(2S(X1 + X2) n ) \\ge exp(2S(X1) n ) + exp(2S(X2)",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "independent random variables X1 and X2 with values in Rn and given Shannon differential entropies: exp(2S(X1 + X2) n ) ≥exp(2S(X1) n ) + exp(2S(X2) n ), (2) Alessandro Falco was with the Scuola Normale Superiore, 56127 Pisa, Italy. He is now with the Institute for Quantum Inspired and Quantum"
+      }
+    },
+    "3": {
+      "equation": "S ( M X ) = S ( X ) + \\frac{1}{2} \\ln ( \\det ( M ) ) \\, . \\quad \\quad ( 3 )",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3.92": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2410.14472",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 4/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 27-27",
+        "equation_raw": "S ( M X ) = S ( X ) + \\frac { 1 } { 2 } \\ln ( \\det ( M ) ) \\, . \\quad \\quad ( 3 ) \\\\",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "and is a fundamental element of classical information theory [1]. For any random variable X with values in R n and any invertible M ∈ R n × n we have $$S ( M X ) = S ( X ) + \\frac { 1 } { 2 } \\ln ( \\det ( M ) ) \\, . \\quad \\quad ( 3 ) \\\\$$ Let X 1 , . . . , X K be independent random variables taking values in R n , and let M 1 , . . . ,M K ∈ R n × n . Let us consider the linear combination"
+      }
+    },
+    "3.92": {
+      "equation": "P r o f \\, \\text{See [44, Equation (3.92)]}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2410.14472",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 5/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 205-205",
+        "equation_raw": "P r o f \\, \\text { See [44, Equation (3.92)]} .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "$$g ( x ) \\coloneqq ( x + 1 ) \\ln ( x + 1 ) - x \\ln ( x ) \\, .$$ $$P r o f \\, \\text { See [44, Equation (3.92)]} .$$ One-mode thermal Gaussian states can be written as"
+      }
+    },
+    "4": {
+      "equation": "Y ∶= K \\sum k=1",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "3.92": {
+          "grade": "none",
+          "description": ""
+        },
+        "5": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2410.14472",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 6/7 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 1, text lines 73-78",
+        "equation_raw": "Y ∶= K \\sum k=1",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "values in Rn, and let M1, ..., MK ∈Rn×n. Let us consider the linear combination Y ∶= K ∑ k=1 Mk Xk . (4) The property (3) implies the following multimode generaliza- tion of the EPI (2):"
+      }
+    },
+    "5": {
+      "equation": "\\text{n} & \\exp \\left ( \\frac{2 \\, S ( Y )}{n} \\right ) \\geq \\sum_{k = 1}^{K} | \\det ( M_{k} ) |^{ \\frac{2}{n} } \\exp \\left ( \\frac{ 2 \\, S ( X_{k} ) } {n} \\right ) . \\quad ( 5 ) \\\\ \\text{r} & L \\text{et. now} Z \\text{be an arbitrary random variable and let}",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        },
+        "1": {
+          "grade": "none",
+          "description": ""
+        },
+        "2": {
+          "grade": "none",
+          "description": ""
+        },
+        "3": {
+          "grade": "none",
+          "description": ""
+        },
+        "3.92": {
+          "grade": "none",
+          "description": ""
+        },
+        "4": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2410.14472",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 7/7 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "needs_artifact_cleanup",
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 35-35",
+        "equation_raw": "\\begin{array} { c c } \\text {n} & \\exp \\left ( \\frac { 2 \\, S ( Y ) } { n } \\right ) \\geq \\sum _ { k = 1 } ^ { K } | \\det ( M _ { k } ) | ^ { \\frac { 2 } { n } } \\exp \\left ( \\frac { 2 \\, S ( X _ { k } ) } { n } \\right ) . \\quad ( 5 ) \\\\ \\text {r} & L \\text {et. now } Z \\text { be an arbitrary random variable and let} \\end{array}",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "The property (3) implies the following multimode generalization of the EPI (2): $$\\begin{array} { c c } \\text {n} & \\exp \\left ( \\frac { 2 \\, S ( Y ) } { n } \\right ) \\geq \\sum _ { k = 1 } ^ { K } | \\det ( M _ { k } ) | ^ { \\frac { 2 } { n } } \\exp \\left ( \\frac { 2 \\, S ( X _ { k } ) } { n } \\right ) . \\quad ( 5 ) \\\\ \\text {r} & L \\text {et. now } Z \\text { be an arbitrary random variable and let} \\end{array}$$ Let now Z be an arbitrary random variable, and let X 1 , . . . , X K be random varia"
+      }
+    }
+  },
+  "2408.01538": {
+    "0": {
+      "equation": "\\Gamma_{N S} ( x ) \\xrightarrow{x \\to 0} \\frac{ \\Gamma_{N S} ( Q ) } {\\pi x} , \\quad \\Upsilon_{N S}^{\\prime} ( 0 ) = \\frac{\\pi} { \\Gamma_{N S}^{2} ( Q ) }",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "2x": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2408.01538",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 1/2 from docling_markdown_math_block",
+        "extraction_confidence": "high",
+        "quality_warnings": [
+          "normalized_from_raw"
+        ],
+        "equation_location": "Docling Markdown lines 1019-1019",
+        "equation_raw": "\\Gamma _ { N S } ( x ) \\xrightarrow { x \\to 0 } \\frac { \\Gamma _ { N S } ( Q ) } { \\pi x } , \\quad \\Upsilon _ { N S } ^ { \\prime } ( 0 ) = \\frac { \\pi } { \\Gamma _ { N S } ^ { 2 } ( Q ) } .",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "- Γ NS ( x ) has a pole at 0, the behaviour near the pole is given by $$\\Gamma _ { N S } ( x ) \\xrightarrow { x \\to 0 } \\frac { \\Gamma _ { N S } ( Q ) } { \\pi x } , \\quad \\Upsilon _ { N S } ^ { \\prime } ( 0 ) = \\frac { \\pi } { \\Gamma _ { N S } ^ { 2 } ( Q ) } .$$ $$\\frac { \\Upsilon _ { N S } ( 2 x ) } { \\Upsilon _ { N S } ( 2 x - Q ) } = \\mathcal { G } _ { N S } ( x ) \\lambda ^ { - \\frac { Q - 2 x } { b } } ,$$"
+      }
+    },
+    "2x": {
+      "equation": "ΥNS",
+      "meaning": "",
+      "symbols": {},
+      "relations": {
+        "0": {
+          "grade": "none",
+          "description": ""
+        }
+      },
+      "audit-trail": {
+        "download_pdf": "Used arXiv PDF for arXiv:2408.01538",
+        "convert_with_docling": "Converted PDF locally with Docling; status=ConversionStatus.SUCCESS",
+        "extract_enumerated_equations": "Selected equation 2/2 from pymupdf_text_fallback",
+        "extraction_confidence": "low",
+        "quality_warnings": [
+          "fallback_only_needs_review",
+          "pymupdf_text_is_recall_signal_not_trusted_latex"
+        ],
+        "equation_location": "PDF page 41, text lines 23-23",
+        "equation_raw": "ΥNS",
+        "normalize_equation": "Applied conservative cleanup for LaTeX spacing, trailing layout markers, and visible equation labels.",
+        "context_window": "(B.9) •Upsilon functions: ΥNS(2x) ΥNS(2x −Q) = GNS(x)λ−Q−2x b ,"
+      }
+    }
+  }
+}
