@@ -1,0 +1,20 @@
+# Runtime dependencies are milestone-driven and should be installed inside .venv.
+
+# PDF text-layer probing and low-memory fallback extraction.
+pymupdf>=1.24,<2.0
+
+# Unicode-to-LaTeX conversion and lightweight LaTeX parsing for PDF repair milestones.
+pylatexenc>=2.10,<3.0
+
+# Optional PDF diagnostic backends installed by default for reproducible
+# validation reports. The extraction code records their availability but does
+# not treat their absence/presence as final-submission evidence by itself.
+fonttools>=4.53,<5.0
+pdfplumber>=0.11,<0.12
+
+
+# Local PDF document conversion with formula enrichment for PDF-only papers.
+docling>=2.0,<3.0
+
+# Test dependency.
+pytest>=8.0,<9.0
