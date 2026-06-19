@@ -30,7 +30,8 @@ EQUATION_NUMBER_RE = re.compile(
 )
 TAG_RE = re.compile(r"\\tag\{([^{}]+)\}")
 SPACED_NUMBER_RE = re.compile(r"\(\s*([A-Za-z]?\s*\d+(?:\.\d+)?\s*[a-z]?)\s*\)")
-PROSE_EQUATION_REFERENCE_RE = re.compile(r"\b[Ee]q\.?\s*\(?\s*([1-9]\d?[a-z]?)\s*\)?")
+PROSE_EQUATION_REFERENCE_RE = re.compile(r"\b[Ee]q\.?\s*\(?\s*([1-9]\d*(?:\.\d+)?[a-z]?)\s*\)?")
+PAREN_DECIMAL_EQUATION_REFERENCE_RE = re.compile(r"\(\s*([1-9]\d?\.\d{1,3})\s*\)")
 LATEX_LABEL_RE = re.compile(
     r"(?:\\quad|,|\\\s+)\s*"
     r"(?:\\left\s*)?\(\s*([A-Za-z]?\s*\d+(?:\.\d+)?\s*[a-z]?)\s*"
@@ -40,8 +41,8 @@ MATH_SIGNAL_RE = re.compile(
     r"(\\[A-Za-z]+|[=+\-*/^_<>]|[∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]|"
     r"\b(?:psi|phi|rho|sigma|lambda|omega|theta|hat|ket|bra)\b)"
 )
-PDF_LABEL_LINE_RE = re.compile(r"^\s*\(\s*([1-9]\d?[a-z]?)\s*\)\s*$")
-PDF_TRAILING_LABEL_RE = re.compile(r"\(\s*([1-9]\d?[a-z]?)\s*\)\s*$")
+PDF_LABEL_LINE_RE = re.compile(r"^\s*\(\s*([1-9]\d*(?:\.\d+)?[a-z]?)\s*\)\s*$")
+PDF_TRAILING_LABEL_RE = re.compile(r"\(\s*([1-9]\d*(?:\.\d+)?[a-z]?)\s*\)\s*$")
 LATEX_COMMAND_SPACING_RE = re.compile(r"\\([A-Za-z]+)\s+(?=\{)")
 GREEK_TO_LATEX = {
     "α": r"\alpha",
@@ -387,8 +388,6 @@ def label_quality_warnings(number: str) -> list[str]:
     warnings: list[str] = []
     if number == "0":
         warnings.append("suspicious_zero_equation_label")
-    if re.search(r"\d+\.\d+", number):
-        warnings.append("suspicious_decimal_equation_label")
     if re.match(r"[A-Za-z]\d+", number):
         warnings.append("appendix_or_supplement_label")
     if re.match(r"\d+[A-Za-z]+", number):
@@ -399,7 +398,7 @@ def label_quality_warnings(number: str) -> list[str]:
 def is_main_equation_label(number: str) -> bool:
     """Return whether a label should count as a main-paper equation label."""
 
-    return bool(re.fullmatch(r"[1-9]\d?", number))
+    return bool(re.fullmatch(r"[1-9]\d*(?:\.\d+)?", number))
 
 
 def apply_label_scope(equations: list[EquationCandidate], label_scope: str) -> list[EquationCandidate]:
@@ -545,7 +544,7 @@ def extract_from_numbered_lines(markdown: str) -> list[EquationCandidate]:
     return candidates
 
 
-def nearest_prose_equation_reference(lines: list[str], start: int, end: int, radius: int = 2) -> str | None:
+def nearest_prose_equation_reference(lines: list[str], start: int, end: int, radius: int = 4) -> str | None:
     """Find an equation number referenced near an unnumbered Docling math block."""
 
     search_indices: list[int] = []
@@ -563,6 +562,9 @@ def nearest_prose_equation_reference(lines: list[str], start: int, end: int, rad
         references = PROSE_EQUATION_REFERENCE_RE.findall(line)
         if len(references) == 1:
             return re.sub(r"\s+", "", references[0])
+        decimal_references = PAREN_DECIMAL_EQUATION_REFERENCE_RE.findall(line)
+        if len(decimal_references) == 1:
+            return re.sub(r"\s+", "", decimal_references[0])
     return None
 
 
@@ -908,6 +910,10 @@ def retry_fallback_equations_with_docling_pages(
 def equation_number_sort_key(number: str) -> tuple[int, int, str]:
     """Sort common equation labels in document order."""
 
+    decimal_match = re.fullmatch(r"(\d+)\.(\d+)", number)
+    if decimal_match:
+        major, minor = decimal_match.groups()
+        return 0, int(major), f"{int(minor):06d}"
     match = re.match(r"([A-Za-z]?)(\d+)(.*)", number)
     if match:
         prefix, numeric, suffix = match.groups()
@@ -1124,7 +1130,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--max-equations",
         type=int,
-        default=7,
+        default=200,
         help="Maximum relevant enumerated equations to keep for this paper.",
     )
     parser.add_argument(

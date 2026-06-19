@@ -9,6 +9,7 @@ MODEL_CACHE_DIR="${MODEL_CACHE_DIR:-.cache/model_cache}"
 FORCE_CPU="${FORCE_CPU:-1}"
 LABEL_SCOPE="${LABEL_SCOPE:-all}"
 REUSE_MARKDOWN="${REUSE_MARKDOWN:-0}"
+MAX_EQUATIONS="${MAX_EQUATIONS:-200}"
 
 export HF_HOME="${PWD}/${MODEL_CACHE_DIR}/huggingface"
 export HF_HUB_CACHE="${HF_HOME}/hub"
@@ -44,6 +45,7 @@ for PAPER_NUMBER in "${PDF_ONLY_PAPERS[@]}"; do
   fi
   "${PYTHON_EXE}" pdf_equation_pipeline.py \
     --paper-number "${PAPER_NUMBER}" \
+    --max-equations "${MAX_EQUATIONS}" \
     --sleep-seconds 3 \
     --output "${OUTPUT_JSON}" \
     --report-output "${REPORT_JSON}" \
