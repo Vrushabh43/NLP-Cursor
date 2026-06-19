@@ -12,6 +12,7 @@ import argparse
 import json
 import re
 import time
+import unicodedata
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -35,6 +36,30 @@ MATH_SIGNAL_RE = re.compile(
     r"(\\[A-Za-z]+|[=+\-*/^_<>]|[∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]|"
     r"\b(?:psi|phi|rho|sigma|lambda|omega|theta|hat|ket|bra)\b)"
 )
+PDF_LABEL_LINE_RE = re.compile(r"^\s*\(\s*([1-9]\d?[a-z]?)\s*\)\s*$")
+PDF_TRAILING_LABEL_RE = re.compile(r"\(\s*([1-9]\d?[a-z]?)\s*\)\s*$")
+LATEX_COMMAND_SPACING_RE = re.compile(r"\\([A-Za-z]+)\s+(?=\{)")
+GREEK_TO_LATEX = {
+    "α": r"\alpha",
+    "β": r"\beta",
+    "γ": r"\gamma",
+    "δ": r"\delta",
+    "ε": r"\varepsilon",
+    "κ": r"\kappa",
+    "λ": r"\lambda",
+    "π": r"\pi",
+    "ω": r"\omega",
+    "ℏ": r"\hbar",
+    "∆": r"\Delta",
+    "∗": r"^*",
+    "⟨": r"\langle ",
+    "⟩": r" \rangle",
+    "−": "-",
+    "·": r"\cdot",
+    "√": r"\sqrt",
+    "Σ": r"\sum",
+    "∑": r"\sum",
+}
 
 
 @dataclass(frozen=True)
@@ -43,10 +68,24 @@ class EquationCandidate:
 
     number: str
     latex: str
+    raw_latex: str
     source: str
+    confidence: str
+    warnings: list[str]
     line_start: int
     line_end: int
     context: str
+    source_location: str
+
+
+@dataclass(frozen=True)
+class PdfTextLine:
+    """One text-layer line extracted from a PDF page."""
+
+    text: str
+    page: int
+    page_line: int
+    global_line: int
 
 
 def read_paper_list(path: Path) -> list[str]:
@@ -235,6 +274,62 @@ def strip_equation_number(text: str, number: str | None = None) -> str:
     return (candidate_text + suffix).strip()
 
 
+def normalize_equation_for_output(text: str) -> str:
+    """Apply conservative LaTeX cleanup without changing equation meaning."""
+
+    normalized = unicodedata.normalize("NFKC", text).strip()
+    normalized = strip_equation_number(normalized)
+    normalized = re.sub(
+        r"^\\begin\{array\}\s*\{[^{}]*\}\s*(.*?)\s*\\end\{array\}$",
+        r"\1",
+        normalized,
+    ).strip()
+    normalized = re.sub(r"^\{\s*(?:[A-Za-z]\s+){1,}[A-Za-z]\s*\}\s*&\s*", "", normalized).strip()
+    normalized = re.sub(r"\\mathbf\s*\{\s*i\s*\}", r"\\mathrm{i}", normalized)
+    normalized = re.sub(r"\\mathbf\s+i\b", r"\\mathrm{i}", normalized)
+    normalized = re.sub(r"(?:\\quad|\\qquad|\\,|\\;|\\:|\s)+$", "", normalized).strip()
+    normalized = re.sub(r"(?:\\\s*){2,}$", "", normalized).strip()
+    normalized = re.sub(r"(?<!\\)[,.]\s*$", "", normalized).strip()
+    normalized = re.sub(r"\\frac\s*\{\s*([^{}]+?)\s*\}\s*\{\s*([^{}]+?)\s*\}", r"\\frac{\1}{\2}", normalized)
+    normalized = re.sub(r"\{\s*([^{}]+?)\s*\}", lambda match: "{" + match.group(1).strip() + "}", normalized)
+    normalized = re.sub(r"_\s*\{\s*([^{}]+?)\s*\}", r"_{\1}", normalized)
+    normalized = re.sub(r"\^\s*\{\s*([^{}]+?)\s*\}", r"^{\1}", normalized)
+    normalized = re.sub(r"\s+([_^])", r"\1", normalized)
+    normalized = re.sub(r"([_^])\s+", r"\1", normalized)
+    normalized = LATEX_COMMAND_SPACING_RE.sub(r"\\\1", normalized)
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    normalized = re.sub(r"(?:\\quad|\\qquad|\\,|\\;|\\:|\\\s*)+$", "", normalized).strip()
+    return normalized
+
+
+def confidence_for_source(source: str) -> str:
+    """Assign confidence based on the extraction source."""
+
+    if source == "docling_markdown_math_block":
+        return "high"
+    if source == "docling_markdown_numbered_line":
+        return "medium"
+    return "low"
+
+
+def quality_warnings(source: str, equation: str, raw_latex: str) -> list[str]:
+    """Create short QA warnings for audit and validation reports."""
+
+    warnings: list[str] = []
+    if source == "pymupdf_text_fallback":
+        warnings.append("fallback_only_needs_review")
+        warnings.append("pymupdf_text_is_recall_signal_not_trusted_latex")
+    if re.search(r"\b(?:where|Megahertz|cients|coeffi|respectively|Fig)\b", equation, re.IGNORECASE):
+        warnings.append("possible_prose_contamination")
+    if re.search(r"\b(?:X\s+[a-z]|ħ\(|\d+i\\beta|\\kappaT LS|\\sqrt\\[A-Za-z])", equation):
+        warnings.append("possible_pdf_text_degradation")
+    if r"\begin{array}" in raw_latex or re.search(r"^\s*\{\s*(?:[A-Za-z]\s+){1,}[A-Za-z]\s*\}\s*&", raw_latex):
+        warnings.append("needs_artifact_cleanup")
+    if raw_latex != equation:
+        warnings.append("normalized_from_raw")
+    return warnings
+
+
 def window_context(lines: list[str], start: int, end: int, radius: int = 2) -> str:
     """Return a short neighboring text window for audit and later QA."""
 
@@ -264,16 +359,22 @@ def extract_from_math_blocks(markdown: str) -> list[EquationCandidate]:
             raw_block = "\n".join(block_lines)
             number = extract_number_from_text(raw_block, allow_embedded_label=True)
             if number is not None:
-                latex = strip_equation_number(normalize_latex(raw_block), number)
+                raw_latex = strip_equation_number(normalize_latex(raw_block), number)
+                latex = normalize_equation_for_output(raw_latex)
                 if latex:
+                    source = "docling_markdown_math_block"
                     candidates.append(
                         EquationCandidate(
                             number=number,
                             latex=latex,
-                            source="docling_markdown_math_block",
+                            raw_latex=raw_latex,
+                            source=source,
+                            confidence=confidence_for_source(source),
+                            warnings=quality_warnings(source, latex, raw_latex),
                             line_start=start + 1,
                             line_end=end + 1,
                             context=window_context(lines, start, end),
+                            source_location=f"Docling Markdown lines {start + 1}-{end + 1}",
                         )
                     )
             index += 1
@@ -298,16 +399,22 @@ def extract_from_math_blocks(markdown: str) -> list[EquationCandidate]:
                         break
 
         if number is not None:
-            latex = strip_equation_number(normalize_latex(raw_block), number)
+            raw_latex = strip_equation_number(normalize_latex(raw_block), number)
+            latex = normalize_equation_for_output(raw_latex)
             if latex:
+                source = "docling_markdown_math_block"
                 candidates.append(
                     EquationCandidate(
                         number=number,
                         latex=latex,
-                        source="docling_markdown_math_block",
+                        raw_latex=raw_latex,
+                        source=source,
+                        confidence=confidence_for_source(source),
+                        warnings=quality_warnings(source, latex, raw_latex),
                         line_start=start + 1,
                         line_end=end + 1,
                         context=window_context(lines, start, end),
+                        source_location=f"Docling Markdown lines {start + 1}-{end + 1}",
                     )
                 )
         index += 1
@@ -336,39 +443,241 @@ def extract_from_numbered_lines(markdown: str) -> list[EquationCandidate]:
                 start = index - 1
 
         if MATH_SIGNAL_RE.search(equation_text):
+            raw_latex = normalize_latex(equation_text)
+            latex = normalize_equation_for_output(raw_latex)
+            source = "docling_markdown_numbered_line"
             candidates.append(
                 EquationCandidate(
                     number=number,
-                    latex=normalize_latex(equation_text),
-                    source="docling_markdown_numbered_line",
+                    latex=latex,
+                    raw_latex=raw_latex,
+                    source=source,
+                    confidence=confidence_for_source(source),
+                    warnings=quality_warnings(source, latex, raw_latex),
                     line_start=start + 1,
                     line_end=index + 1,
                     context=window_context(lines, start, index),
+                    source_location=f"Docling Markdown lines {start + 1}-{index + 1}",
                 )
             )
     return candidates
 
 
+def unicode_math_to_latexish(text: str) -> str:
+    """Convert common PDF text-layer math glyphs into LaTeX-like text.
+
+    The fallback is intentionally approximate: its main purpose is recall when
+    Docling misses later pages. The raw fallback text is preserved in the audit
+    trail so these approximations remain reviewable.
+    """
+
+    converted = unicodedata.normalize("NFKC", text)
+    for glyph, latex in GREEK_TO_LATEX.items():
+        converted = converted.replace(glyph, latex)
+    converted = converted.replace("ˆ", r"\hat ")
+    converted = converted.replace("˙", r"\dot ")
+    converted = converted.replace("∂", r"\partial ")
+    converted = converted.replace("∇", r"\nabla ")
+    converted = converted.replace("≤", r"\le ")
+    converted = converted.replace("≥", r"\ge ")
+    converted = converted.replace("≠", r"\ne ")
+    converted = converted.replace("≈", r"\approx ")
+    converted = converted.replace("∞", r"\infty ")
+    converted = re.sub(r"\s+", " ", converted).strip()
+    return converted
+
+
+def extract_pdf_text_lines(pdf_path: Path) -> list[PdfTextLine]:
+    """Extract page-aware text lines with PyMuPDF for low-memory fallback."""
+
+    try:
+        import fitz
+    except ImportError as exc:
+        raise RuntimeError(
+            "PyMuPDF is required for the PDF fallback. Install dependencies with "
+            "`python -m pip install -r requirements.txt`."
+        ) from exc
+
+    text_lines: list[PdfTextLine] = []
+    global_line = 0
+    with fitz.open(pdf_path) as document:
+        for page_index, page in enumerate(document, start=1):
+            for page_line, line in enumerate(page.get_text("text").splitlines(), start=1):
+                global_line += 1
+                text_lines.append(
+                    PdfTextLine(
+                        text=line.strip(),
+                        page=page_index,
+                        page_line=page_line,
+                        global_line=global_line,
+                    )
+                )
+    return text_lines
+
+
+def pdf_label_from_line(line: str, *, page_line: int) -> tuple[str | None, bool]:
+    """Return a possible equation label and whether the label is isolated."""
+
+    stripped = line.strip()
+    isolated = PDF_LABEL_LINE_RE.match(stripped)
+    if isolated:
+        return isolated.group(1), True
+    trailing = PDF_TRAILING_LABEL_RE.search(stripped)
+    if trailing and MATH_SIGNAL_RE.search(stripped):
+        return trailing.group(1), False
+    return None, False
+
+
+def is_likely_pdf_math_fragment(line: str) -> bool:
+    """Heuristic for keeping nearby PDF text-layer lines as equation fragments."""
+
+    stripped = line.strip()
+    if not stripped:
+        return False
+    if re.search(r"\b(?:Eq|Fig|where|giving|respectively|represents|describes)\b", stripped, re.IGNORECASE):
+        return False
+    if re.search(r"\[\d+(?:,\s*\d+)*\]", stripped):
+        return False
+    if len(stripped) > 160 and not MATH_SIGNAL_RE.search(stripped):
+        return False
+    prose_words = len(re.findall(r"\b[a-zA-Z]{4,}\b", stripped))
+    math_marks = len(re.findall(r"[=+\-*/^_()|⟨⟩∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]", stripped))
+    strong_math_marks = len(re.findall(r"[=+*/^_|⟨⟩∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]", stripped))
+    if prose_words > 3 and strong_math_marks == 0:
+        return False
+    if MATH_SIGNAL_RE.search(stripped) and (math_marks >= 2 or prose_words <= 6):
+        return True
+    return bool(re.fullmatch(r"[\w\s\\{}()[\].,|+\-*/^_=<>⟨⟩∑∫√≤≥≠≈∞∂∇α-ωΑ-Ω]+", stripped) and math_marks >= 3)
+
+
+def is_short_pdf_equation_continuation(line: str) -> bool:
+    """Return whether a short PDF line can continue a split equation."""
+
+    stripped = line.strip()
+    if not stripped or len(stripped) > 35:
+        return False
+    if re.search(r"\b(?:Eq|Fig|where|giving|respectively|represents|describes)\b", stripped, re.IGNORECASE):
+        return False
+    prose_words = len(re.findall(r"\b[a-zA-Z]{4,}\b", stripped))
+    return prose_words <= 1 and bool(re.search(r"[\w\d|()[\]{}+\-*/^_=<>⟨⟩α-ωΑ-Ω]", stripped))
+
+
+def collect_pdf_equation_window(lines: list[PdfTextLine], label_index: int, isolated_label: bool) -> tuple[str, int, int]:
+    """Collect a high-recall equation window around a PDF text-layer label."""
+
+    current = lines[label_index].text
+    start = label_index
+    current_without_label = PDF_TRAILING_LABEL_RE.sub("", current).strip()
+    fragments: list[str] = [] if isolated_label else [current_without_label]
+    for index in range(label_index - 1, max(-1, label_index - 16), -1):
+        candidate = lines[index].text
+        previous_label = PDF_TRAILING_LABEL_RE.search(candidate) or PDF_LABEL_LINE_RE.match(candidate)
+        if fragments and previous_label:
+            break
+        is_math_fragment = is_likely_pdf_math_fragment(candidate)
+        is_continuation = bool(fragments) and is_short_pdf_equation_continuation(candidate)
+        if not is_math_fragment and not is_continuation:
+            if fragments:
+                break
+            continue
+        fragments.insert(0, candidate)
+        start = index
+
+    end = label_index
+    if not fragments and label_index > 0:
+        fragments.append(lines[label_index - 1].text)
+        start = label_index - 1
+    return " ".join(fragment for fragment in fragments if fragment), start, end
+
+
+def extract_from_pdf_text(pdf_path: Path, max_equations: int) -> list[EquationCandidate]:
+    """Extract missing numbered equations from the PDF text layer.
+
+    This fallback favors recall over perfect LaTeX. It is used to avoid missing
+    equations when Docling returns partial output because of local memory limits.
+    """
+
+    lines = extract_pdf_text_lines(pdf_path)
+    candidates: list[EquationCandidate] = []
+    for index, line in enumerate(lines):
+        number, isolated_label = pdf_label_from_line(line.text, page_line=line.page_line)
+        if number is None:
+            continue
+
+        raw_text, start, end = collect_pdf_equation_window(lines, index, isolated_label)
+        if not MATH_SIGNAL_RE.search(raw_text):
+            continue
+
+        raw_text = re.sub(r"\(\s*" + re.escape(number) + r"\s*\)\s*$", "", raw_text).strip()
+        raw_latex = unicode_math_to_latexish(raw_text)
+        latex = normalize_equation_for_output(raw_latex)
+        if not latex:
+            continue
+
+        source = "pymupdf_text_fallback"
+        context_start = max(0, start - 2)
+        context_end = min(len(lines), end + 3)
+        context = " ".join(item.text for item in lines[context_start:context_end])[:500]
+        candidates.append(
+            EquationCandidate(
+                number=number,
+                latex=latex,
+                raw_latex=raw_latex,
+                source=source,
+                confidence=confidence_for_source(source),
+                warnings=quality_warnings(source, latex, raw_latex),
+                line_start=lines[start].global_line,
+                line_end=lines[end].global_line,
+                context=context,
+                source_location=(
+                    f"PDF page {line.page}, text lines "
+                    f"{lines[start].page_line}-{lines[end].page_line}"
+                ),
+            )
+        )
+        if len(candidates) >= max_equations:
+            break
+    return candidates
+
+
+def equation_number_sort_key(number: str) -> tuple[int, int, str]:
+    """Sort common equation labels in document order."""
+
+    match = re.match(r"([A-Za-z]?)(\d+)(.*)", number)
+    if match:
+        prefix, numeric, suffix = match.groups()
+        prefix_rank = 1 if prefix else 0
+        return prefix_rank, int(numeric), suffix
+    return 2, 10**9, number
+
+
 def deduplicate_candidates(candidates: list[EquationCandidate], limit: int) -> list[EquationCandidate]:
     """Keep first occurrence of each equation number while preserving order."""
 
-    selected: list[EquationCandidate] = []
+    selected_by_number: dict[str, EquationCandidate] = {}
     seen: set[str] = set()
     for candidate in candidates:
         if candidate.number in seen:
             continue
         seen.add(candidate.number)
-        selected.append(candidate)
-        if len(selected) >= limit:
-            break
-    return selected
+        selected_by_number[candidate.number] = candidate
+    selected = sorted(selected_by_number.values(), key=lambda candidate: equation_number_sort_key(candidate.number))
+    return selected[:limit]
 
 
-def extract_equations(markdown: str, max_equations: int) -> list[EquationCandidate]:
+def extract_equations(
+    markdown: str,
+    max_equations: int,
+    *,
+    pdf_path: Path | None = None,
+    use_pdf_fallback: bool = True,
+) -> list[EquationCandidate]:
     """Run the deterministic equation candidate extractors."""
 
     candidates = extract_from_math_blocks(markdown)
     candidates.extend(extract_from_numbered_lines(markdown))
+    if use_pdf_fallback and pdf_path is not None:
+        candidates.extend(extract_from_pdf_text(pdf_path, max_equations))
     return deduplicate_candidates(candidates, max_equations)
 
 
@@ -405,13 +714,63 @@ def build_dataset_entry(
                 "extract_enumerated_equations": (
                     f"Selected equation {rank}/{len(equations)} from {candidate.source}"
                 ),
-                "equation_location": (
-                    f"Docling Markdown lines {candidate.line_start}-{candidate.line_end}"
+                "extraction_confidence": candidate.confidence,
+                "quality_warnings": candidate.warnings,
+                "equation_location": candidate.source_location,
+                "equation_raw": candidate.raw_latex,
+                "normalize_equation": (
+                    "Applied conservative cleanup for LaTeX spacing, trailing layout markers, "
+                    "and visible equation labels."
                 ),
                 "context_window": candidate.context,
             },
         }
     return {arxiv_id: paper_entry}
+
+
+def build_validation_report(
+    arxiv_id: str,
+    equations: list[EquationCandidate],
+    conversion_metadata: dict[str, Any],
+) -> dict[str, Any]:
+    """Build a compact QA report for manual accuracy review."""
+
+    actionable_warnings = {
+        candidate.number: [
+            warning for warning in candidate.warnings if warning != "normalized_from_raw"
+        ]
+        for candidate in equations
+    }
+    return {
+        arxiv_id: {
+            "equation_count": len(equations),
+            "equation_labels": [candidate.number for candidate in equations],
+            "docling_status": conversion_metadata.get("status", "unknown"),
+            "sources": {
+                candidate.number: candidate.source
+                for candidate in equations
+            },
+            "confidence": {
+                candidate.number: candidate.confidence
+                for candidate in equations
+            },
+            "quality_warnings": {
+                candidate.number: candidate.warnings
+                for candidate in equations
+                if candidate.warnings
+            },
+            "fallback_only_labels": [
+                candidate.number
+                for candidate in equations
+                if candidate.source == "pymupdf_text_fallback"
+            ],
+            "needs_review": [
+                candidate.number
+                for candidate in equations
+                if candidate.confidence == "low" or actionable_warnings.get(candidate.number)
+            ],
+        }
+    }
 
 
 def write_json(path: Path, payload: dict[str, Any], *, merge: bool) -> None:
@@ -448,6 +807,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("output/pdf/equations_pdf.json"),
         help="Professor-shaped output JSON path.",
+    )
+    parser.add_argument(
+        "--report-output",
+        type=Path,
+        default=None,
+        help="Optional compact QA report JSON path.",
     )
     parser.add_argument(
         "--cache-dir",
@@ -488,6 +853,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Enable OCR for scanned PDFs. Leave off for normal arXiv text-layer PDFs.",
     )
+    parser.add_argument(
+        "--disable-pdf-fallback",
+        action="store_true",
+        help="Disable PyMuPDF text-layer fallback extraction.",
+    )
     return parser.parse_args()
 
 
@@ -503,14 +873,33 @@ def main() -> None:
         sleep_seconds=args.sleep_seconds,
         force=args.force_download,
     )
-    markdown, conversion_metadata = convert_pdf_with_docling(pdf_path, enable_ocr=args.enable_ocr)
+    try:
+        markdown, conversion_metadata = convert_pdf_with_docling(pdf_path, enable_ocr=args.enable_ocr)
+    except Exception as exc:
+        markdown = ""
+        conversion_metadata = {
+            "status": f"docling_failed:{type(exc).__name__}",
+            "converter": "docling",
+            "ocr_enabled": args.enable_ocr,
+            "markdown_chars": 0,
+            "error": str(exc),
+        }
+        print(f"Docling failed for arXiv:{arxiv_id}; continuing with PDF text fallback: {exc}")
     if args.save_docling_markdown is not None:
         args.save_docling_markdown.parent.mkdir(parents=True, exist_ok=True)
         args.save_docling_markdown.write_text(markdown, encoding="utf-8")
 
-    equations = extract_equations(markdown, args.max_equations)
+    equations = extract_equations(
+        markdown,
+        args.max_equations,
+        pdf_path=pdf_path,
+        use_pdf_fallback=not args.disable_pdf_fallback,
+    )
     dataset_entry = build_dataset_entry(arxiv_id, equations, conversion_metadata)
     write_json(args.output, dataset_entry, merge=args.merge)
+    if args.report_output is not None:
+        report_entry = build_validation_report(arxiv_id, equations, conversion_metadata)
+        write_json(args.report_output, report_entry, merge=args.merge)
     print(
         f"arXiv:{arxiv_id}: extracted {len(equations)} enumerated equation(s) "
         f"to {args.output}"
