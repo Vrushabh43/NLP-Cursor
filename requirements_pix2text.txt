@@ -1,0 +1,3 @@
+# Optional local fallback for formula-heavy PDF pages.
+# Install only when running with --enable-pix2text-fallback.
+pix2text>=1.1,<2.0

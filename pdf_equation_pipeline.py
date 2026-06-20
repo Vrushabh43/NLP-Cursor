@@ -12,7 +12,9 @@ import argparse
 import json
 import os
 import re
+import shutil
 import time
+import tempfile
 import unicodedata
 import urllib.error
 import urllib.request
@@ -434,6 +436,8 @@ def confidence_for_source(source: str) -> str:
 
     if source in {"docling_markdown_math_block", "docling_page_retry_math_block"}:
         return "high"
+    if source.startswith("pix2text_markdown_"):
+        return "medium"
     if source in {"docling_markdown_numbered_line", "docling_markdown_neighbor_reference"}:
         return "medium"
     return "low"
@@ -445,7 +449,9 @@ def quality_warnings(source: str, equation: str, raw_latex: str) -> list[str]:
     warnings: list[str] = []
     if source == "docling_page_retry_math_block":
         warnings.append("page_retry_replaced_fallback")
-    if source == "docling_markdown_neighbor_reference":
+    if source.startswith("pix2text_markdown_"):
+        warnings.append("pix2text_fallback_replaced_pymupdf")
+    if source in {"docling_markdown_neighbor_reference", "pix2text_markdown_neighbor_reference"}:
         warnings.append("label_inferred_from_nearby_prose")
     if source == "pymupdf_text_fallback":
         warnings.append("fallback_only_needs_review")
@@ -973,6 +979,192 @@ def with_page_retry_source(candidate: EquationCandidate) -> EquationCandidate:
     )
 
 
+def with_pix2text_source(candidate: EquationCandidate) -> EquationCandidate:
+    """Return a Pix2Text fallback candidate with updated source metadata."""
+
+    source_map = {
+        "docling_markdown_math_block": "pix2text_markdown_math_block",
+        "docling_markdown_numbered_line": "pix2text_markdown_numbered_line",
+        "docling_markdown_neighbor_reference": "pix2text_markdown_neighbor_reference",
+    }
+    source = source_map.get(candidate.source, "pix2text_markdown_math_block")
+    return EquationCandidate(
+        number=candidate.number,
+        latex=candidate.latex,
+        raw_latex=candidate.raw_latex,
+        source=source,
+        confidence=confidence_for_source(source),
+        warnings=quality_warnings(source, candidate.latex, candidate.raw_latex),
+        line_start=candidate.line_start,
+        line_end=candidate.line_end,
+        context=candidate.context,
+        source_location=f"Pix2Text fallback from {candidate.source_location}",
+    )
+
+
+def fallback_pages_for_pix2text(
+    equations: list[EquationCandidate],
+    *,
+    max_pages: int,
+) -> list[int]:
+    """Select PDF pages worth retrying with Pix2Text."""
+
+    pages = []
+    seen = set()
+    for candidate in equations:
+        if candidate.source != "pymupdf_text_fallback":
+            continue
+        page_number = page_number_from_location(candidate.source_location)
+        if page_number is None or page_number in seen:
+            continue
+        seen.add(page_number)
+        pages.append(page_number)
+        if len(pages) >= max_pages:
+            break
+    return pages
+
+
+def read_markdown_files(markdown_dir: Path) -> str:
+    """Read all Markdown files from an output directory in stable order."""
+
+    markdown_parts = []
+    for markdown_file in sorted(markdown_dir.rglob("*.md")):
+        markdown_parts.append(markdown_file.read_text(encoding="utf-8", errors="ignore"))
+    return "\n\n".join(markdown_parts)
+
+
+def pix2text_cache_path(pdf_path: Path, pages: list[int], cache_dir: Path) -> Path:
+    """Build a cache path for Pix2Text Markdown output."""
+
+    page_key = "all" if not pages else "_".join(str(page) for page in pages)
+    return cache_dir / f"{pdf_path.stem}_pages_{page_key}.md"
+
+
+def convert_pdf_pages_with_pix2text(
+    pdf_path: Path,
+    pages: list[int],
+    *,
+    cache_dir: Path,
+) -> tuple[str, dict[str, Any]]:
+    """Convert selected PDF pages to Markdown with local Pix2Text."""
+
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    markdown_cache = pix2text_cache_path(pdf_path, pages, cache_dir)
+    if markdown_cache.exists():
+        markdown = markdown_cache.read_text(encoding="utf-8", errors="ignore")
+        return markdown, {
+            "status": "cached_pix2text_markdown",
+            "converter": "pix2text",
+            "pages": pages,
+            "markdown_chars": len(markdown),
+            "cached_markdown": str(markdown_cache),
+        }
+
+    try:
+        from pix2text import Pix2Text
+    except ImportError as exc:
+        raise RuntimeError(
+            "Pix2Text fallback requested but pix2text is not installed. "
+            "Install it with `python -m pip install pix2text`."
+        ) from exc
+
+    zero_based_pages = [page - 1 for page in pages if page > 0] or None
+    output_root = cache_dir / f"{pdf_path.stem}_pix2text_work"
+    if output_root.exists():
+        shutil.rmtree(output_root)
+    output_root.mkdir(parents=True, exist_ok=True)
+
+    with tempfile.TemporaryDirectory(prefix="pix2text_", dir=str(output_root)) as temporary_dir:
+        temporary_path = Path(temporary_dir)
+        p2t = Pix2Text.from_config()
+        document = p2t.recognize_pdf(str(pdf_path), page_numbers=zero_based_pages)
+
+        markdown = ""
+        if isinstance(document, str):
+            markdown = document
+        elif hasattr(document, "to_markdown"):
+            result = document.to_markdown(str(temporary_path))
+            if isinstance(result, str) and "\n" in result:
+                markdown = result
+            elif isinstance(result, str) and Path(result).exists():
+                result_path = Path(result)
+                markdown = result_path.read_text(encoding="utf-8", errors="ignore")
+            else:
+                markdown = read_markdown_files(temporary_path)
+        else:
+            markdown = str(document)
+
+    markdown_cache.write_text(markdown, encoding="utf-8")
+    return markdown, {
+        "status": "ConversionStatus.SUCCESS",
+        "converter": "pix2text",
+        "pages": pages,
+        "markdown_chars": len(markdown),
+        "cached_markdown": str(markdown_cache),
+    }
+
+
+def retry_fallback_equations_with_pix2text_pages(
+    pdf_path: Path,
+    equations: list[EquationCandidate],
+    *,
+    cache_dir: Path,
+    max_pages: int,
+    max_equations: int,
+) -> list[EquationCandidate]:
+    """Replace weak PyMuPDF fallback equations with Pix2Text Markdown equations."""
+
+    pages = fallback_pages_for_pix2text(equations, max_pages=max_pages)
+    if not pages:
+        return equations
+
+    try:
+        pix2text_markdown, metadata = convert_pdf_pages_with_pix2text(
+            pdf_path,
+            pages,
+            cache_dir=cache_dir,
+        )
+    except Exception as exc:
+        print(f"Pix2Text fallback failed for {pdf_path.name}: {exc}")
+        return equations
+
+    pix2text_candidates = [
+        with_pix2text_source(candidate)
+        for candidate in extract_equations(
+            pix2text_markdown,
+            max_equations=max_equations,
+            use_pdf_fallback=False,
+        )
+    ]
+    if not pix2text_candidates:
+        print(f"Pix2Text fallback found no equations for {pdf_path.name}; pages={pages}")
+        return equations
+
+    replacements = {candidate.number: candidate for candidate in pix2text_candidates}
+    existing_numbers = {candidate.number for candidate in equations}
+    improved: list[EquationCandidate] = []
+    replaced = 0
+    for candidate in equations:
+        if candidate.source == "pymupdf_text_fallback" and candidate.number in replacements:
+            improved.append(replacements[candidate.number])
+            replaced += 1
+        else:
+            improved.append(candidate)
+
+    additions = [
+        candidate
+        for candidate in pix2text_candidates
+        if candidate.number not in existing_numbers
+    ]
+    if additions:
+        improved.extend(additions)
+    print(
+        f"Pix2Text fallback for {pdf_path.name}: pages={metadata['pages']}, "
+        f"candidates={len(pix2text_candidates)}, replaced={replaced}, added={len(additions)}"
+    )
+    return deduplicate_candidates(improved, max_equations)
+
+
 def retry_fallback_equations_with_docling_pages(
     pdf_path: Path,
     equations: list[EquationCandidate],
@@ -1321,6 +1513,23 @@ def parse_args() -> argparse.Namespace:
         help="Reject PDF text fallback candidates that look prose-heavy or structurally weak.",
     )
     parser.add_argument(
+        "--enable-pix2text-fallback",
+        action="store_true",
+        help="Use local Pix2Text on pages where PyMuPDF found low-confidence fallback labels.",
+    )
+    parser.add_argument(
+        "--pix2text-cache-dir",
+        type=Path,
+        default=Path("data/pix2text_cache"),
+        help="Directory for cached Pix2Text Markdown fallback output.",
+    )
+    parser.add_argument(
+        "--pix2text-max-pages",
+        type=int,
+        default=8,
+        help="Maximum fallback pages per paper to send to Pix2Text.",
+    )
+    parser.add_argument(
         "--disable-page-retry",
         action="store_true",
         help="Disable page-level Docling retry for PyMuPDF fallback equations.",
@@ -1347,6 +1556,7 @@ def main() -> None:
         not cached_markdown_available
         or not args.disable_pdf_fallback
         or not args.disable_page_retry
+        or args.enable_pix2text_fallback
     )
     pdf_path = (
         download_arxiv_pdf(
@@ -1403,6 +1613,14 @@ def main() -> None:
         use_pdf_fallback=not args.disable_pdf_fallback and pdf_path is not None,
         strict_pdf_fallback=args.strict_pdf_fallback,
     )
+    if args.enable_pix2text_fallback and pdf_path is not None:
+        equations = retry_fallback_equations_with_pix2text_pages(
+            pdf_path,
+            equations,
+            cache_dir=args.pix2text_cache_dir,
+            max_pages=args.pix2text_max_pages,
+            max_equations=args.max_equations,
+        )
     if not args.disable_page_retry and pdf_path is not None:
         equations = retry_fallback_equations_with_docling_pages(
             pdf_path,

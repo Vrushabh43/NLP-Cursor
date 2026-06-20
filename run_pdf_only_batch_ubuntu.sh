@@ -15,6 +15,9 @@ REUSE_MARKDOWN="${REUSE_MARKDOWN:-0}"
 MAX_EQUATIONS="${MAX_EQUATIONS:-200}"
 PAGE_RETRY="${PAGE_RETRY:-0}"
 STRICT_PDF_FALLBACK="${STRICT_PDF_FALLBACK:-1}"
+PIX2TEXT_FALLBACK="${PIX2TEXT_FALLBACK:-0}"
+PIX2TEXT_MAX_PAGES="${PIX2TEXT_MAX_PAGES:-8}"
+PIX2TEXT_CACHE_DIR="${PIX2TEXT_CACHE_DIR:-data/pix2text_cache}"
 
 export HF_HOME="${PWD}/${MODEL_CACHE_DIR}/huggingface"
 export HF_HUB_CACHE="${HF_HOME}/hub"
@@ -52,6 +55,11 @@ for PAPER_NUMBER in "${PDF_ONLY_PAPERS[@]}"; do
   fi
   if [[ "${STRICT_PDF_FALLBACK}" == "1" ]]; then
     EXTRA_ARGS+=(--strict-pdf-fallback)
+  fi
+  if [[ "${PIX2TEXT_FALLBACK}" == "1" ]]; then
+    EXTRA_ARGS+=(--enable-pix2text-fallback)
+    EXTRA_ARGS+=(--pix2text-cache-dir "${PIX2TEXT_CACHE_DIR}")
+    EXTRA_ARGS+=(--pix2text-max-pages "${PIX2TEXT_MAX_PAGES}")
   fi
   if [[ "${REUSE_MARKDOWN}" == "1" && -s "${MARKDOWN_FILE}" ]]; then
     echo "Reusing cached Docling Markdown: ${MARKDOWN_FILE}"
