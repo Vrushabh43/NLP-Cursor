@@ -76,11 +76,11 @@ $$w _ { i } ^ { t + 1 } = w _ { i } ^ { t } - \bar { \alpha } ^ { t } h ^ { t } 
 
 Now, consider the mapping of a data vector x to a higher dimensional space Ψ( x ) ∈ Ω. All the weight vectors w i 's will also be mapped to the same higher dimensional space Ψ( w i ) ∈ Ω. The next step consists of minimizing the distance between the data vector and the weight vectors mapped to the higher dimensional spaces, i.e.
 
-$$\int _ { Y } ^ { y } \quad | | \Psi ( x ) - \Psi ( w _ { i ^ { * } } ^ { t } ) | | = \min _ { i } \left \{ | | \Psi ( x ) - \Psi ( w _ { i } ^ { t } ) | | \right \} . \quad ( 7 )$$
+$$\begin{array} { c c } y \\ y & | | \Psi ( x ) - \Psi ( w _ { i ^ { * } } ^ { t } ) | | = \min _ { i } \Big \{ | | \Psi ( x ) - \Psi ( w _ { i } ^ { t } ) | | \Big \} . \quad ( 7 ) \\ \end{array}$$
 
 The distance between the two higher dimensional vectors can be expressed in terms of the kernel function as
 
-$$\begin{array} { r l } & { \lim i t s _ { - } } & { | | \Psi ( x ) - \Psi ( w ) | | ^ { 2 } = \langle \Psi ( x ) - \Psi ( w ) , \Psi ( x ) - \Psi ( w ) \rangle } \\ & { = K ( x , x ) + K ( w , w ) - 2 K ( x , w ) , } \\ & { ( 5 ) } \end{array}$$
+$$\begin{array} { r l } & { \sin ^ { - } } & { | | \Psi ( x ) - \Psi ( w ) | | ^ { 2 } = \langle \Psi ( x ) - \Psi ( w ) , \Psi ( x ) - \Psi ( w ) \rangle } \\ & { = K ( x , x ) + K ( w , w ) - 2 K ( x , w ) , } \\ & { ( 5 ) } \end{array}$$
 
 where, K ( x , y ) = ⟨ Ψ( x ) , Ψ( y ) ⟩ . Following the gradient descent procedure for the minimization of this distance, we arrive at the following rule for the updates of the weights in the kernelized self-organizing map:
 
@@ -114,7 +114,7 @@ $$d \left [ \rho ( x ) , \rho ( \theta _ { i ^ { * } } ^ { t } ) \right ] = \min
 
 This is achieved by calculating the Hilbert-Shmidt inner product between ρ ( x ) and the weight vector ρ ( θ i ) associated with each neuron l i ∈ L , as
 
-$$\text {of a } \quad K ( x , \theta _ { i } ) = \text {Tr} [ \rho ( x ) \rho ( \theta _ { i } ) ] = | \langle 0 | U ^ { \dagger } ( x ) U ( \theta _ { i } ) | 0 \rangle | ^ { 2 } . \ \ ( 1 4 )$$
+$$\text {of a} \quad K ( x , \theta _ { i } ) = \text {Tr} [ \rho ( x ) \rho ( \theta _ { i } ) ] = | \langle 0 | U ^ { \dagger } ( x ) U ( \theta _ { i } ) | 0 \rangle | ^ { 2 } . \ \ ( 1 4 )$$
 
 This is a crucial step in our algorithm; where the distance between the two states is estimated on a quantum computer by calculating the transition probability between the two states ρ ( x ) and ρ ( θ i ), as shown in Fig. 3. We also note that, for the unsupervised machine learning tasks, the embedding of the data sample and the weight vectors do not need to be identical. In theory, this algorithm can be used to calculate the overlap between two different quantum feature maps; thus, U = U ′ is merely an exception.
 
@@ -132,7 +132,7 @@ $$\theta _ { i } ^ { t + 1 } = \theta _ { i } ^ { t } + 2 \alpha ^ { t } h ^ { t
 
 Similar to the original version of SOM, along with the learning rate α , the neighborhood function is a hyperparameter in the training process; however, in our case, Gaussian functional form is chosen, as given in Eq. (4). The training process results in a map κ ( ρ ) from the highdimensional space B ( H ) to L , which preserves the topological structure present in B ( H ). In the inference phase, the weights are no longer updated, but simply the appropriate BMU l ∗ for a data sample ρ ( x ) is selected. The gradients of the kernel functions, as specified in Eq. (16) can be calculated using the parameter shift rule [53] given by
 
-$$\frac { \partial } { \partial \theta } K ( x , \theta ) \Big | _ { \theta _ { i } ^ { t } } = \frac { K ( x , \theta + \phi ) - K ( x , \theta - \phi ) } { 2 \sin ( \omega \phi ) / \omega } , \quad ( 1 7 ) \quad \text {In} \ \Pr { p r a i n d e s }$$
+$$\frac { \partial } { \partial \theta } K ( x , \theta ) \Big | _ { \theta _ { i } ^ { t } } = \frac { K ( x , \theta + \phi ) - K ( x , \theta - \phi ) } { 2 \sin ( \omega \phi ) / \omega } , \quad ( 1 7 ) \quad \text {In} \ \Pr { \quad } \ \text {in} \ \Pr { \quad } \ \text {in} \ \Pr { \quad } \ \text {and} \quad$$
 
 where ω corresponds to the eigenvalues of the Pauli gates.
 
@@ -178,11 +178,11 @@ $$\mathcal { L } = \psi ( i \gamma ^ { \mu } D _ { \mu } - m ) \psi - \frac { 1 
 
 where ψ corresponds to the fermion field, D µ = ∂ µ + igA µ is the covariane derivative, and A µ corresponds to the gauge field. The coupling constant g governs the strength of the interation between the fermions and gauge bosons, m is the fermion mass, and F µν corresponds to the electromagnetic tensor. The lattice implementation of the Schwinger model can be achieved by employing the staggered fermion techniques [67]. After the JordanWigner transformation the Hamiltonian of the Schwinger model is given by
 
-$$H = J \sum _ { n = 0 } ^ { N _ { s } - 2 } \left ( \sum _ { i = 0 } ^ { n } \frac { Z + ( - 1 ) ^ { i } } { 2 } + \frac { \theta } { 2 \pi } \right ) ^ { 2 } & & \text {tupl on} \\ + \frac { w } { 2 } \sum _ { n = 0 } ^ { N _ { 2 } - 2 } [ X _ { n } X _ { n + 1 } + Y _ { n } Y _ { n + 1 } ] + \frac { m } { 2 } \sum _ { n = 0 } ^ { N _ { 2 } - 1 } ( - 1 ) ^ { n } Z _ { n } . & & \text {topol} \\ & & \text {topol} \\ & & \text {dimem} \\ & & \text {the t he}$$
+$$H = J \sum _ { n = 0 } ^ { N _ { s } - 2 } \left ( \sum _ { i = 0 } ^ { n } \frac { Z + ( - 1 ) ^ { i } } { 2 } + \frac { \theta } { 2 \pi } \right ) ^ { 2 } & & \text {tupl on} \\ + \frac { w } { 2 } \sum _ { n = 0 } ^ { N _ { s } - 2 } [ X _ { n } X _ { n + 1 } + Y _ { n } Y _ { n + 1 } ] + \frac { m } { 2 } \sum _ { n = 0 } ^ { N _ { s } - 1 } ( - 1 ) ^ { n } Z _ { n } . & & \text {topol} \\ & & \text {topol} \\ & & \text {dimem} \\ & & \text {the t he}$$
 
 The Hamiltonian (with N s = 4, i.e. 4 spatial lattice sites) is diagonalized in order to derive the lowest eigenstates corresponding to a specific value of the ratio m / g . The eigenstates are then labeled based on the order parameter that governs the phase transition of the Schwinger model, i.e. the expectation value of an averaged electric field
 
-$$E = \frac { 1 } { N } \sum _ { n = 0 } ^ { N - 1 } \sum _ { n = 0 } ^ { N - 1 } \frac { Z _ { i } + ( - 1 ) ^ { i } } { 2 } . \quad \quad ( 2 2 ) \quad \stackrel { \mathrm r a l } { \log } \\$$
+$$E = \frac { 1 } { N } \sum _ { n = 0 } ^ { N - 1 } \sum _ { n = 0 } ^ { N - 1 } \frac { Z _ { i } + ( - 1 ) ^ { i } } { 2 } . \quad \quad ( 2 2 ) \quad \stackrel { \text {rad} } { \log } \\$$
 
 If ⟨ E ⟩ = 0, then the corresponding state is labeled as class '0'. Conversely, if ⟨ E ⟩ &gt; 0, it is denoted as the class '1'. It is crucial to emphasize that, similar to the unsupervised learning of the Iris dataset previously described, the labels are not included as input to the algorithm; instead, they are provided for the purpose of comparison.
 
