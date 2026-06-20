@@ -1,63 +1,1017 @@
-43e3@oth-aw.de@ki-010:~/solr-home/NLP-Cursor$ PDF_ONLY_PAPERS_OVERRIDE="101 102 109 112" LABEL_SCOPE=main MAX_EQUATIONS=200 bash run_pdf_only_batch_ubuntu.sh
-Docling device policy: auto (GPU thresholds: pages<=10, size<=20MB)
-Processing paper 101 ...
-Docling device policy: policy=auto, selected=cpu, pages=17, size_mb=0.89, reason=auto_cpu_pages>10
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:303: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
-  if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 7959.91it/s]
-[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 6527.03it/s]
-[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-[transformers] Passing `generation_config` together with generation-related arguments=({'do_sample', 'max_new_tokens', 'use_cache'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
-arXiv:2407.04311: extracted 1 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7b627c50e3e0>
-Traceback (most recent call last):
-  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
-AttributeError: 'NoneType' object has no attribute 'warning'
-Processing paper 102 ...
-Docling device policy: policy=auto, selected=cpu, pages=30, size_mb=0.83, reason=auto_cpu_pages>10
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:303: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
-  if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 6857.44it/s]
-[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 8205.78it/s]
-[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens', 'do_sample', 'use_cache'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
-arXiv:2401.17066: extracted 18 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x791a1f51a3e0>
-Traceback (most recent call last):
-  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
-AttributeError: 'NoneType' object has no attribute 'warning'
-Processing paper 109 ...
-Docling device policy: policy=auto, selected=gpu, pages=4, size_mb=0.27, reason=auto_gpu_small_pdf
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:303: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
-  if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 6098.51it/s]
-[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 5176.39it/s]
-[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-[transformers] Passing `generation_config` together with generation-related arguments=({'use_cache', 'max_new_tokens', 'do_sample'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
-arXiv:2507.03529: extracted 3 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7a928f7f63e0>
-Traceback (most recent call last):
-  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
-AttributeError: 'NoneType' object has no attribute 'warning'
-Processing paper 112 ...
-Docling device policy: policy=auto, selected=gpu, pages=10, size_mb=0.54, reason=auto_gpu_small_pdf
-/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:303: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
-  if hasattr(pipeline_options, image_flag):
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 770/770 [00:00<00:00, 5211.81it/s]
-[transformers] Model config: pad_token_id must be `None` or an integer within the vocabulary (between 0 and 31999), got 128002. This may result in unexpected behavior.
-Loading weights: 100%|██████████████████████████████████████████████████████████████████████████████████| 471/471 [00:00<00:00, 4344.00it/s]
-[transformers] The tied weights mapping and config for this model specifies to tie model.text_model.embed_tokens.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
-[transformers] Passing `generation_config` together with generation-related arguments=({'use_cache', 'do_sample', 'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
-arXiv:2504.03584: extracted 18 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
-Exception ignored in: <function CodeFormulaVlmModel.__del__ at 0x7f1e863163e0>
-Traceback (most recent call last):
-  File "/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/docling/models/stages/code_formula/code_formula_vlm_model.py", line 297, in __del__
-AttributeError: 'NoneType' object has no attribute 'warning'
+0it [00:00, ?it/s]
 
-Done.
-Dataset: output/pdf/equations_pdf_pdf_only_server.json
-QA report: output/pdf/equations_pdf_pdf_only_server_report.json
-((.venv) ) 43e3@oth-aw.de@ki-010:~/solr-home/NLP-Cursor
+0: 1024x800 2 titles, 7 plain texts, 2 abandons, 3 figures, 8 isolate_formulas, 6 formula_captions, 533.4ms
+Speed: 3.7ms preprocess, 533.4ms inference, 0.7ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[139, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 2 embeddings, 103.0ms
+Speed: 1.1ms preprocess, 103.0ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 2/2 [00:00<00:00,  7.45it/s]
+
+WARNING ⚠️ imgsz=[141, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 2 embeddings, 75.7ms
+Speed: 1.1ms preprocess, 75.7ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 2/2 [00:00<00:00, 11.60it/s]
+100%|██████████| 1/1 [00:00<00:00,  7.36it/s]
+
+WARNING ⚠️ imgsz=[84, 768] must be multiple of max stride 32, updating to [96, 768]
+0: 96x768 1 embedding, 31.1ms
+Speed: 3.9ms preprocess, 31.1ms inference, 0.6ms postprocess per image at shape (1, 3, 96, 768)
+100%|██████████| 1/1 [00:00<00:00, 13.90it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.17it/s]
+
+WARNING ⚠️ imgsz=[87, 768] must be multiple of max stride 32, updating to [96, 768]
+0: 96x768 1 embedding, 28.2ms
+Speed: 0.4ms preprocess, 28.2ms inference, 0.6ms postprocess per image at shape (1, 3, 96, 768)
+100%|██████████| 1/1 [00:00<00:00, 13.95it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.33s/it]
+
+WARNING ⚠️ imgsz=[120, 1152] must be multiple of max stride 32, updating to [128, 1152]
+0: 128x1152 2 embeddings, 49.3ms
+Speed: 0.7ms preprocess, 49.3ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 1152)
+100%|██████████| 2/2 [00:00<00:00, 11.80it/s]
+100%|██████████| 1/1 [00:06<00:00,  6.67s/it]
+100%|██████████| 1/1 [00:00<00:00,  2.03it/s]
+100%|██████████| 1/1 [00:00<00:00,  3.82it/s]
+
+WARNING ⚠️ imgsz=[94, 1152] must be multiple of max stride 32, updating to [96, 1152]
+0: 96x1152 (no detections), 37.9ms
+Speed: 0.6ms preprocess, 37.9ms inference, 0.3ms postprocess per image at shape (1, 3, 96, 1152)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[94, 1152] must be multiple of max stride 32, updating to [96, 1152]
+0: 96x1152 (no detections), 35.7ms
+Speed: 0.6ms preprocess, 35.7ms inference, 0.3ms postprocess per image at shape (1, 3, 96, 1152)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 1 embedding, 223.8ms
+Speed: 3.8ms preprocess, 223.8ms inference, 0.7ms postprocess per image at shape (1, 3, 1024, 768)
+100%|██████████| 1/1 [00:00<00:00, 13.27it/s]
+
+0: 1024x800 1 title, 9 plain texts, 1 abandon, 1 figure, 3 isolate_formulas, 3 formula_captions, 499.1ms
+Speed: 3.7ms preprocess, 499.1ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[132, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 5 embeddings, 74.3ms
+Speed: 1.1ms preprocess, 74.3ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 5/5 [00:00<00:00, 10.53it/s]
+
+WARNING ⚠️ imgsz=[167, 1728] must be multiple of max stride 32, updating to [192, 1728]
+0: 192x1728 9 embeddings, 89.5ms
+Speed: 1.4ms preprocess, 89.5ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 1728)
+100%|██████████| 8/8 [00:00<00:00,  9.75it/s]
+
+WARNING ⚠️ imgsz=[216, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 3 embeddings, 103.1ms
+Speed: 1.6ms preprocess, 103.1ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 3/3 [00:00<00:00, 10.07it/s]
+
+WARNING ⚠️ imgsz=[216, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 5 embeddings, 101.8ms
+Speed: 1.6ms preprocess, 101.8ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 5/5 [00:00<00:00,  7.36it/s]
+
+WARNING ⚠️ imgsz=[214, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 4 embeddings, 101.3ms
+Speed: 1.7ms preprocess, 101.3ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 4/4 [00:00<00:00,  8.46it/s]
+
+WARNING ⚠️ imgsz=[141, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 4 embeddings, 76.9ms
+Speed: 3.3ms preprocess, 76.9ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 4/4 [00:00<00:00,  9.64it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+
+WARNING ⚠️ imgsz=[170, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 2 embeddings, 48.3ms
+Speed: 0.6ms preprocess, 48.3ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 2/2 [00:00<00:00, 11.58it/s]
+
+WARNING ⚠️ imgsz=[87, 768] must be multiple of max stride 32, updating to [96, 768]
+0: 96x768 2 embeddings, 25.1ms
+Speed: 11.5ms preprocess, 25.1ms inference, 1.2ms postprocess per image at shape (1, 3, 96, 768)
+100%|██████████| 2/2 [00:00<00:00,  8.80it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.69it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 242.3ms
+Speed: 3.5ms preprocess, 242.3ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 2 titles, 9 plain texts, 1 abandon, 1 figure, 1 figure_caption, 4 isolate_formulas, 4 formula_captions, 509.3ms
+Speed: 3.7ms preprocess, 509.3ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[135, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 3 embeddings, 101.1ms
+Speed: 1.1ms preprocess, 101.1ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 3/3 [00:00<00:00, 12.51it/s]
+
+WARNING ⚠️ imgsz=[140, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 3 embeddings, 77.6ms
+Speed: 1.1ms preprocess, 77.6ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 3/3 [00:00<00:00, 10.18it/s]
+100%|██████████| 1/1 [00:04<00:00,  4.03s/it]
+100%|██████████| 1/1 [00:05<00:00,  5.41s/it]
+
+WARNING ⚠️ imgsz=[215, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 3 embeddings, 101.2ms
+Speed: 1.7ms preprocess, 101.2ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 3/3 [00:00<00:00, 11.39it/s]
+
+WARNING ⚠️ imgsz=[319, 1728] must be multiple of max stride 32, updating to [320, 1728]
+0: 320x1728 14 embeddings, 155.3ms
+Speed: 2.4ms preprocess, 155.3ms inference, 0.7ms postprocess per image at shape (1, 3, 320, 1728)
+100%|██████████| 11/11 [00:01<00:00,  5.85it/s]
+
+WARNING ⚠️ imgsz=[140, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 7 embeddings, 100.8ms
+Speed: 1.4ms preprocess, 100.8ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 7/7 [00:00<00:00,  8.17it/s]
+
+WARNING ⚠️ imgsz=[213, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 1 embedding, 141.6ms
+Speed: 1.6ms preprocess, 141.6ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 1/1 [00:00<00:00,  9.46it/s]
+100%|██████████| 1/1 [00:00<00:00,  7.35it/s]
+
+WARNING ⚠️ imgsz=[119, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 1 embedding, 37.6ms
+Speed: 0.5ms preprocess, 37.6ms inference, 0.7ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 1/1 [00:00<00:00, 14.06it/s]
+
+WARNING ⚠️ imgsz=[117, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 3 embeddings, 35.7ms
+Speed: 0.3ms preprocess, 35.7ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 3/3 [00:00<00:00, 10.46it/s]
+
+WARNING ⚠️ imgsz=[92, 1152] must be multiple of max stride 32, updating to [96, 1152]
+0: 96x1152 1 embedding, 37.7ms
+Speed: 0.5ms preprocess, 37.7ms inference, 0.6ms postprocess per image at shape (1, 3, 96, 1152)
+100%|██████████| 1/1 [00:00<00:00, 11.58it/s]
+100%|██████████| 1/1 [00:00<00:00,  3.83it/s]
+
+WARNING ⚠️ imgsz=[109, 1152] must be multiple of max stride 32, updating to [128, 1152]
+0: 128x1152 1 embedding, 41.9ms
+Speed: 6.0ms preprocess, 41.9ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 1152)
+100%|██████████| 1/1 [00:00<00:00, 13.15it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 235.2ms
+Speed: 3.5ms preprocess, 235.2ms inference, 0.4ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 1 title, 9 plain texts, 1 abandon, 2 figures, 4 isolate_formulas, 4 formula_captions, 518.6ms
+Speed: 3.7ms preprocess, 518.6ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[100, 1728] must be multiple of max stride 32, updating to [128, 1728]
+0: 128x1728 1 embedding, 88.3ms
+Speed: 0.9ms preprocess, 88.3ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 1728)
+100%|██████████| 1/1 [00:00<00:00,  9.76it/s]
+
+WARNING ⚠️ imgsz=[170, 1728] must be multiple of max stride 32, updating to [192, 1728]
+0: 192x1728 12 embeddings, 88.4ms
+Speed: 1.3ms preprocess, 88.4ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 1728)
+100%|██████████| 12/12 [00:01<00:00,  8.38it/s]
+
+WARNING ⚠️ imgsz=[245, 1728] must be multiple of max stride 32, updating to [256, 1728]
+0: 256x1728 6 embeddings, 119.7ms
+Speed: 1.8ms preprocess, 119.7ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 1728)
+100%|██████████| 5/5 [00:00<00:00,  5.25it/s]
+
+WARNING ⚠️ imgsz=[215, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 3 embeddings, 102.0ms
+Speed: 1.5ms preprocess, 102.0ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 3/3 [00:00<00:00, 10.97it/s]
+
+WARNING ⚠️ imgsz=[82, 1728] must be multiple of max stride 32, updating to [96, 1728]
+0: 96x1728 2 embeddings, 49.6ms
+Speed: 0.9ms preprocess, 49.6ms inference, 4.3ms postprocess per image at shape (1, 3, 96, 1728)
+100%|██████████| 2/2 [00:00<00:00, 10.80it/s]
+
+WARNING ⚠️ imgsz=[83, 768] must be multiple of max stride 32, updating to [96, 768]
+0: 96x768 3 embeddings, 29.0ms
+Speed: 0.4ms preprocess, 29.0ms inference, 0.6ms postprocess per image at shape (1, 3, 96, 768)
+100%|██████████| 1/1 [00:00<00:00, 11.19it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.24it/s]
+
+WARNING ⚠️ imgsz=[120, 1152] must be multiple of max stride 32, updating to [128, 1152]
+0: 128x1152 1 embedding, 47.3ms
+Speed: 0.7ms preprocess, 47.3ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 1152)
+100%|██████████| 1/1 [00:00<00:00,  4.12it/s]
+100%|██████████| 1/1 [00:00<00:00,  5.35it/s]
+
+WARNING ⚠️ imgsz=[117, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 2 embeddings, 35.8ms
+Speed: 0.5ms preprocess, 35.8ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 2/2 [00:00<00:00, 11.20it/s]
+100%|██████████| 1/1 [00:00<00:00,  4.13it/s]
+
+WARNING ⚠️ imgsz=[76, 1152] must be multiple of max stride 32, updating to [96, 1152]
+0: 96x1152 1 embedding, 37.8ms
+Speed: 0.5ms preprocess, 37.8ms inference, 4.2ms postprocess per image at shape (1, 3, 96, 1152)
+100%|██████████| 1/1 [00:00<00:00, 11.99it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.03it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 2 embeddings, 216.5ms
+Speed: 3.8ms preprocess, 216.5ms inference, 0.7ms postprocess per image at shape (1, 3, 1024, 768)
+100%|██████████| 2/2 [00:00<00:00,  6.07it/s]
+
+0: 1024x800 2 titles, 7 plain texts, 2 abandons, 1 figure, 1 figure_caption, 3 isolate_formulas, 3 formula_captions, 491.2ms
+Speed: 4.0ms preprocess, 491.2ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[202, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 6 embeddings, 107.3ms
+Speed: 1.5ms preprocess, 107.3ms inference, 7.3ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 6/6 [00:00<00:00, 10.76it/s]
+
+WARNING ⚠️ imgsz=[179, 1728] must be multiple of max stride 32, updating to [192, 1728]
+0: 192x1728 8 embeddings, 87.7ms
+Speed: 1.4ms preprocess, 87.7ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 1728)
+100%|██████████| 8/8 [00:00<00:00,  8.73it/s]
+
+WARNING ⚠️ imgsz=[164, 1728] must be multiple of max stride 32, updating to [192, 1728]
+0: 192x1728 5 embeddings, 88.6ms
+Speed: 1.3ms preprocess, 88.6ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 1728)
+100%|██████████| 5/5 [00:00<00:00,  6.75it/s]
+
+WARNING ⚠️ imgsz=[238, 1728] must be multiple of max stride 32, updating to [256, 1728]
+0: 256x1728 10 embeddings, 118.4ms
+Speed: 1.7ms preprocess, 118.4ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 1728)
+100%|██████████| 10/10 [00:01<00:00,  6.34it/s]
+
+WARNING ⚠️ imgsz=[150, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 4 embeddings, 76.6ms
+Speed: 1.2ms preprocess, 76.6ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 3/3 [00:00<00:00,  4.64it/s]
+
+WARNING ⚠️ imgsz=[105, 1728] must be multiple of max stride 32, updating to [128, 1728]
+0: 128x1728 2 embeddings, 63.3ms
+Speed: 0.9ms preprocess, 63.3ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 1728)
+100%|██████████| 2/2 [00:00<00:00, 10.38it/s]
+
+WARNING ⚠️ imgsz=[168, 1728] must be multiple of max stride 32, updating to [192, 1728]
+0: 192x1728 10 embeddings, 88.5ms
+Speed: 1.5ms preprocess, 88.5ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 1728)
+100%|██████████| 10/10 [00:01<00:00,  9.99it/s]
+
+WARNING ⚠️ imgsz=[202, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 4 embeddings, 103.6ms
+Speed: 1.5ms preprocess, 103.6ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 4/4 [00:00<00:00, 11.33it/s]
+100%|██████████| 1/1 [00:00<00:00,  3.57it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.30it/s]
+100%|██████████| 1/1 [00:00<00:00,  6.55it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 213.4ms
+Speed: 3.4ms preprocess, 213.4ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 1 title, 13 plain texts, 1 abandon, 5 isolate_formulas, 5 formula_captions, 514.5ms
+Speed: 3.5ms preprocess, 514.5ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[284, 1728] must be multiple of max stride 32, updating to [288, 1728]
+0: 288x1728 6 embeddings, 188.7ms
+Speed: 2.0ms preprocess, 188.7ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 1728)
+100%|██████████| 6/6 [00:00<00:00,  9.97it/s]
+
+WARNING ⚠️ imgsz=[206, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 5 embeddings, 139.0ms
+Speed: 1.6ms preprocess, 139.0ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 5/5 [00:00<00:00,  9.04it/s]
+
+WARNING ⚠️ imgsz=[222, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 15 embeddings, 101.3ms
+Speed: 1.5ms preprocess, 101.3ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 13/13 [00:02<00:00,  6.26it/s]
+
+WARNING ⚠️ imgsz=[198, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 6 embeddings, 102.5ms
+Speed: 1.5ms preprocess, 102.5ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 6/6 [00:00<00:00,  9.52it/s]
+
+WARNING ⚠️ imgsz=[282, 1728] must be multiple of max stride 32, updating to [288, 1728]
+0: 288x1728 9 embeddings, 130.5ms
+Speed: 2.1ms preprocess, 130.5ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 1728)
+100%|██████████| 9/9 [00:00<00:00,  9.23it/s]
+
+WARNING ⚠️ imgsz=[133, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 3 embeddings, 76.2ms
+Speed: 1.1ms preprocess, 76.2ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 2/2 [00:00<00:00,  6.98it/s]
+
+WARNING ⚠️ imgsz=[207, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 8 embeddings, 102.4ms
+Speed: 1.5ms preprocess, 102.4ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 8/8 [00:00<00:00, 10.58it/s]
+
+WARNING ⚠️ imgsz=[130, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 2 embeddings, 78.5ms
+Speed: 1.1ms preprocess, 78.5ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 2/2 [00:00<00:00, 10.78it/s]
+
+WARNING ⚠️ imgsz=[125, 1728] must be multiple of max stride 32, updating to [128, 1728]
+0: 128x1728 1 embedding, 63.5ms
+Speed: 1.0ms preprocess, 63.5ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 1728)
+100%|██████████| 1/1 [00:00<00:00, 14.60it/s]
+
+WARNING ⚠️ imgsz=[140, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 4 embeddings, 77.6ms
+Speed: 1.3ms preprocess, 77.6ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 4/4 [00:00<00:00,  8.14it/s]
+
+WARNING ⚠️ imgsz=[137, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 3 embeddings, 77.3ms
+Speed: 1.1ms preprocess, 77.3ms inference, 0.5ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 3/3 [00:00<00:00,  9.21it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.81it/s]
+100%|██████████| 1/1 [00:00<00:00,  3.86it/s]
+100%|██████████| 1/1 [00:00<00:00,  3.48it/s]
+
+WARNING ⚠️ imgsz=[84, 1152] must be multiple of max stride 32, updating to [96, 1152]
+0: 96x1152 (no detections), 37.2ms
+Speed: 0.6ms preprocess, 37.2ms inference, 0.3ms postprocess per image at shape (1, 3, 96, 1152)
+0it [00:00, ?it/s]
+100%|██████████| 1/1 [00:00<00:00,  9.28it/s]
+
+WARNING ⚠️ imgsz=[84, 1152] must be multiple of max stride 32, updating to [96, 1152]
+0: 96x1152 1 embedding, 35.9ms
+Speed: 0.6ms preprocess, 35.9ms inference, 0.6ms postprocess per image at shape (1, 3, 96, 1152)
+100%|██████████| 1/1 [00:00<00:00,  6.19it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.15it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 215.6ms
+Speed: 3.5ms preprocess, 215.6ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 8 plain texts, 1 abandon, 1 figure, 1 figure_caption, 3 isolate_formulas, 3 formula_captions, 516.4ms
+Speed: 4.2ms preprocess, 516.4ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[272, 1728] must be multiple of max stride 32, updating to [288, 1728]
+0: 288x1728 8 embeddings, 195.4ms
+Speed: 2.0ms preprocess, 195.4ms inference, 0.7ms postprocess per image at shape (1, 3, 288, 1728)
+100%|██████████| 7/7 [00:00<00:00,  8.98it/s]
+
+WARNING ⚠️ imgsz=[261, 1728] must be multiple of max stride 32, updating to [288, 1728]
+0: 288x1728 7 embeddings, 128.7ms
+Speed: 2.0ms preprocess, 128.7ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 1728)
+100%|██████████| 7/7 [00:00<00:00,  9.25it/s]
+
+WARNING ⚠️ imgsz=[228, 1728] must be multiple of max stride 32, updating to [256, 1728]
+0: 256x1728 8 embeddings, 117.4ms
+Speed: 1.7ms preprocess, 117.4ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 1728)
+100%|██████████| 8/8 [00:00<00:00,  8.01it/s]
+
+WARNING ⚠️ imgsz=[182, 1728] must be multiple of max stride 32, updating to [192, 1728]
+0: 192x1728 6 embeddings, 89.9ms
+Speed: 1.3ms preprocess, 89.9ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 1728)
+100%|██████████| 4/4 [00:00<00:00,  6.73it/s]
+
+WARNING ⚠️ imgsz=[210, 1728] must be multiple of max stride 32, updating to [224, 1728]
+0: 224x1728 16 embeddings, 102.9ms
+Speed: 1.5ms preprocess, 102.9ms inference, 0.7ms postprocess per image at shape (1, 3, 224, 1728)
+100%|██████████| 16/16 [00:02<00:00,  6.98it/s]
+
+WARNING ⚠️ imgsz=[130, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 2 embeddings, 78.0ms
+Speed: 1.1ms preprocess, 78.0ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 2/2 [00:00<00:00, 10.60it/s]
+
+WARNING ⚠️ imgsz=[176, 1728] must be multiple of max stride 32, updating to [192, 1728]
+0: 192x1728 7 embeddings, 87.1ms
+Speed: 1.4ms preprocess, 87.1ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 1728)
+100%|██████████| 7/7 [00:00<00:00,  9.61it/s]
+
+WARNING ⚠️ imgsz=[143, 1728] must be multiple of max stride 32, updating to [160, 1728]
+0: 160x1728 4 embeddings, 81.3ms
+Speed: 1.3ms preprocess, 81.3ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 1728)
+100%|██████████| 4/4 [00:00<00:00,  7.81it/s]
+100%|██████████| 1/1 [00:02<00:00,  2.04s/it]
+100%|██████████| 1/1 [00:00<00:00,  3.15it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.49it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 215.6ms
+Speed: 3.9ms preprocess, 215.6ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+Pix2Text fallback found no equations for 2501.03314.pdf; pages=[3, 4, 5, 6, 7, 8, 9, 10]
+arXiv:2501.03314: extracted 41 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Processing paper 15 ...
+/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:305: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+`torch_dtype` is deprecated! Use `dtype` instead!
+[INFO] 2026-06-20 10:39:04,332 [RapidOCR] base.py:22: Using engine_name: onnxruntime
+[INFO] 2026-06-20 10:39:04,333 [RapidOCR] main.py:53: Using /home/43e3/.cnstd/1.2/ppocr/ch_PP-OCRv5_det/ch_PP-OCRv5_det_infer.onnx
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Could not find any ONNX files with standard file name decoder_model_merged.onnx, files found: [PosixPath('decoder_model.onnx'), PosixPath('encoder_model.onnx')]. Please make sure to pass a `file_name` and/or `subfolder` argument to `from_pretrained` when loading an ONNX file with non-standard file names.
+Docling device policy: policy=auto, selected=cpu, pages=14, size_mb=3.95, reason=auto_cpu_pages>10
+
+0: 1024x800 1 title, 15 plain texts, 1 abandon, 9 isolate_formulas, 11 formula_captions, 806.5ms
+Speed: 4.2ms preprocess, 806.5ms inference, 0.7ms postprocess per image at shape (1, 3, 1024, 800)
+Loading /home/43e3/.pix2text/1.1/mfd-1.5-onnx/pix2text-mfd-1.5.onnx for ONNX Runtime inference...
+Using ONNX Runtime 1.27.0 with CPUExecutionProvider
+
+WARNING ⚠️ imgsz=[214, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 (no detections), 64.8ms
+Speed: 1.0ms preprocess, 64.8ms inference, 0.4ms postprocess per image at shape (1, 3, 224, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[379, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 2 embeddings, 105.3ms
+Speed: 1.2ms preprocess, 105.3ms inference, 0.6ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 2/2 [00:00<00:00, 10.87it/s]
+
+WARNING ⚠️ imgsz=[252, 768] must be multiple of max stride 32, updating to [256, 768]
+0: 256x768 1 embedding, 55.2ms
+Speed: 0.9ms preprocess, 55.2ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 768)
+100%|██████████| 1/1 [00:00<00:00, 14.86it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.37it/s]
+
+WARNING ⚠️ imgsz=[313, 768] must be multiple of max stride 32, updating to [320, 768]
+0: 320x768 7 embeddings, 69.0ms
+Speed: 1.1ms preprocess, 69.0ms inference, 0.6ms postprocess per image at shape (1, 3, 320, 768)
+100%|██████████| 7/7 [00:01<00:00,  6.11it/s]
+100%|██████████| 1/1 [00:00<00:00,  3.14it/s]
+
+WARNING ⚠️ imgsz=[118, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 1 embedding, 38.3ms
+Speed: 13.1ms preprocess, 38.3ms inference, 4.0ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 1/1 [00:00<00:00, 12.45it/s]
+100%|██████████| 1/1 [00:00<00:00,  4.35it/s]
+
+WARNING ⚠️ imgsz=[222, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 3 embeddings, 52.5ms
+Speed: 2.9ms preprocess, 52.5ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 3/3 [00:00<00:00, 11.41it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.04it/s]
+
+WARNING ⚠️ imgsz=[221, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 2 embeddings, 52.4ms
+Speed: 3.0ms preprocess, 52.4ms inference, 0.7ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 2/2 [00:00<00:00,  5.73it/s]
+
+WARNING ⚠️ imgsz=[321, 768] must be multiple of max stride 32, updating to [352, 768]
+0: 352x768 4 embeddings, 73.5ms
+Speed: 1.1ms preprocess, 73.5ms inference, 0.6ms postprocess per image at shape (1, 3, 352, 768)
+100%|██████████| 4/4 [00:00<00:00,  5.58it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.01it/s]
+
+WARNING ⚠️ imgsz=[120, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 2 embeddings, 39.4ms
+Speed: 3.7ms preprocess, 39.4ms inference, 3.8ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 2/2 [00:00<00:00, 10.15it/s]
+100%|██████████| 1/1 [00:00<00:00,  4.60it/s]
+
+WARNING ⚠️ imgsz=[180, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 3 embeddings, 50.9ms
+Speed: 1.9ms preprocess, 50.9ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 3/3 [00:00<00:00,  7.63it/s]
+
+WARNING ⚠️ imgsz=[112, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 1 embedding, 34.1ms
+Speed: 0.5ms preprocess, 34.1ms inference, 0.5ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 1/1 [00:00<00:00, 10.70it/s]
+100%|██████████| 1/1 [00:00<00:00,  4.20it/s]
+
+WARNING ⚠️ imgsz=[451, 768] must be multiple of max stride 32, updating to [480, 768]
+0: 480x768 13 embeddings, 97.6ms
+Speed: 1.6ms preprocess, 97.6ms inference, 0.6ms postprocess per image at shape (1, 3, 480, 768)
+100%|██████████| 12/12 [00:02<00:00,  6.00it/s]
+
+WARNING ⚠️ imgsz=[112, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 (no detections), 36.1ms
+Speed: 0.5ms preprocess, 36.1ms inference, 0.3ms postprocess per image at shape (1, 3, 128, 768)
+0it [00:00, ?it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.39it/s]
+
+WARNING ⚠️ imgsz=[121, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 3 embeddings, 43.6ms
+Speed: 3.6ms preprocess, 43.6ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 3/3 [00:00<00:00, 11.92it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.38it/s]
+
+WARNING ⚠️ imgsz=[355, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 6 embeddings, 89.6ms
+Speed: 1.2ms preprocess, 89.6ms inference, 8.3ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 6/6 [00:00<00:00,  6.91it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 216.5ms
+Speed: 3.8ms preprocess, 216.5ms inference, 0.4ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 2 titles, 11 plain texts, 1 abandon, 10 isolate_formulas, 11 formula_captions, 537.7ms
+Speed: 3.7ms preprocess, 537.7ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+100%|██████████| 1/1 [00:04<00:00,  4.95s/it]
+
+WARNING ⚠️ imgsz=[189, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 2 embeddings, 44.1ms
+Speed: 0.8ms preprocess, 44.1ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 2/2 [00:00<00:00,  7.60it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.13it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.98s/it]
+100%|██████████| 1/1 [00:00<00:00,  1.45it/s]
+
+WARNING ⚠️ imgsz=[85, 768] must be multiple of max stride 32, updating to [96, 768]
+0: 96x768 (no detections), 32.7ms
+Speed: 8.9ms preprocess, 32.7ms inference, 0.3ms postprocess per image at shape (1, 3, 96, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[223, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 1 embedding, 49.4ms
+Speed: 0.8ms preprocess, 49.4ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 1/1 [00:00<00:00,  9.23it/s]
+
+WARNING ⚠️ imgsz=[220, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 2 embeddings, 50.6ms
+Speed: 0.8ms preprocess, 50.6ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 2/2 [00:00<00:00,  8.97it/s]
+100%|██████████| 1/1 [00:00<00:00,  4.80it/s]
+
+WARNING ⚠️ imgsz=[120, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 (no detections), 44.6ms
+Speed: 3.7ms preprocess, 44.6ms inference, 0.3ms postprocess per image at shape (1, 3, 128, 768)
+0it [00:00, ?it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.54it/s]
+
+0: 128x768 2 embeddings, 29.0ms
+Speed: 0.5ms preprocess, 29.0ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 2/2 [00:00<00:00,  4.46it/s]
+
+WARNING ⚠️ imgsz=[487, 768] must be multiple of max stride 32, updating to [512, 768]
+0: 512x768 10 embeddings, 107.5ms
+Speed: 1.7ms preprocess, 107.5ms inference, 0.6ms postprocess per image at shape (1, 3, 512, 768)
+100%|██████████| 9/9 [00:00<00:00, 10.60it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.76it/s]
+
+WARNING ⚠️ imgsz=[187, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 2 embeddings, 42.4ms
+Speed: 11.5ms preprocess, 42.4ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 2/2 [00:00<00:00, 12.46it/s]
+
+WARNING ⚠️ imgsz=[121, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 3 embeddings, 32.3ms
+Speed: 0.5ms preprocess, 32.3ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 3/3 [00:00<00:00, 11.43it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.51it/s]
+
+WARNING ⚠️ imgsz=[126, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 2 embeddings, 30.0ms
+Speed: 9.5ms preprocess, 30.0ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 2/2 [00:00<00:00,  3.57it/s]
+
+WARNING ⚠️ imgsz=[353, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 11 embeddings, 83.3ms
+Speed: 1.3ms preprocess, 83.3ms inference, 0.6ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 11/11 [00:01<00:00,  9.46it/s]
+100%|██████████| 1/1 [00:03<00:00,  3.78s/it]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 233.2ms
+Speed: 3.7ms preprocess, 233.2ms inference, 8.1ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 7 plain texts, 1 abandon, 1 figure, 1 figure_caption, 4 isolate_formulas, 5 formula_captions, 492.5ms
+Speed: 3.6ms preprocess, 492.5ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[578, 1728] must be multiple of max stride 32, updating to [608, 1728]
+0: 608x1728 43 embeddings, 325.0ms
+Speed: 3.8ms preprocess, 325.0ms inference, 0.8ms postprocess per image at shape (1, 3, 608, 1728)
+100%|██████████| 39/39 [00:04<00:00,  9.07it/s]
+
+WARNING ⚠️ imgsz=[287, 768] must be multiple of max stride 32, updating to [288, 768]
+0: 288x768 1 embedding, 61.5ms
+Speed: 1.0ms preprocess, 61.5ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 768)
+100%|██████████| 1/1 [00:00<00:00, 12.48it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.39s/it]
+
+WARNING ⚠️ imgsz=[113, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 2 embeddings, 65.9ms
+Speed: 10.4ms preprocess, 65.9ms inference, 3.7ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 2/2 [00:00<00:00, 10.24it/s]
+100%|██████████| 1/1 [00:02<00:00,  2.07s/it]
+
+WARNING ⚠️ imgsz=[282, 768] must be multiple of max stride 32, updating to [288, 768]
+0: 288x768 2 embeddings, 59.1ms
+Speed: 1.0ms preprocess, 59.1ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 768)
+100%|██████████| 2/2 [00:00<00:00,  6.10it/s]
+
+WARNING ⚠️ imgsz=[276, 768] must be multiple of max stride 32, updating to [288, 768]
+0: 288x768 6 embeddings, 58.2ms
+Speed: 1.0ms preprocess, 58.2ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 768)
+100%|██████████| 6/6 [00:00<00:00,  6.91it/s]
+
+WARNING ⚠️ imgsz=[110, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 (no detections), 35.1ms
+Speed: 0.5ms preprocess, 35.1ms inference, 0.3ms postprocess per image at shape (1, 3, 128, 768)
+0it [00:00, ?it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.50s/it]
+
+WARNING ⚠️ imgsz=[153, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 3 embeddings, 43.8ms
+Speed: 4.4ms preprocess, 43.8ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 768)
+100%|██████████| 3/3 [00:00<00:00,  8.61it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.60it/s]
+
+WARNING ⚠️ imgsz=[122, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 (no detections), 30.7ms
+Speed: 0.5ms preprocess, 30.7ms inference, 0.3ms postprocess per image at shape (1, 3, 128, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 213.5ms
+Speed: 3.7ms preprocess, 213.5ms inference, 0.4ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 1 title, 11 plain texts, 1 abandon, 6 isolate_formulas, 7 formula_captions, 494.5ms
+Speed: 3.7ms preprocess, 494.5ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[546, 768] must be multiple of max stride 32, updating to [576, 768]
+0: 576x768 12 embeddings, 136.7ms
+Speed: 1.8ms preprocess, 136.7ms inference, 0.6ms postprocess per image at shape (1, 3, 576, 768)
+100%|██████████| 12/12 [00:01<00:00,  7.77it/s]
+
+WARNING ⚠️ imgsz=[178, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 3 embeddings, 44.9ms
+Speed: 0.7ms preprocess, 44.9ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 3/3 [00:00<00:00, 11.32it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.44it/s]
+
+WARNING ⚠️ imgsz=[488, 768] must be multiple of max stride 32, updating to [512, 768]
+0: 512x768 9 embeddings, 101.9ms
+Speed: 1.7ms preprocess, 101.9ms inference, 0.6ms postprocess per image at shape (1, 3, 512, 768)
+100%|██████████| 9/9 [00:01<00:00,  6.42it/s]
+
+WARNING ⚠️ imgsz=[404, 768] must be multiple of max stride 32, updating to [416, 768]
+0: 416x768 7 embeddings, 91.8ms
+Speed: 1.6ms preprocess, 91.8ms inference, 1.3ms postprocess per image at shape (1, 3, 416, 768)
+100%|██████████| 7/7 [00:00<00:00,  8.63it/s]
+
+WARNING ⚠️ imgsz=[378, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 16 embeddings, 104.4ms
+Speed: 1.2ms preprocess, 104.4ms inference, 0.7ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 14/14 [00:01<00:00,  8.77it/s]
+100%|██████████| 1/1 [00:00<00:00,  4.14it/s]
+
+WARNING ⚠️ imgsz=[188, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 1 embedding, 51.4ms
+Speed: 0.8ms preprocess, 51.4ms inference, 4.2ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 1/1 [00:00<00:00, 10.31it/s]
+
+WARNING ⚠️ imgsz=[152, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 (no detections), 40.7ms
+Speed: 0.6ms preprocess, 40.7ms inference, 0.3ms postprocess per image at shape (1, 3, 160, 768)
+0it [00:00, ?it/s]
+100%|██████████| 1/1 [00:00<00:00,  4.97it/s]
+
+WARNING ⚠️ imgsz=[318, 768] must be multiple of max stride 32, updating to [320, 768]
+0: 320x768 6 embeddings, 65.3ms
+Speed: 1.1ms preprocess, 65.3ms inference, 0.6ms postprocess per image at shape (1, 3, 320, 768)
+100%|██████████| 6/6 [00:00<00:00,  6.76it/s]
+100%|██████████| 1/1 [00:06<00:00,  6.21s/it]
+
+WARNING ⚠️ imgsz=[261, 768] must be multiple of max stride 32, updating to [288, 768]
+0: 288x768 7 embeddings, 59.5ms
+Speed: 1.0ms preprocess, 59.5ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 768)
+100%|██████████| 7/7 [00:00<00:00,  8.78it/s]
+100%|██████████| 1/1 [00:02<00:00,  2.35s/it]
+
+WARNING ⚠️ imgsz=[286, 768] must be multiple of max stride 32, updating to [288, 768]
+0: 288x768 10 embeddings, 60.6ms
+Speed: 1.0ms preprocess, 60.6ms inference, 0.6ms postprocess per image at shape (1, 3, 288, 768)
+100%|██████████| 10/10 [00:00<00:00, 11.37it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.43it/s]
+
+WARNING ⚠️ imgsz=[157, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 2 embeddings, 36.8ms
+Speed: 0.6ms preprocess, 36.8ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 768)
+100%|██████████| 2/2 [00:00<00:00,  6.95it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 291.6ms
+Speed: 3.4ms preprocess, 291.6ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 1 title, 10 plain texts, 1 abandon, 2 figures, 2 figure_captions, 2 isolate_formulas, 4 formula_captions, 513.7ms
+Speed: 3.9ms preprocess, 513.7ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[357, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 4 embeddings, 81.4ms
+Speed: 1.2ms preprocess, 81.4ms inference, 0.6ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 4/4 [00:00<00:00,  6.98it/s]
+
+WARNING ⚠️ imgsz=[413, 768] must be multiple of max stride 32, updating to [416, 768]
+0: 416x768 12 embeddings, 83.9ms
+Speed: 1.3ms preprocess, 83.9ms inference, 0.6ms postprocess per image at shape (1, 3, 416, 768)
+100%|██████████| 12/12 [00:01<00:00,  9.23it/s]
+
+WARNING ⚠️ imgsz=[248, 768] must be multiple of max stride 32, updating to [256, 768]
+0: 256x768 2 embeddings, 54.8ms
+Speed: 0.9ms preprocess, 54.8ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 768)
+100%|██████████| 2/2 [00:00<00:00,  6.54it/s]
+
+WARNING ⚠️ imgsz=[453, 768] must be multiple of max stride 32, updating to [480, 768]
+0: 480x768 2 embeddings, 96.2ms
+Speed: 1.5ms preprocess, 96.2ms inference, 0.6ms postprocess per image at shape (1, 3, 480, 768)
+100%|██████████| 2/2 [00:00<00:00,  5.20it/s]
+
+WARNING ⚠️ imgsz=[181, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 3 embeddings, 42.4ms
+Speed: 0.7ms preprocess, 42.4ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 3/3 [00:00<00:00,  5.77it/s]
+
+WARNING ⚠️ imgsz=[172, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 (no detections), 43.9ms
+Speed: 0.7ms preprocess, 43.9ms inference, 0.3ms postprocess per image at shape (1, 3, 192, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[95, 768] must be multiple of max stride 32, updating to [96, 768]
+0: 96x768 (no detections), 29.5ms
+Speed: 0.4ms preprocess, 29.5ms inference, 0.3ms postprocess per image at shape (1, 3, 96, 768)
+0it [00:00, ?it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.42it/s]
+
+WARNING ⚠️ imgsz=[113, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 1 embedding, 41.5ms
+Speed: 4.2ms preprocess, 41.5ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 1/1 [00:00<00:00, 11.97it/s]
+
+WARNING ⚠️ imgsz=[111, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 1 embedding, 34.5ms
+Speed: 0.5ms preprocess, 34.5ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 1/1 [00:00<00:00, 11.99it/s]
+100%|██████████| 1/1 [00:00<00:00,  5.31it/s]
+
+WARNING ⚠️ imgsz=[113, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 1 embedding, 30.0ms
+Speed: 0.5ms preprocess, 30.0ms inference, 0.6ms postprocess per image at shape (1, 3, 128, 768)
+100%|██████████| 1/1 [00:00<00:00, 10.54it/s]
+
+WARNING ⚠️ imgsz=[478, 768] must be multiple of max stride 32, updating to [480, 768]
+0: 480x768 10 embeddings, 96.5ms
+Speed: 1.6ms preprocess, 96.5ms inference, 0.6ms postprocess per image at shape (1, 3, 480, 768)
+100%|██████████| 10/10 [00:01<00:00,  9.33it/s]
+
+WARNING ⚠️ imgsz=[450, 768] must be multiple of max stride 32, updating to [480, 768]
+0: 480x768 10 embeddings, 95.0ms
+Speed: 1.5ms preprocess, 95.0ms inference, 0.6ms postprocess per image at shape (1, 3, 480, 768)
+100%|██████████| 10/10 [00:01<00:00,  8.86it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 221.0ms
+Speed: 3.6ms preprocess, 221.0ms inference, 0.4ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 1 title, 10 plain texts, 1 abandon, 10 isolate_formulas, 9 formula_captions, 488.8ms
+Speed: 3.8ms preprocess, 488.8ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+100%|██████████| 1/1 [00:06<00:00,  6.01s/it]
+
+WARNING ⚠️ imgsz=[153, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 1 embedding, 38.8ms
+Speed: 0.7ms preprocess, 38.8ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 768)
+100%|██████████| 1/1 [00:00<00:00,  4.96it/s]
+100%|██████████| 1/1 [00:04<00:00,  4.45s/it]
+
+WARNING ⚠️ imgsz=[252, 768] must be multiple of max stride 32, updating to [256, 768]
+0: 256x768 2 embeddings, 56.0ms
+Speed: 0.9ms preprocess, 56.0ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 768)
+100%|██████████| 2/2 [00:00<00:00,  8.76it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.48s/it]
+
+WARNING ⚠️ imgsz=[254, 768] must be multiple of max stride 32, updating to [256, 768]
+0: 256x768 6 embeddings, 57.0ms
+Speed: 1.2ms preprocess, 57.0ms inference, 0.7ms postprocess per image at shape (1, 3, 256, 768)
+100%|██████████| 6/6 [00:00<00:00,  9.62it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.47s/it]
+
+WARNING ⚠️ imgsz=[187, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 4 embeddings, 40.1ms
+Speed: 0.7ms preprocess, 40.1ms inference, 0.6ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 4/4 [00:00<00:00, 10.90it/s]
+
+WARNING ⚠️ imgsz=[91, 768] must be multiple of max stride 32, updating to [96, 768]
+0: 96x768 (no detections), 36.5ms
+Speed: 10.5ms preprocess, 36.5ms inference, 0.3ms postprocess per image at shape (1, 3, 96, 768)
+0it [00:00, ?it/s]
+100%|██████████| 1/1 [00:06<00:00,  6.05s/it]
+
+WARNING ⚠️ imgsz=[383, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 11 embeddings, 81.3ms
+Speed: 1.2ms preprocess, 81.3ms inference, 5.2ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 11/11 [00:01<00:00,  5.95it/s]
+
+WARNING ⚠️ imgsz=[213, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 5 embeddings, 52.2ms
+Speed: 0.8ms preprocess, 52.2ms inference, 7.3ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 5/5 [00:00<00:00,  8.52it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.12it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.10it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.75it/s]
+
+WARNING ⚠️ imgsz=[309, 768] must be multiple of max stride 32, updating to [320, 768]
+0: 320x768 10 embeddings, 64.7ms
+Speed: 1.1ms preprocess, 64.7ms inference, 0.6ms postprocess per image at shape (1, 3, 320, 768)
+100%|██████████| 10/10 [00:01<00:00,  9.04it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.22it/s]
+
+WARNING ⚠️ imgsz=[120, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 (no detections), 40.8ms
+Speed: 0.6ms preprocess, 40.8ms inference, 0.3ms postprocess per image at shape (1, 3, 128, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 266.8ms
+Speed: 3.7ms preprocess, 266.8ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 7 plain texts, 1 abandon, 1 figure, 1 figure_caption, 2 isolate_formulas, 2 formula_captions, 508.2ms
+Speed: 4.0ms preprocess, 508.2ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[277, 1728] must be multiple of max stride 32, updating to [288, 1728]
+0: 288x1728 13 embeddings, 151.3ms
+Speed: 2.0ms preprocess, 151.3ms inference, 0.7ms postprocess per image at shape (1, 3, 288, 1728)
+100%|██████████| 12/12 [00:01<00:00,  7.10it/s]
+
+WARNING ⚠️ imgsz=[185, 768] must be multiple of max stride 32, updating to [192, 768]
+0: 192x768 2 embeddings, 44.9ms
+Speed: 0.7ms preprocess, 44.9ms inference, 4.2ms postprocess per image at shape (1, 3, 192, 768)
+100%|██████████| 2/2 [00:00<00:00, 10.52it/s]
+100%|██████████| 1/1 [00:02<00:00,  2.93s/it]
+
+WARNING ⚠️ imgsz=[146, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 (no detections), 45.0ms
+Speed: 3.5ms preprocess, 45.0ms inference, 0.3ms postprocess per image at shape (1, 3, 160, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[211, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 2 embeddings, 52.8ms
+Speed: 0.8ms preprocess, 52.8ms inference, 1.0ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 2/2 [00:00<00:00, 10.12it/s]
+100%|██████████| 1/1 [00:00<00:00,  3.23it/s]
+
+WARNING ⚠️ imgsz=[145, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 (no detections), 37.0ms
+Speed: 2.5ms preprocess, 37.0ms inference, 0.3ms postprocess per image at shape (1, 3, 160, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[114, 768] must be multiple of max stride 32, updating to [128, 768]
+0: 128x768 (no detections), 34.8ms
+Speed: 0.5ms preprocess, 34.8ms inference, 0.3ms postprocess per image at shape (1, 3, 128, 768)
+0it [00:00, ?it/s]
+
+WARNING ⚠️ imgsz=[380, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 3 embeddings, 76.6ms
+Speed: 1.3ms preprocess, 76.6ms inference, 0.6ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 3/3 [00:00<00:00, 12.19it/s]
+
+WARNING ⚠️ imgsz=[614, 768] must be multiple of max stride 32, updating to [640, 768]
+0: 640x768 12 embeddings, 132.0ms
+Speed: 1.9ms preprocess, 132.0ms inference, 0.7ms postprocess per image at shape (1, 3, 640, 768)
+100%|██████████| 12/12 [00:00<00:00, 12.59it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 213.0ms
+Speed: 3.9ms preprocess, 213.0ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+
+0: 1024x800 10 plain texts, 2 abandons, 6 isolate_formulas, 7 formula_captions, 487.3ms
+Speed: 4.5ms preprocess, 487.3ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+
+WARNING ⚠️ imgsz=[208, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 1 embedding, 63.0ms
+Speed: 0.6ms preprocess, 63.0ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 1/1 [00:00<00:00,  5.88it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.74s/it]
+100%|██████████| 1/1 [00:05<00:00,  5.93s/it]
+
+0: 608x768 1 isolated, 137.1ms
+Speed: 10.6ms preprocess, 137.1ms inference, 0.6ms postprocess per image at shape (1, 3, 608, 768)
+100%|██████████| 1/1 [00:00<00:00, 10.79it/s]
+100%|██████████| 1/1 [00:03<00:00,  3.91s/it]
+
+WARNING ⚠️ imgsz=[254, 768] must be multiple of max stride 32, updating to [256, 768]
+0: 256x768 2 embeddings, 56.9ms
+Speed: 0.9ms preprocess, 56.9ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 768)
+100%|██████████| 2/2 [00:00<00:00, 10.91it/s]
+
+WARNING ⚠️ imgsz=[221, 768] must be multiple of max stride 32, updating to [224, 768]
+0: 224x768 3 embeddings, 51.0ms
+Speed: 0.8ms preprocess, 51.0ms inference, 0.6ms postprocess per image at shape (1, 3, 224, 768)
+100%|██████████| 2/2 [00:00<00:00,  8.89it/s]
+100%|██████████| 1/1 [00:38<00:00, 38.22s/it]
+
+WARNING ⚠️ imgsz=[353, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 8 embeddings, 76.3ms
+Speed: 1.3ms preprocess, 76.3ms inference, 0.6ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 8/8 [00:00<00:00,  9.65it/s]
+
+WARNING ⚠️ imgsz=[154, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 2 embeddings, 40.7ms
+Speed: 0.6ms preprocess, 40.7ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 768)
+100%|██████████| 2/2 [00:00<00:00, 10.89it/s]
+100%|██████████| 1/1 [00:00<00:00,  2.80it/s]
+
+WARNING ⚠️ imgsz=[313, 768] must be multiple of max stride 32, updating to [320, 768]
+0: 320x768 5 embeddings, 66.7ms
+Speed: 1.1ms preprocess, 66.7ms inference, 0.6ms postprocess per image at shape (1, 3, 320, 768)
+100%|██████████| 5/5 [00:00<00:00, 10.90it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.01s/it]
+
+WARNING ⚠️ imgsz=[155, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 3 embeddings, 41.6ms
+Speed: 0.7ms preprocess, 41.6ms inference, 0.6ms postprocess per image at shape (1, 3, 160, 768)
+100%|██████████| 3/3 [00:00<00:00, 11.14it/s]
+
+WARNING ⚠️ imgsz=[148, 768] must be multiple of max stride 32, updating to [160, 768]
+0: 160x768 1 embedding, 41.4ms
+Speed: 0.6ms preprocess, 41.4ms inference, 1.3ms postprocess per image at shape (1, 3, 160, 768)
+100%|██████████| 1/1 [00:00<00:00, 12.29it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 312.1ms
+Speed: 4.1ms preprocess, 312.1ms inference, 0.5ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+Pix2Text fallback for 2506.09339.pdf: pages=[2, 3, 5, 6, 7, 8, 9, 11], candidates=26, replaced=14, added=6
+arXiv:2506.09339: extracted 39 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Processing paper 16 ...
+/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:305: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+`torch_dtype` is deprecated! Use `dtype` instead!
+Docling device policy: policy=auto, selected=cpu, pages=26, size_mb=1.35, reason=auto_cpu_pages>10
+arXiv:2503.08859: extracted 15 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Processing paper 17 ...
+/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:305: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+`torch_dtype` is deprecated! Use `dtype` instead!
+[INFO] 2026-06-20 11:37:44,763 [RapidOCR] base.py:22: Using engine_name: onnxruntime
+[INFO] 2026-06-20 11:37:44,764 [RapidOCR] main.py:53: Using /home/43e3/.cnstd/1.2/ppocr/ch_PP-OCRv5_det/ch_PP-OCRv5_det_infer.onnx
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+Could not find any ONNX files with standard file name decoder_model_merged.onnx, files found: [PosixPath('decoder_model.onnx'), PosixPath('encoder_model.onnx')]. Please make sure to pass a `file_name` and/or `subfolder` argument to `from_pretrained` when loading an ONNX file with non-standard file names.
+Docling device policy: policy=auto, selected=cpu, pages=27, size_mb=9.34, reason=auto_cpu_pages>10
+
+0: 1024x800 6 plain texts, 1 abandon, 1 figure, 1 figure_caption, 2 isolate_formulas, 2 formula_captions, 770.9ms
+Speed: 3.8ms preprocess, 770.9ms inference, 0.6ms postprocess per image at shape (1, 3, 1024, 800)
+Loading /home/43e3/.pix2text/1.1/mfd-1.5-onnx/pix2text-mfd-1.5.onnx for ONNX Runtime inference...
+Using ONNX Runtime 1.27.0 with CPUExecutionProvider
+
+WARNING ⚠️ imgsz=[389, 768] must be multiple of max stride 32, updating to [416, 768]
+0: 416x768 9 embeddings, 121.2ms
+Speed: 1.6ms preprocess, 121.2ms inference, 0.7ms postprocess per image at shape (1, 3, 416, 768)
+100%|██████████| 7/7 [00:00<00:00,  8.38it/s]
+
+WARNING ⚠️ imgsz=[688, 768] must be multiple of max stride 32, updating to [704, 768]
+0: 704x768 24 embeddings, 157.5ms
+Speed: 2.2ms preprocess, 157.5ms inference, 0.7ms postprocess per image at shape (1, 3, 704, 768)
+100%|██████████| 21/21 [00:04<00:00,  5.23it/s]
+100%|██████████| 1/1 [00:02<00:00,  2.44s/it]
+
+WARNING ⚠️ imgsz=[254, 768] must be multiple of max stride 32, updating to [256, 768]
+0: 256x768 2 embeddings, 57.1ms
+Speed: 0.9ms preprocess, 57.1ms inference, 0.6ms postprocess per image at shape (1, 3, 256, 768)
+100%|██████████| 2/2 [00:00<00:00,  6.81it/s]
+
+WARNING ⚠️ imgsz=[359, 768] must be multiple of max stride 32, updating to [384, 768]
+0: 384x768 5 embeddings, 77.4ms
+Speed: 1.4ms preprocess, 77.4ms inference, 0.6ms postprocess per image at shape (1, 3, 384, 768)
+100%|██████████| 5/5 [00:00<00:00,  9.99it/s]
+
+WARNING ⚠️ imgsz=[327, 768] must be multiple of max stride 32, updating to [352, 768]
+0: 352x768 6 embeddings, 73.6ms
+Speed: 1.2ms preprocess, 73.6ms inference, 0.6ms postprocess per image at shape (1, 3, 352, 768)
+100%|██████████| 5/5 [00:01<00:00,  3.76it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.75s/it]
+
+WARNING ⚠️ imgsz=[759, 768] must be multiple of max stride 32, updating to [768, 768]
+0: 768x768 20 embeddings, 162.4ms
+Speed: 2.4ms preprocess, 162.4ms inference, 0.7ms postprocess per image at shape (1, 3, 768, 768)
+100%|██████████| 17/17 [00:05<00:00,  3.37it/s]
+
+WARNING ⚠️ imgsz=[566, 768] must be multiple of max stride 32, updating to [576, 768]
+0: 576x768 7 embeddings, 122.4ms
+Speed: 1.8ms preprocess, 122.4ms inference, 0.6ms postprocess per image at shape (1, 3, 576, 768)
+100%|██████████| 7/7 [00:00<00:00,  7.51it/s]
+
+WARNING ⚠️ imgsz=[993, 768] must be multiple of max stride 32, updating to [1024, 768]
+0: 1024x768 (no detections), 223.9ms
+Speed: 3.5ms preprocess, 223.9ms inference, 0.4ms postprocess per image at shape (1, 3, 1024, 768)
+0it [00:00, ?it/s]
+Pix2Text fallback for 2510.11376.pdf: pages=[2], candidates=1, replaced=0, added=0
+arXiv:2510.11376: extracted 4 enumerated equation(s) to output/pdf/equations_pdf_pdf_only_server.json
+Processing paper 18 ...
+/home/43e3/solr-home/NLP-Cursor/.venv/lib/python3.12/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+/home/43e3/solr-home/NLP-Cursor/pdf_equation_pipeline.py:305: DeprecationWarning: This field is deprecated. Use `generate_page_images=True` and call `TableItem.get_image()` to extract table images from page images.
+  if hasattr(pipeline_options, image_flag):
+`torch_dtype` is deprecated! Use `dtype` instead!
+^C^C^C
+((.venv) ) 43e3@oth-aw.de@ki-010:~/solr-home/NLP-Cursor$ 
